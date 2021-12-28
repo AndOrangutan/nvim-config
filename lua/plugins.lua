@@ -49,8 +49,23 @@ return packer.startup(function(use)
 
 
     use { "nvim-treesitter/nvim-treesitter",    -- Nvim Treesitter configurations and abstraction layer
-        run = ":TSUpdate"
+        run = ":TSUpdate",
     }
+
+    --{{{ Theme
+    use { "ful1e5/onedark.nvim" }               -- Atom's iconic One Dark theme for Neovim, written in Lua 
+    --}}}
+    
+    --{{{ UI
+    use { "nvim-lualine/lualine.nvim",
+        requires = {"kyazdani42/nvim-web-devicons"},
+    }          
+    use { "yamatsum/nvim-nonicons",             -- Icon set using nonicons for neovim plugins and settings 
+        requires = {"kyazdani42/nvim-web-devicons"},
+    }
+    --}}}
+
+
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
