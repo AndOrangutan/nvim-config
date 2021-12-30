@@ -2,7 +2,8 @@
 local opt = vim.opt
 local let = vim.g
 local indent_size = 4
-
+local keymap = vim.api.nvim_set_keymap
+keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 let.mapleader = " "
 
 -- Saner defaults

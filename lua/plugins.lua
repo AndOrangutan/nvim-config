@@ -55,30 +55,35 @@ return packer.startup(function(use)
     --{{{ Theme
     use { "ful1e5/onedark.nvim" }               -- Atom's iconic One Dark theme for Neovim, written in Lua 
     --}}}
-    
+   
+--{{{ Keybinds
+    use { "folke/which-key.nvim" }              -- Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
+    use { "b0o/mapx.nvim" }                     -- A better way to create key mappings in Neovim.
+    --}}}
+
     --{{{ UI
     use { "yamatsum/nvim-nonicons",             -- Icon set using nonicons for neovim plugins and settings 
         requires = { "kyazdani42/nvim-web-devicons" },
     }
-    use { "nvim-lualine/lualine.nvim",
+    use { "nvim-lualine/lualine.nvim",          -- A blazing fast and easy to configure neovim statusline plugin written in pure lua.
         requires = { "kyazdani42/nvim-web-devicons" },
     }          
-    use { "akinsho/bufferline.nvim",
+    use { "akinsho/bufferline.nvim",            -- A snazzy bufferline for Neovim 
         requires = { "kyazdani42/nvim-web-devicons" },
     }
+ 
+
     --use { "akinsho/bufferline.nvim",
     --    requires = {"kyazdani42/nvim-web-devicons"},
     --}
     --}}}
     
-    --{{{ Keybinds
-    use { "folke/which-key.nvim" }              -- Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
-    use { "b0o/mapx.nvim" }                     -- A better way to create key mappings in Neovim.
-    --}}}
-    
     --{{{ Telescope
-    use { "nvim-telescope/telescope.nvim",
-        requires = { "nvim-lua/plenary.nvim" }
+    use { "nvim-telescope/telescope.nvim",      -- Find, Filter, Preview, Pick. All lua, all the time. 
+        requires = { 'nvim-lua/plenary.nvim' }
+    }
+    use { "nvim-telescope/telescope-fzf-native.nvim",   -- FZF sorter for telescope written in c 
+        run = "make",
     }
     --}}}
 

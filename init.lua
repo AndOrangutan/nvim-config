@@ -12,4 +12,5 @@ require "config.treesitter"
 require "config.nonicons"
 require "config.lualine"
 require "config.bufferline"
+require "config.telescope"
 

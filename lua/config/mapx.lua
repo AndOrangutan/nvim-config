@@ -1,2 +1,2 @@
-require'mapx'.setup{ global = true, whichkey = true }
+MAPX = require'mapx'.setup{ global = true, whichkey = true }
 
