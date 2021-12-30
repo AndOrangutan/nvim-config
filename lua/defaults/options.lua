@@ -1,8 +1,13 @@
 
 local opt = vim.opt
+local let = vim.g
 local indent_size = 4
 
+let.mapleader = " "
+
 -- Saner defaults
+opt.termguicolors   = true
+opt.timeoutlen      = 500
 opt.clipboard       = "unnamedplus"
 opt.mouse           = "a"
 opt.errorbells      = false

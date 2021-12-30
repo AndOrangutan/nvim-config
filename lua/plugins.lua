@@ -57,11 +57,28 @@ return packer.startup(function(use)
     --}}}
     
     --{{{ UI
-    use { "nvim-lualine/lualine.nvim",
-        requires = {"kyazdani42/nvim-web-devicons"},
-    }          
     use { "yamatsum/nvim-nonicons",             -- Icon set using nonicons for neovim plugins and settings 
-        requires = {"kyazdani42/nvim-web-devicons"},
+        requires = { "kyazdani42/nvim-web-devicons" },
+    }
+    use { "nvim-lualine/lualine.nvim",
+        requires = { "kyazdani42/nvim-web-devicons" },
+    }          
+    use { "akinsho/bufferline.nvim",
+        requires = { "kyazdani42/nvim-web-devicons" },
+    }
+    --use { "akinsho/bufferline.nvim",
+    --    requires = {"kyazdani42/nvim-web-devicons"},
+    --}
+    --}}}
+    
+    --{{{ Keybinds
+    use { "folke/which-key.nvim" }              -- Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
+    use { "b0o/mapx.nvim" }                     -- A better way to create key mappings in Neovim.
+    --}}}
+    
+    --{{{ Telescope
+    use { "nvim-telescope/telescope.nvim",
+        requires = { "nvim-lua/plenary.nvim" }
     }
     --}}}
 
