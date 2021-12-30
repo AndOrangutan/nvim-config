@@ -27,7 +27,7 @@ opt.pumheight       = 16
 opt.splitbelow      = true
 opt.splitright      = true
 -- Formatting
-opt.tabstop         = indent_size 
+opt.tabstop         = indent_size
 opt.softtabstop     = indent_size
 opt.shiftwidth      = indent_size
 opt.shiftround      = true
@@ -35,6 +35,7 @@ opt.expandtab       = true
 opt.smarttab        = true
 opt.smartindent     = true
 opt.autoindent      = true
+opt.signcolumn      = "yes"
 -- Search
 opt.ignorecase      = true
 opt.incsearch       = true

@@ -11,7 +11,7 @@ require('bufferline').setup {
         close_icon = '',
         left_trunc_marker = '',
         right_trunc_marker = '',
-        diagnostics = false,     --| "nvim_lsp" | "coc",
+        diagnostics = "nvim_lsp",     --| "nvim_lsp" | "coc",
         diagnostics_update_in_insert = false,
         diagnostics_indicator = function(count, level, diagnostics_dict, context)
             return "("..count..")"
