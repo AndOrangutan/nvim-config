@@ -44,8 +44,11 @@ opt.smartcase       = true
 opt.hidden          = true
 opt.backup          = false
 opt.swapfile        = false
+opt.undofile        = true
 opt.undodir         = "$HOME/.nvim/undodir"
+--vim.cmd[[set undodir=$HOME/.nvim/undodir]]
 opt.undolevels      = 69000
+opt.history         = 100
 opt.background      = "dark"
 opt.updatetime      = 300
 
