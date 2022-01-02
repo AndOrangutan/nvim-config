@@ -15,4 +15,6 @@ require "config.bufferline"
 require "config.telescope"
 require "config.lsp"
 require "config.gitsigns"
-
+require "config.lspsaga"
+require "config.trouble"
+require "config.null-ls"

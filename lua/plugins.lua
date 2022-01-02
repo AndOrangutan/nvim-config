@@ -53,47 +53,53 @@ return packer.startup(function(use)
     }
 
     --{{{ Theme
-    use { "ful1e5/onedark.nvim" }               -- Atom's iconic One Dark theme for Neovim, written in Lua 
+    use { "ful1e5/onedark.nvim" }               -- Atom's iconic One Dark theme for Neovim, written in Lua
     --}}}
-   
+
 --{{{ Keybinds
     use { "folke/which-key.nvim" }              -- Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
     use { "b0o/mapx.nvim" }                     -- A better way to create key mappings in Neovim.
     --}}}
 
     --{{{ UI
-    use { "yamatsum/nvim-nonicons",             -- Icon set using nonicons for neovim plugins and settings 
+    use { "yamatsum/nvim-nonicons",             -- Icon set using nonicons for neovim plugins and settings
         requires = { "kyazdani42/nvim-web-devicons" },
     }
     use { "nvim-lualine/lualine.nvim",          -- A blazing fast and easy to configure neovim statusline plugin written in pure lua.
         requires = { "kyazdani42/nvim-web-devicons" },
-    }          
-    use { "akinsho/bufferline.nvim",            -- A snazzy bufferline for Neovim 
+    }
+    use { "akinsho/bufferline.nvim",            -- A snazzy bufferline for Neovim
         requires = { "kyazdani42/nvim-web-devicons" },
     }
- 
+
 
     --use { "akinsho/bufferline.nvim",
     --    requires = {"kyazdani42/nvim-web-devicons"},
     --}
     --}}}
-    
+
     --{{{ Telescope
-    use { "nvim-telescope/telescope.nvim",      -- Find, Filter, Preview, Pick. All lua, all the time. 
+    use { "nvim-telescope/telescope.nvim",      -- Find, Filter, Preview, Pick. All lua, all the time.
         requires = { 'nvim-lua/plenary.nvim' }
     }
-    use { "nvim-telescope/telescope-fzf-native.nvim",   -- FZF sorter for telescope written in c 
+    use { "nvim-telescope/telescope-fzf-native.nvim",   -- FZF sorter for telescope written in c
         run = "make",
     }
     --}}}
 
 --{{{ LSP
-use { "neovim/nvim-lspconfig" }
-use { "williamboman/nvim-lsp-installer" }
+use { "neovim/nvim-lspconfig" }                 --  Quickstart configurations for the Nvim LSP client
+use { "williamboman/nvim-lsp-installer" }       -- Companion plugin for nvim-lspconfig that allows you to seamlessly manage LSP servers locally with :LspInstall
+use { "tami5/lspsaga.nvim" }                    -- Lspsaga is light-weight lsp plugin based on neovim built-in lsp with highly a performant UI
+use {"folke/trouble.nvim",                      -- -- A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
+  requires = "kyazdani42/nvim-web-devicons",
+}
+use { "jose-elias-alvarez/null-ls.nvim" }       -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
+
 --}}}
 
 --{{{ Git
-use { "lewis6991/gitsigns.nvim",
+use { "lewis6991/gitsigns.nvim",                --  Git integration for buffers
     requires = { "nvim-lua/plenary.nvim" },
 }
 --}}}
