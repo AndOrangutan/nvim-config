@@ -81,7 +81,7 @@ cmp.setup({
         { name = 'buffer' },
     }),
     formatting = {
-        fields = {"kind", "abbr", "menu"},
+        fields = {"abbr", "kind", "menu"},
         format = function(entry, vim_item)
             vim_item.kind = string.format('%s', kind_icons[vim_item.kind]) -- This concatonates the icons with the name of the item kind
             vim_item.menu = (source_mapping)[entry.source.name]
@@ -126,10 +126,10 @@ cmp.setup.cmdline(':', {
 --    capabilities = capabilities
 --}
 
-imap("<Tab>", "luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'", "Snippet Jump")
-inoremap("<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<Cr>", "Snippet UnJump")
-snoremap("<Tab>", "<cmd>lua require('luasnip').jump(1)<Cr>", "Snippet Jump")
-snoremap("<S-Tab>", "<cmd>lua require('luasnip').jump(-1)<Cr>", "Snippet UnJump")
-imap("<C-E>", "luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'", "Snippet ???")
-smap("<C-E>", "luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'", "Snippet ????")
+MAPX.imap("<Tab>", "luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'", "Snippet Jump", "expr")
+MAPX.inoremap("<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<Cr>", "Snippet UnJump")
+MAPX.snoremap("<Tab>", "<cmd>lua require('luasnip').jump(1)<Cr>", "Snippet Jump")
+MAPX.snoremap("<S-Tab>", "<cmd>lua require('luasnip').jump(-1)<Cr>", "Snippet UnJump")
+MAPX.imap("<C-E>", "luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'", "Snippet ???")
+MAPX.smap("<C-E>", "luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'", "Snippet ????")
 
