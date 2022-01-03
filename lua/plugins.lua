@@ -71,6 +71,9 @@ return packer.startup(function(use)
     use { "akinsho/bufferline.nvim",            -- A snazzy bufferline for Neovim
         requires = { "kyazdani42/nvim-web-devicons" },
     }
+    use { "kyazdani42/nvim-tree.lua",           -- A file explorer tree for neovim written in lua
+        requires = { "kyazdani42/nvim-web-devicons" },
+    }
 
 
     --use { "akinsho/bufferline.nvim",
