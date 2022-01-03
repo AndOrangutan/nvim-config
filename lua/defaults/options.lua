@@ -13,6 +13,7 @@ opt.clipboard       = "unnamedplus"
 opt.mouse           = "a"
 opt.errorbells      = false
 opt.encoding        = "utf-8"
+opt.completeopt     = "menu,menuone,noselect"
 -- Visual
 opt.number          = true
 opt.relativenumber  = true
@@ -45,7 +46,12 @@ opt.hidden          = true
 opt.backup          = false
 opt.swapfile        = false
 opt.undofile        = true
-opt.undodir         = "$HOME/.nvim/.undodir"
+vim.cmd[[
+if !isdirectory("/tmp/.vim-undo-dir")
+    call mkdir("/tmp/.vim-undo-dir", "", 0700)
+endif
+]]
+opt.undodir         = "/tmp/.nvim-undodir"
 --vim.cmd[[set undodir=$HOME/.nvim/undodir]]
 opt.undolevels      = 69000
 opt.history         = 100

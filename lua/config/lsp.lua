@@ -72,7 +72,7 @@ end)
 local servers = {
   "bashls",
   "clangd",
-  "csharpls",
+  --"csharpls",
   "cmake",
   "cssls",
   "diagnosticls",
@@ -97,12 +97,21 @@ local servers = {
   "vimls",
 }
 
+-- Setup lspconfig.
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+---- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+
 for _, name in pairs(servers) do
-  local server_is_found, server = lsp_installer.get_server(name)
-  if server_is_found then
-    if not server:is_installed() then
-      print("Installing " .. name)
-      server:install()
+----cmp
+--    require('lspconfig')[name].setup {
+--        capabilities = capabilities
+--    }
+--lspinstall
+    local server_is_found, server = lsp_installer.get_server(name)
+    if server_is_found then
+        if not server:is_installed() then
+            print("Installing " .. name)
+            server:install()
+        end
     end
-  end
 end

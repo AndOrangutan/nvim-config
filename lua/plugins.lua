@@ -104,8 +104,29 @@ use { "lewis6991/gitsigns.nvim",                --  Git integration for buffers
 }
 --}}}
 
+--{{{ Completion
+use { "hrsh7th/nvim-cmp" }                      -- A completion plugin for neovim coded in Lua.
+use { "L3MON4D3/LuaSnip" }                      -- Snippet Engine for Neovim written in Lua.
+use { "rafamadriz/friendly-snippets" }          -- Set of preconfigured snippets for different languages. 
+
+use { "hrsh7th/cmp-nvim-lsp" }
+use { "hrsh7th/cmp-buffer" }
+use { "hrsh7th/cmp-path" }
+use { "hrsh7th/cmp-cmdline" }
+use { "saadparwaiz1/cmp_luasnip" }
+use { "onsails/lspkind-nvim"}
+--use { "peterriho/cmp-git" }
+use { "ray-x/cmp-treesitter" }
+use { "hrsh7th/cmp-nvim-lua" }
+use { "lukas-reineke/cmp-under-comparator" }
+use { "hrsh7th/cmp-calc" }
+use { "kdheepak/cmp-latex-symbols" }
+
+
+--}}}
+
 --{{{ Formatting
-use { "windwp/nvim-autopairs" }
+use { "windwp/nvim-autopairs" }                 -- autopairs for neovim written by lua
 --}}}
 
     -- Automatically set up your configuration after cloning packer.nvim
