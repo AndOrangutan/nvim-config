@@ -69,9 +69,9 @@ cmp.setup({
     },
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
+        { name = 'nvim_lua' },
         { name = 'luasnip' }, -- For luasnip users.
         --{ name = 'cmp-git'}
-        { name = 'nvim_lua' },
         { name = 'treesitter' },
         { name = 'calc' },
         { name = 'latex_symbols' },

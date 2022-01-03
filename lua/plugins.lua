@@ -56,7 +56,8 @@ return packer.startup(function(use)
     use { "ful1e5/onedark.nvim" }               -- Atom's iconic One Dark theme for Neovim, written in Lua
     --}}}
 
---{{{ Keybinds use { "folke/which-key.nvim" }              -- Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
+    --{{{ Keybinds 
+    use { "folke/which-key.nvim" }              -- Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
     use { "b0o/mapx.nvim" }                     -- A better way to create key mappings in Neovim.
     --}}}
 
@@ -126,6 +127,8 @@ use { "kdheepak/cmp-latex-symbols" }
 
 --{{{ Formatting
 use { "windwp/nvim-autopairs" }                 -- autopairs for neovim written by lua
+
+use { "b3nj5m1n/kommentary" }                   -- Neovim commenting plugin, written in lua.
 --}}}
 
     -- Automatically set up your configuration after cloning packer.nvim
@@ -134,4 +137,3 @@ use { "windwp/nvim-autopairs" }                 -- autopairs for neovim written 
         require("packer").sync()
     end
 end)
-
