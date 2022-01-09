@@ -51,6 +51,7 @@ return packer.startup(function(use)
     use { "nvim-treesitter/nvim-treesitter",    -- Nvim Treesitter configurations and abstraction layer
         run = ":TSUpdate",
     }
+    use { "MDeiml/tree-sitter-markdown"}
 
     --{{{ Theme
     use { "ful1e5/onedark.nvim" }               -- Atom's iconic One Dark theme for Neovim, written in Lua
@@ -76,6 +77,8 @@ return packer.startup(function(use)
         requires = { "kyazdani42/nvim-web-devicons" },
     }
 
+    use { "anuvyklack/pretty-fold.nvim" }       -- Foldtext customization and folded region preview in Neovim. 
+    use { "norcalli/nvim-colorizer.lua" }       -- The fastest Neovim colorizer.
 
     --use { "akinsho/bufferline.nvim",
     --    requires = {"kyazdani42/nvim-web-devicons"},
@@ -91,22 +94,22 @@ return packer.startup(function(use)
     }
     --}}}
 
---{{{ LSP
-use { "neovim/nvim-lspconfig" }                 --  Quickstart configurations for the Nvim LSP client
-use { "williamboman/nvim-lsp-installer" }       -- Companion plugin for nvim-lspconfig that allows you to seamlessly manage LSP servers locally with :LspInstall
-use { "tami5/lspsaga.nvim" }                    -- Lspsaga is light-weight lsp plugin based on neovim built-in lsp with highly a performant UI
-use {"folke/trouble.nvim",                      -- -- A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
-  requires = "kyazdani42/nvim-web-devicons",
-}
-use { "jose-elias-alvarez/null-ls.nvim" }       -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
+    --{{{ LSP
+    use { "neovim/nvim-lspconfig" }                 --  Quickstart configurations for the Nvim LSP client
+    use { "williamboman/nvim-lsp-installer" }       -- Companion plugin for nvim-lspconfig that allows you to seamlessly manage LSP servers locally with :LspInstall
+    use { "tami5/lspsaga.nvim" }                    -- Lspsaga is light-weight lsp plugin based on neovim built-in lsp with highly a performant UI
+    use {"folke/trouble.nvim",                      -- -- A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
+      requires = "kyazdani42/nvim-web-devicons",
+    }
+    use { "jose-elias-alvarez/null-ls.nvim" }       -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
 
---}}}
+    --}}}
 
---{{{ Git
-use { "lewis6991/gitsigns.nvim",                --  Git integration for buffers
-    requires = { "nvim-lua/plenary.nvim" },
-}
---}}}
+    --{{{ Git
+    use { "lewis6991/gitsigns.nvim",                --  Git integration for buffers
+        requires = { "nvim-lua/plenary.nvim" },
+    }
+    --}}}
 
 --{{{ Completion
 use { "hrsh7th/nvim-cmp" }                      -- A completion plugin for neovim coded in Lua.

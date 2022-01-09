@@ -1,60 +1,64 @@
 
-local opt = vim.opt
+local set = vim.opt
 local let = vim.g
 local indent_size = 4
 local keymap = vim.api.nvim_set_keymap
 keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 let.mapleader = " "
 
+let.do_filetype_lua = 1
+
 -- Saner defaults
-opt.termguicolors   = true
-opt.timeoutlen      = 500
-opt.clipboard       = "unnamedplus"
-opt.mouse           = "a"
-opt.errorbells      = false
-opt.encoding        = "utf-8"
-opt.completeopt     = "menu,menuone,noselect"
+set.termguicolors   = true
+set.timeoutlen      = 500
+set.clipboard       = "unnamedplus"
+set.mouse           = "a"
+set.errorbells      = false
+set.encoding        = "utf-8"
+set.completeopt     = "menu,menuone,noselect"
 -- Visual
-opt.number          = true
-opt.relativenumber  = true
-opt.wrap            = false
-opt.showmode        = false
-opt.conceallevel    = 2
-opt.foldmethod      = "marker"
+set.listchars       = "eol:¬"
+set.list            = true
+set.number          = true
+set.relativenumber  = true
+set.wrap            = false
+set.showmode        = false
+set.conceallevel    = 2
+set.foldmethod      = "marker"
 -- Placement
-opt.scrolloff       = 16
-opt.sidescrolloff   = 16
-opt.pumheight       = 16
-opt.splitbelow      = true
-opt.splitright      = true
+set.scrolloff       = 16
+set.sidescrolloff   = 16
+set.pumheight       = 16
+set.splitbelow      = true
+set.splitright      = true
 -- Formatting
-opt.tabstop         = indent_size
-opt.softtabstop     = indent_size
-opt.shiftwidth      = indent_size
-opt.shiftround      = true
-opt.expandtab       = true
-opt.smarttab        = true
-opt.smartindent     = true
-opt.autoindent      = true
-opt.signcolumn      = "yes"
+set.tabstop         = indent_size
+set.softtabstop     = indent_size
+set.shiftwidth      = indent_size
+set.shiftround      = true
+set.expandtab       = true
+set.smarttab        = true
+set.smartindent     = true
+set.autoindent      = true
+set.signcolumn      = "yes"
 -- Search
-opt.ignorecase      = true
-opt.incsearch       = true
-opt.smartcase       = true
+set.ignorecase      = true
+set.incsearch       = true
+set.smartcase       = true
 -- Boring stuff
-opt.hidden          = true
-opt.backup          = false
-opt.swapfile        = false
-opt.undofile        = true
+set.hidden          = true
+set.backup          = false
+set.swapfile        = false
+set.undofile        = true
 vim.cmd[[
 if !isdirectory("/tmp/.vim-undo-dir")
     call mkdir("/tmp/.vim-undo-dir", "", 0700)
 endif
 ]]
-opt.undodir         = "/tmp/.nvim-undodir"
+set.undodir         = "/tmp/.nvim-undodir"
 --vim.cmd[[set undodir=$HOME/.nvim/undodir]]
-opt.undolevels      = 69000
-opt.history         = 100
-opt.background      = "dark"
-opt.updatetime      = 300
+set.undolevels      = 69000
+set.history         = 100
+set.background      = "dark"
+set.updatetime      = 300
 

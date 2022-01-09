@@ -7,7 +7,7 @@ local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
     -- Enable completion triggered by <c-x><c-o>
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+    buf_set_option('omnifunc', 'v:lua.vioptioifunc')
 
     -- Mappings.
     local opts = { noremap=true, silent=true }
@@ -48,7 +48,9 @@ end
 vim.diagnostic.config({
     virtual_text = false,
     signs = true,
-    float = { boarder = "single" },
+    float = { 
+        border = "single",
+        source = 'always'},
 })
 
 
@@ -87,7 +89,7 @@ local servers = {
   "kotlin_language_server",
   "texlab",
   "sumneko_lua",
-  "zk",
+  "remark_ls",
   "intelephense",
   "pyright",
   "solargraph",
@@ -115,3 +117,7 @@ for _, name in pairs(servers) do
         end
     end
 end
+
+
+
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
