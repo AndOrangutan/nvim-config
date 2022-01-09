@@ -46,6 +46,7 @@ return packer.startup(function(use)
 -- {{{ Todo 
     
 --}}}
+
     --{{{ Plugin Management
     use { "wbthomason/packer.nvim" }            -- Have packer manage itself
     --}}}
@@ -88,6 +89,9 @@ return packer.startup(function(use)
 
     use { "anuvyklack/pretty-fold.nvim" }       -- Foldtext customization and folded region preview in Neovim. 
     use { "norcalli/nvim-colorizer.lua" }       -- The fastest Neovim colorizer.
+
+    use { "akinsho/toggleterm.nvim" }           -- A neovim lua plugin to help easily manage multiple terminal windows
+
 
     --use { "akinsho/bufferline.nvim",
     --    requires = {"kyazdani42/nvim-web-devicons"},
