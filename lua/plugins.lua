@@ -43,17 +43,26 @@ packer.init {
 -- Install your plugins here
 return packer.startup(function(use)
     -- My plugins here
+-- {{{ Todo 
+    
+--}}}
+    --{{{ Plugin Management
     use { "wbthomason/packer.nvim" }            -- Have packer manage itself
+    --}}}
+    --
+    --{{{ Helpers 
     use { "nvim-lua/popup.nvim" }               -- An implementation of the Popup API from vim in Neovim
     use { "nvim-lua/plenary.nvim" }             -- Useful lua functions used ny lots of plugins
+    --}}}
 
-
+    --{{{ Treesitter
     use { "nvim-treesitter/nvim-treesitter",    -- Nvim Treesitter configurations and abstraction layer
         run = ":TSUpdate",
     }
     use { "MDeiml/tree-sitter-markdown"}
+    --}}}
 
-    --{{{ Theme
+        --{{{ Theme
     use { "ful1e5/onedark.nvim" }               -- Atom's iconic One Dark theme for Neovim, written in Lua
     --}}}
 
@@ -109,6 +118,8 @@ return packer.startup(function(use)
     use { "lewis6991/gitsigns.nvim",                --  Git integration for buffers
         requires = { "nvim-lua/plenary.nvim" },
     }
+
+    use { "sindrets/diffview.nvim" }                -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev. 
     --}}}
 
 --{{{ Completion
