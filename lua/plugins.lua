@@ -65,6 +65,7 @@ return packer.startup(function(use)
     use { "yamatsum/nvim-nonicons",             -- Icon set using nonicons for neovim plugins and settings
         requires = { "kyazdani42/nvim-web-devicons" },
     }
+    use { "karb94/neoscroll.nvim" }             -- Smooth scrolling neovim plugin written in lua 
     use { "nvim-lualine/lualine.nvim",          -- A blazing fast and easy to configure neovim statusline plugin written in pure lua.
         requires = { "kyazdani42/nvim-web-devicons" },
     }
