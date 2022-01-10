@@ -50,7 +50,7 @@ return packer.startup(function(use)
     --{{{ Plugin Management
     use { "wbthomason/packer.nvim" }            -- Have packer manage itself
     --}}}
-    --
+
     --{{{ Helpers 
     use { "nvim-lua/popup.nvim" }               -- An implementation of the Popup API from vim in Neovim
     use { "nvim-lua/plenary.nvim" }             -- Useful lua functions used ny lots of plugins
@@ -73,10 +73,11 @@ return packer.startup(function(use)
     --}}}
 
     --{{{ UI
+    use { "rcarriga/nvim-notify"}               -- A fancy, configurable, notification manager for Neovim
     use { "yamatsum/nvim-nonicons",             -- Icon set using nonicons for neovim plugins and settings
         requires = { "kyazdani42/nvim-web-devicons" },
     }
-    use { "karb94/neoscroll.nvim" }             -- Smooth scrolling neovim plugin written in lua 
+    use { "karb94/neoscroll.nvim" }             -- Smooth scrolling neovim plugin written in lua
     use { "nvim-lualine/lualine.nvim",          -- A blazing fast and easy to configure neovim statusline plugin written in pure lua.
         requires = { "kyazdani42/nvim-web-devicons" },
     }
@@ -87,10 +88,11 @@ return packer.startup(function(use)
         requires = { "kyazdani42/nvim-web-devicons" },
     }
 
-    use { "anuvyklack/pretty-fold.nvim" }       -- Foldtext customization and folded region preview in Neovim. 
+    use { "anuvyklack/pretty-fold.nvim" }       -- Foldtext customization and folded region preview in Neovim.
     use { "norcalli/nvim-colorizer.lua" }       -- The fastest Neovim colorizer.
 
     use { "akinsho/toggleterm.nvim" }           -- A neovim lua plugin to help easily manage multiple terminal windows
+
 
 
     --use { "akinsho/bufferline.nvim",

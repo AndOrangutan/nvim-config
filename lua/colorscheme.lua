@@ -3,7 +3,7 @@ require("onedark").setup({
     comment_style = "italic",
     keyword_style = "italic",
     function_style = "bold",
-    msg_area_style = "NONE",
+    msg_area_style = "italic",
     variable_style = "NONE",
     dark_float = true,
     dark_sidebar = true,

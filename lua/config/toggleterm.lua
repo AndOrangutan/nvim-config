@@ -25,8 +25,8 @@ require("toggleterm").setup{
         -- the 'curved' border is a custom border type
         -- not natively supported but implemented in this plugin.
         border = 'curved',
-        width = 128,
-        height = 48,
+        --width = 64,
+        --height = 48,
         winblend = 3,
         highlights = {
             border = "Normal",
@@ -34,3 +34,13 @@ require("toggleterm").setup{
         }
     }
 }
+
+
+local Terminal  = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+
+function _lazygit_toggle()
+  lazygit:toggle()
+end
+
+nnoremap("<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", "ToggleTerm Lazygit")
