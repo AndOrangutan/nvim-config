@@ -6,7 +6,6 @@ local telescope = require("telescope")
 telescope.load_extension('fzf')
 telescope.load_extension('media_files')
 
-
 telescope.setup{
     defaults = {
         -- Default configuration for telescope goes here:
@@ -36,6 +35,7 @@ telescope.setup{
         --    "--column",
         --    "--smart-case",
         --    "--trim",
+        --    "-u"
         --},
 
     },
@@ -73,7 +73,19 @@ telescope.setup{
 
 MAPX.nname("<leader>f", "Telescope")
 --nnoremap("<leader>ff", "<cmd>lua require('telescope.builtin').find_file()<cr>", "Telescope: Find File")
-nnoremap("<leader>ff", "<cmd>Telescope find_files hidden=true<cr>", "Telescope: Find File")
+nnoremap("<leader>ff", "<cmd>lua require'config.telescope'.project_files()<cr>", "Telescope: Find File")
 nnoremap("<leader>fg", "<cmd>Telescope live_grep hidden=true<cr>", "Telescope: Live Grep")
 nnoremap("<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", "Telescope: Buffers")
 nnoremap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", "Telescope: Help Tags")
+
+
+local M = {}
+
+M.project_files = function()
+  local opts = {} -- define here if you want to define something
+  local ok = pcall(require"telescope.builtin".git_files, opts)
+  if not ok then require"telescope.builtin".find_files(opts) end
+end
+
+return M
+

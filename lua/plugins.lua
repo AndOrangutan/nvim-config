@@ -132,7 +132,7 @@ return packer.startup(function(use)
         requires = { "nvim-lua/plenary.nvim" },
     }
 
-    use { "sindrets/diffview.nvim" }                -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev. 
+    --use { "sindrets/diffview.nvim" }                -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev. 
     --}}}
 
     --{{{ Completion
@@ -160,8 +160,8 @@ return packer.startup(function(use)
     --}}}
 
     --{{{ Note Taking 
-        --use { ""}
-    --}}}
+        use { "davidgranstrom/nvim-markdown-preview" }  -- Markdown preview for neovim using pandoc and live-server
+     --}}}
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

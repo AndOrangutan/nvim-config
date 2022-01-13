@@ -7,6 +7,7 @@
 
 ## Require Dependencies
 
+
 - Ueberzug
 - ripgrep
 - fd 
