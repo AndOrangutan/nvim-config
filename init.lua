@@ -28,5 +28,6 @@ require("config.pretty-fold")
 require("config.colorizer")
 require("config.toggleterm")
 require("config.indent-blankline")
+require("config.mkdnflow")
 
 

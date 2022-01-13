@@ -161,6 +161,7 @@ return packer.startup(function(use)
 
     --{{{ Note Taking 
         use { "davidgranstrom/nvim-markdown-preview" }  -- Markdown preview for neovim using pandoc and live-server
+        use { "jakewvincent/mkdnflow.nvim" }        -- Tools for markdown notebook nvavigation and management
      --}}}
 
     -- Automatically set up your configuration after cloning packer.nvim
