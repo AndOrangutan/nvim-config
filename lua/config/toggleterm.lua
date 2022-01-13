@@ -43,4 +43,4 @@ function _lazygit_toggle()
   lazygit:toggle()
 end
 
-nnoremap("<leader>gg", "<cmd>lua _lazygit_toggle()<CR>", "ToggleTerm Lazygit")
+nnoremap("<leader>tg", "<cmd>lua _lazygit_toggle()<CR>", "ToggleTerm Lazygit")

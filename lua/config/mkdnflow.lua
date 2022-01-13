@@ -28,7 +28,7 @@ require('mkdnflow').setup({
     --     This is evaluated at the time createLink() is run, which is to say
     --     that it's run whenever <CR> is pressed (under the default mappings).
     --     This makes for many interesting possibilities.
-    --new_file_prefix = [[os.date('%Y-%m-%d_')]],
+    new_file_prefix = [[]],
 
     -- Type: boolean. When true and Mkdnflow is searching for the next/previous
     --     link in the file, it will wrap to the beginning of the file (if it's
