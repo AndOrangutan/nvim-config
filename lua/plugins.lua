@@ -42,9 +42,20 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
-    -- My plugins here
+-- My plugins here
 -- {{{ Todo 
-    
+-- Double Check Telescope
+-- Double Check null-ls
+
+-- Github Description
+-- DAP 
+-- goolord/alpha-nvim A lua powered greeter like vim-startify/dashboard-nvim
+-- phaaazon/hop.nvim Hop is an EasyMotion-like plugin allowing you to jump anywhere in a document with as few keystrokes as possible.
+-- petertriho/nvim-scrollbar Extensible Neovim Scrollbar
+-- luukvbaal/stabilize.nvim Neovim plugin to stabilize window open/close events.
+--
+-- Pocco81/TrueZen.nvim Clean and elegant distraction-freewriting for Neovim
+
 --}}}
 
     --{{{ Plugin Management
@@ -63,7 +74,7 @@ return packer.startup(function(use)
     use { "MDeiml/tree-sitter-markdown"}
     --}}}
 
-        --{{{ Theme
+    --{{{ Theme
     use { "ful1e5/onedark.nvim" }               -- Atom's iconic One Dark theme for Neovim, written in Lua
     --}}}
 
@@ -92,12 +103,7 @@ return packer.startup(function(use)
     use { "norcalli/nvim-colorizer.lua" }       -- The fastest Neovim colorizer.
 
     use { "akinsho/toggleterm.nvim" }           -- A neovim lua plugin to help easily manage multiple terminal windows
-
-
-
-    --use { "akinsho/bufferline.nvim",
-    --    requires = {"kyazdani42/nvim-web-devicons"},
-    --}
+    use { "lukas-reineke/indent-blankline.nvim" }   -- Indent guides for Neovim
     --}}}
 
     --{{{ Telescope
@@ -107,6 +113,7 @@ return packer.startup(function(use)
     use { "nvim-telescope/telescope-fzf-native.nvim",   -- FZF sorter for telescope written in c
         run = "make",
     }
+    use { "nvim-telescope/telescope-media-files.nvim" } -- Telescope extension to preview media files using Ueberzug
     --}}}
 
     --{{{ LSP
@@ -128,32 +135,33 @@ return packer.startup(function(use)
     use { "sindrets/diffview.nvim" }                -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev. 
     --}}}
 
---{{{ Completion
-use { "hrsh7th/nvim-cmp" }                      -- A completion plugin for neovim coded in Lua.
-use { "L3MON4D3/LuaSnip" }                      -- Snippet Engine for Neovim written in Lua.
-use { "rafamadriz/friendly-snippets" }          -- Set of preconfigured snippets for different languages. 
+    --{{{ Completion
+    use { "hrsh7th/nvim-cmp" }                      -- A completion plugin for neovim coded in Lua.
+    use { "L3MON4D3/LuaSnip" }                      -- Snippet Engine for Neovim written in Lua.
+    use { "rafamadriz/friendly-snippets" }          -- Set of preconfigured snippets for different languages. 
 
-use { "hrsh7th/cmp-nvim-lsp" }
-use { "hrsh7th/cmp-buffer" }
-use { "hrsh7th/cmp-path" }
-use { "hrsh7th/cmp-cmdline" }
-use { "saadparwaiz1/cmp_luasnip" }
-use { "onsails/lspkind-nvim"}
---use { "peterriho/cmp-git" }
-use { "ray-x/cmp-treesitter" }
-use { "hrsh7th/cmp-nvim-lua" }
-use { "lukas-reineke/cmp-under-comparator" }
-use { "hrsh7th/cmp-calc" }
-use { "kdheepak/cmp-latex-symbols" }
+    use { "hrsh7th/cmp-nvim-lsp" }
+    use { "hrsh7th/cmp-buffer" }
+    use { "hrsh7th/cmp-path" }
+    use { "hrsh7th/cmp-cmdline" }
+    use { "saadparwaiz1/cmp_luasnip" }
+    use { "onsails/lspkind-nvim"}
+    --use { "peterriho/cmp-git" }
+    use { "ray-x/cmp-treesitter" }
+    use { "hrsh7th/cmp-nvim-lua" }
+    use { "lukas-reineke/cmp-under-comparator" }
+    use { "hrsh7th/cmp-calc" }
+    use { "kdheepak/cmp-latex-symbols" }
+    --}}}
 
+    --{{{ Formatting
+    use { "windwp/nvim-autopairs" }                 -- autopairs for neovim written by lua
+    use { "b3nj5m1n/kommentary" }                   -- Neovim commenting plugin, written in lua.
+    --}}}
 
---}}}
-
---{{{ Formatting
-use { "windwp/nvim-autopairs" }                 -- autopairs for neovim written by lua
-
-use { "b3nj5m1n/kommentary" }                   -- Neovim commenting plugin, written in lua.
---}}}
+    --{{{ Note Taking 
+        --use { ""}
+    --}}}
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
