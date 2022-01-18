@@ -1,6 +1,5 @@
 local cmp = require('cmp')
 local lspkind = require('lspkind')
-local luasnip = require('luasnip')
 
 local source_mapping = {
     buffer          = "[Buff]",
@@ -126,10 +125,4 @@ cmp.setup.cmdline(':', {
 --    capabilities = capabilities
 --}
 
-MAPX.imap("<Tab>", "luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'", "Snippet Jump", "expr")
-MAPX.inoremap("<S-Tab>", "<cmd>lua require'luasnip'.jump(-1)<Cr>", "Snippet UnJump")
-MAPX.snoremap("<Tab>", "<cmd>lua require('luasnip').jump(1)<Cr>", "Snippet Jump")
-MAPX.snoremap("<S-Tab>", "<cmd>lua require('luasnip').jump(-1)<Cr>", "Snippet UnJump")
-MAPX.imap("<C-E>", "luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'", "Snippet ???")
-MAPX.smap("<C-E>", "luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'", "Snippet ????")
 
