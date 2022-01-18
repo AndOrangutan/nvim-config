@@ -29,5 +29,5 @@ require("config.colorizer")
 require("config.toggleterm")
 require("config.indent-blankline")
 require("config.mkdnflow")
-
+require("config.tabout")
 

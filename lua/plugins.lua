@@ -159,6 +159,13 @@ return packer.startup(function(use)
     use { "b3nj5m1n/kommentary" }                   -- Neovim commenting plugin, written in lua.
     --}}}
 
+--{{{ Movement 
+    use { "abecodes/tabout.nvim",           -- Tabout plugin for neovim
+        wants = {"nvim-treesitter/nvim-treesitter"},
+        --after = {"hrsh7th/nvim-cmp"}
+    }
+--}}}
+
     --{{{ Note Taking 
         use { "davidgranstrom/nvim-markdown-preview" }  -- Markdown preview for neovim using pandoc and live-server
         use { "jakewvincent/mkdnflow.nvim" }        -- Tools for markdown notebook nvavigation and management

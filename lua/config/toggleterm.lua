@@ -35,6 +35,14 @@ require("toggleterm").setup{
     }
 }
 
+MAPX.tnoremap("<esc>", [[<c-\><C-n>]], "")
+MAPX.tnoremap("jk", [[<c-\><C-n>]], "")
+MAPX.tnoremap("<C-h>", [[<c-\><C-n><C-W>h]], "")
+MAPX.tnoremap("<C-j>", [[<c-\><C-n><C-W>j]], "")
+MAPX.tnoremap("<C-k>", [[<c-\><C-n><C-W>k]], "")
+MAPX.tnoremap("<C-l>", [[<c-\><C-n><C-W>l]], "")
+
+
 
 local Terminal  = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
