@@ -132,7 +132,7 @@ return packer.startup(function(use)
         requires = { "nvim-lua/plenary.nvim" },
     }
 
-    --use { "sindrets/diffview.nvim" }                -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev. 
+    use { "sindrets/diffview.nvim" }                -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev. 
     --}}}
 
     --{{{ Completion
@@ -177,3 +177,4 @@ return packer.startup(function(use)
         require("packer").sync()
     end
 end)
+

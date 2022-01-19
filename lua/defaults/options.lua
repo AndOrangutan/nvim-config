@@ -6,6 +6,10 @@ local keymap = vim.api.nvim_set_keymap
 keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 let.mapleader = " "
 
+
+set.listchars       = "eol:¬"
+
+set.fillchars       = "fold:━"
 let.do_filetype_lua = 1
 
 -- Saner defaults
@@ -17,7 +21,6 @@ set.errorbells      = false
 set.encoding        = "utf-8"
 set.completeopt     = "menu,menuone,noselect"
 -- Visual
-set.listchars       = "eol:¬"
 set.list            = true
 set.number          = true
 set.relativenumber  = true

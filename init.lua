@@ -3,9 +3,9 @@ require("plugins")
 
 require("config.which-key")
 require("config.mapx")
-
 require("defaults.options")
 require("defaults.bindings")
+require("defaults.commands")
 
 require("colorscheme")
 
