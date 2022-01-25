@@ -10,7 +10,7 @@ let.mapleader = " "
 set.listchars       = "eol:¬"
 
 set.fillchars       = "fold:━"
-let.do_filetype_lua = 1
+--let.do_filetype_lua = 1
 
 -- Saner defaults
 set.termguicolors   = true

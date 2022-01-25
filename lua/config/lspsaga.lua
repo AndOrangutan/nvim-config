@@ -43,7 +43,7 @@ lspsaga.setup { -- defaults ...
 }
 
 nnoremap("gr", "<cmd>Lspsaga rename<cr>", "LSPSaga Rename")
-nnoremap("gx", "<cmd>Lspsaga code_action<cr>", "LSPSaga Code Action")
+--nnoremap("gx", "<cmd>Lspsaga code_action<cr>", "LSPSaga Code Action") FIXME
 xnoremap("gx", ":<c-u>Lspsaga range_code_action<cr>", "LSPSaga Ranged Code Action")
 nnoremap("K", "<cmd>Lspsaga hover_doc<cr>", "LSPSaga Hover Documentation")
 nnoremap("go", "<Lspsaga show_line_diagnostics<cr>", "LSPSaga Show Line Diagnostics")

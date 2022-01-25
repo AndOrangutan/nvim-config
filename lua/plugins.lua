@@ -70,6 +70,7 @@ return packer.startup(function(use)
     --{{{ Treesitter
     use { "nvim-treesitter/nvim-treesitter",    -- Nvim Treesitter configurations and abstraction layer
         run = ":TSUpdate",
+        commit = '668de0951a36ef17016074f1120b6aacbe6c4515',
     }
     use { "MDeiml/tree-sitter-markdown"}
     --}}}
@@ -89,6 +90,7 @@ return packer.startup(function(use)
         requires = { "kyazdani42/nvim-web-devicons" },
     }
     use { "karb94/neoscroll.nvim" }             -- Smooth scrolling neovim plugin written in lua
+    use { "luukvbaal/stabilize.nvim" }          -- Neovim plugin to stabilize buffer content on window open/close events
     use { "nvim-lualine/lualine.nvim",          -- A blazing fast and easy to configure neovim statusline plugin written in pure lua.
         requires = { "kyazdani42/nvim-web-devicons" },
     }
@@ -104,6 +106,9 @@ return packer.startup(function(use)
 
     use { "akinsho/toggleterm.nvim" }           -- A neovim lua plugin to help easily manage multiple terminal windows
     use { "lukas-reineke/indent-blankline.nvim" }   -- Indent guides for Neovim
+    use { "goolord/alpha-nvim" }                -- A lua powered greeter like vim-startify
+
+    use { "Pocco81/TrueZen.nvim" }              -- Clean and elegant distraction-free writing for Neovim
     --}}}
 
     --{{{ Telescope
@@ -168,7 +173,12 @@ return packer.startup(function(use)
 
     --{{{ Note Taking 
         use { "davidgranstrom/nvim-markdown-preview" }  -- Markdown preview for neovim using pandoc and live-server
+        use { "preservim/vim-markdown" }                -- Markdown Vim Mode
         use { "jakewvincent/mkdnflow.nvim" }        -- Tools for markdown notebook nvavigation and management
+        use { "jbyuki/nabla.nvim" }                 -- Take your scientific notes in Neovim
+
+        
+        --use { "KeitaNakamura/tex-conceal.vim" }     -- A vim plugin extends the Conceal feature for LaTeX
      --}}}
 
     -- Automatically set up your configuration after cloning packer.nvim

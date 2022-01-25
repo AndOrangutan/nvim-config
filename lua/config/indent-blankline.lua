@@ -5,4 +5,10 @@ vim.cmd [[highlight IndentBlanklineIndent2 guibg=#1a1a1a gui=nocombine]]
 require("indent_blankline").setup{
     space_char_blankline = " ",
     show_current_context = true,
+    filetype_exclude = {
+        "startify", "dashboard", "dotooagenda", "log", "fugitive", "gitcommit",
+        "packer", "vimwiki", "markdown", "json", "txt", "vista", "help", "h:",
+        "todoist", "NvimTree", "peekaboo", "git", "TelescopePrompt", "undotree",
+        "flutterToolsOutline", "wilder", "norg", "neorg", "alpha", "" -- for all buffers without a file type
+    }
 }

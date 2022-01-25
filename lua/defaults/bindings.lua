@@ -9,3 +9,5 @@ nnoremap("<M-l>", "<C-w>l", "Navigate to Right Buffer")
 
 nnoremap("td", ":call TabSpaceDouble()<cr>", "Double Tab Spacing")
 nnoremap("th", ":call TabSpaceHalve()<cr>", "Halve Tab Spacing")
+
+nnoremap("gx", ":call HandleURL()<cr>", "Open Link")
