@@ -90,6 +90,8 @@ return packer.startup(function(use)
         requires = { "kyazdani42/nvim-web-devicons" },
     }
     use { "karb94/neoscroll.nvim" }             -- Smooth scrolling neovim plugin written in lua
+    use { "kevinhwang91/nvim-hlslens" }         -- Hlsearch Lens for Neovim
+    use { "petertriho/nvim-scrollbar" }         -- Extensible Neovim Scrollbar
     use { "luukvbaal/stabilize.nvim" }          -- Neovim plugin to stabilize buffer content on window open/close events
     use { "nvim-lualine/lualine.nvim",          -- A blazing fast and easy to configure neovim statusline plugin written in pure lua.
         requires = { "kyazdani42/nvim-web-devicons" },
@@ -129,6 +131,7 @@ return packer.startup(function(use)
       requires = "kyazdani42/nvim-web-devicons",
     }
     use { "jose-elias-alvarez/null-ls.nvim" }       -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
+    use { "j-hui/fidget.nvim" }                     -- Standalone UI for nvim-lsp progress
 
     --}}}
 

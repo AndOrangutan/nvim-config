@@ -19,6 +19,5 @@ fun! HandleURL()
         echo "No URL found in line."
     endif
 endfun
-
 ]]
 

@@ -49,7 +49,7 @@ vim.diagnostic.config({
     virtual_text = false,
     signs = true,
     float = { 
-        border = "single",
+        border = "rounded",
         source = 'always'},
 })
 

@@ -77,6 +77,7 @@ nnoremap("<leader>ff", "<cmd>lua require'config.telescope'.project_files()<cr>",
 nnoremap("<leader>fg", "<cmd>Telescope live_grep hidden=true<cr>", "Telescope: Live Grep")
 nnoremap("<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", "Telescope: Buffers")
 nnoremap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", "Telescope: Help Tags")
+nnoremap("<leader>fm", "<cmd>lua require('telescope').load_extension('media_files')<cr>", "Telescope: Media Files")
 
 
 local M = {}
