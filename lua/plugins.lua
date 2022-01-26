@@ -49,12 +49,8 @@ return packer.startup(function(use)
 
 -- Github Description
 -- DAP 
--- goolord/alpha-nvim A lua powered greeter like vim-startify/dashboard-nvim
 -- phaaazon/hop.nvim Hop is an EasyMotion-like plugin allowing you to jump anywhere in a document with as few keystrokes as possible.
--- petertriho/nvim-scrollbar Extensible Neovim Scrollbar
--- luukvbaal/stabilize.nvim Neovim plugin to stabilize window open/close events.
 --
--- Pocco81/TrueZen.nvim Clean and elegant distraction-freewriting for Neovim
 
 --}}}
 
@@ -121,6 +117,7 @@ return packer.startup(function(use)
         run = "make",
     }
     use { "nvim-telescope/telescope-media-files.nvim" } -- Telescope extension to preview media files using Ueberzug
+    use { "rudism/telescope-dict.nvim" }                -- A Telescope extension to open a list of synonyms with definitions for a word.
     --}}}
 
     --{{{ LSP
@@ -176,6 +173,7 @@ return packer.startup(function(use)
         wants = {"nvim-treesitter/nvim-treesitter"},
         --after = {"hrsh7th/nvim-cmp"}
     }
+    use { "phaazon/hop.nvim"}           --  Hop is an EasyMotion-like plugin allowing you to jump anywhere in a document with as few keystrokes as possible.
 --}}}
 
     --{{{ Note Taking 

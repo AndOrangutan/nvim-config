@@ -16,9 +16,7 @@ telescope.setup{
         mappings = {
             n = {
                 ["<M-p>"] = actions_layout.toggle_preview,
-            },
-            i = {
-                ["<esc>"] = actions.close,
+            }, i = { ["<esc>"] = actions.close,
                 ["<M-p>"] = actions_layout.toggle_preview,
                 -- map actions.which_key to <C-h> (default: <C-/>)
                 -- actions.which_key shows the mappings for your picker,
@@ -78,6 +76,7 @@ nnoremap("<leader>fg", "<cmd>Telescope live_grep hidden=true<cr>", "Telescope: L
 nnoremap("<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", "Telescope: Buffers")
 nnoremap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", "Telescope: Help Tags")
 nnoremap("<leader>fm", "<cmd>lua require('telescope').load_extension('media_files')<cr>", "Telescope: Media Files")
+nnoremap("<leader>fd", "<cmd>lua require('telescope').extensions.dict.synonyms()<cr>", "Telescope: Dictionary")
 
 
 local M = {}
