@@ -6,7 +6,7 @@ local dashboard = require("alpha.themes.dashboard")
 math.randomseed(os.time())
 
 local function pick_color()
-    local colors = {"String", "Identifier", "Keyword", "Number"}
+    local colors = {"String", "Identifier", "Keyword", "Constant", "Statement", "Type"}
     return colors[math.random(#colors)]
 end
 
@@ -30,8 +30,8 @@ dashboard.section.buttons.val = {
     dashboard.button( "e", "   > New file" , ":ene <BAR> startinsert <CR>"),
     dashboard.button( "f", "   > Find file", ":cd $HOME/Workspace | Telescope find_files<CR>"),
     dashboard.button( "r", " ﭯ  > Recent"   , ":Telescope oldfiles<CR>"),
-    dashboard.button( "o", " ﴬ  > Neorg"   , ":cd $HOME/Dropbox/Neorg | :e index.norg <CR>"),
-    dashboard.button( "n", " ﴬ  > Notebook", ":cd $HOME/Dropbox/Notebook | :e index.md <CR>| :TZMinimalist <CR>| :Mkdnflow <CR>"),
+    dashboard.button( "o", " ﴬ  > Neorg"   , ":cd $HOME/Dropbox/Neorg | :e index.norg <CR> | :TZMinimalist <CR>"),
+    dashboard.button( "n", " ﴬ  > Notebook", ":cd $HOME/Dropbox/Notebook | :e index.md <CR> | :TZMinimalist <CR> | :Mkdnflow <CR>"),
     dashboard.button( "s", "   > Settings" , ":cd $HOME/.config/nvim | Telescope find_files<CR>"),
     dashboard.button( "q", "   > Quit NVIM", ":qa<CR>"),
 }

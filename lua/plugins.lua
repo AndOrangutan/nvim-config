@@ -164,6 +164,10 @@ return packer.startup(function(use)
     use { "b3nj5m1n/kommentary" }                   -- Neovim commenting plugin, written in lua.
     --}}}
 
+    --{{{ Window Management
+    use { "beauwilliams/focus.nvim" }               -- Auto-Focusing and Auto-Resizing Splits/Windows for Neovim writtin in Lua. A full suite of window management enhancements. Vim splits on steroids!
+    --}}}
+
 --{{{ Movement 
     use { "abecodes/tabout.nvim",           -- Tabout plugin for neovim
         wants = {"nvim-treesitter/nvim-treesitter"},
@@ -172,12 +176,24 @@ return packer.startup(function(use)
 --}}}
 
     --{{{ Note Taking 
-        use { "davidgranstrom/nvim-markdown-preview" }  -- Markdown preview for neovim using pandoc and live-server
-        use { "preservim/vim-markdown" }                -- Markdown Vim Mode
-        use { "jakewvincent/mkdnflow.nvim" }        -- Tools for markdown notebook nvavigation and management
-        use { "jbyuki/nabla.nvim" }                 -- Take your scientific notes in Neovim
+    --Markdown
+    use { "davidgranstrom/nvim-markdown-preview" }  -- Markdown preview for neovim using pandoc and live-server
+    use { "preservim/vim-markdown" }                -- Markdown Vim Mode
+    use { "jakewvincent/mkdnflow.nvim" }        -- Tools for markdown notebook nvavigation and management
+    use { "jbyuki/nabla.nvim" }                 -- Take your scientific notes in Neovim
 
-        
+    -- Neorg
+    use { "nvim-neorg/neorg",                   -- Modernity meets insane extenisbility. The future of organizing your life in Neovim
+        requires = {
+            "nvim-neorg/neorg-telescope",
+            "nvim-lua/plenary.nvim"
+        },
+        --after = "nvim-treesitter",
+    }
+
+
+
+    
         --use { "KeitaNakamura/tex-conceal.vim" }     -- A vim plugin extends the Conceal feature for LaTeX
      --}}}
 

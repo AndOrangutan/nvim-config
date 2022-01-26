@@ -11,3 +11,6 @@ nnoremap("td", ":call TabSpaceDouble()<cr>", "Double Tab Spacing")
 nnoremap("th", ":call TabSpaceHalve()<cr>", "Halve Tab Spacing")
 
 nnoremap("gx", ":call HandleURL()<cr>", "Open Link")
+
+nnoremap("j", "gj", "Intuitive Wrap Jump")
+nnoremap("k", "gk", "Intuitive Wrap Kick")
