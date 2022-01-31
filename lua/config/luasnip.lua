@@ -1,6 +1,7 @@
 
 local luasnip = require('luasnip')
 
+require("luasnip.loaders.from_vscode").load()
 
 local function replace_keycode(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)

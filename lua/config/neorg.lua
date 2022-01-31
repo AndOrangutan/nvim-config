@@ -1,11 +1,12 @@
-local neorg_callbacks = require("neorg.callbacks")
+--local neorg_callbacks = require("neorg.callbacks")
+
 require('neorg').setup {
     -- Tell Neorg what modules to load
     load = {
         ["core.defaults"] = {}, -- Load all the default modules
         ["core.norg.concealer"] = {
             config = {
-                markup_preset = "brave",
+                markup_preset = "dimmed",
                 markup = { enable = true},
                 --icon_preset = "dimmed",
             }
@@ -35,7 +36,7 @@ require('neorg').setup {
     },
 }
 
-neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, keybinds)
+require("neorg.callbacks").on_event("core.keybinds.events.enable_keybinds", function(_, keybinds)
 
     -- Map all the below keybinds only when the "norg" mode is active
     keybinds.map_event_to_mode("norg", {

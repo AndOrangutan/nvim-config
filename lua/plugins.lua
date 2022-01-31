@@ -39,10 +39,10 @@ packer.init {
     },
 }
 --}}}
-
 -- Install your plugins here
 return packer.startup(function(use)
 -- My plugins here
+
 -- {{{ Todo 
 -- Double Check Telescope
 -- Double Check null-ls
@@ -129,6 +129,7 @@ return packer.startup(function(use)
     }
     use { "jose-elias-alvarez/null-ls.nvim" }       -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
     use { "j-hui/fidget.nvim" }                     -- Standalone UI for nvim-lsp progress
+    use { "mfussenegger/nvim-jdtls" }               -- Extensions for the built-in LSP support in Neovim for eclipse.jdt.ls
 
     --}}}
 
@@ -141,22 +142,27 @@ return packer.startup(function(use)
     --}}}
 
     --{{{ Completion
-    use { "hrsh7th/nvim-cmp" }                      -- A completion plugin for neovim coded in Lua.
+    use { "hrsh7th/nvim-cmp",                       -- A completion plugin for neovim coded in Lua.
+        requires = {
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-nvim-lua",
+            "petertriho/cmp-git",
+            "hrsh7th/cmp-cmdline",
+            "saadparwaiz1/cmp_luasnip",
+            "onsails/lspkind-nvim",
+            "ray-x/cmp-treesitter",
+            "lukas-reineke/cmp-under-comparator",
+            "hrsh7th/cmp-calc",
+            "kdheepak/cmp-latex-symbols",
+            "uga-rosa/cmp-dictionary",
+        },
+    }
+
     use { "L3MON4D3/LuaSnip" }                      -- Snippet Engine for Neovim written in Lua.
     use { "rafamadriz/friendly-snippets" }          -- Set of preconfigured snippets for different languages. 
 
-    use { "hrsh7th/cmp-nvim-lsp" }
-    use { "hrsh7th/cmp-buffer" }
-    use { "hrsh7th/cmp-path" }
-    use { "hrsh7th/cmp-cmdline" }
-    use { "saadparwaiz1/cmp_luasnip" }
-    use { "onsails/lspkind-nvim"}
-    --use { "peterriho/cmp-git" }
-    use { "ray-x/cmp-treesitter" }
-    use { "hrsh7th/cmp-nvim-lua" }
-    use { "lukas-reineke/cmp-under-comparator" }
-    use { "hrsh7th/cmp-calc" }
-    use { "kdheepak/cmp-latex-symbols" }
     --}}}
 
     --{{{ Formatting
@@ -182,6 +188,7 @@ return packer.startup(function(use)
     use { "preservim/vim-markdown" }                -- Markdown Vim Mode
     use { "jakewvincent/mkdnflow.nvim" }        -- Tools for markdown notebook nvavigation and management
     use { "jbyuki/nabla.nvim" }                 -- Take your scientific notes in Neovim
+    use { "jubnzv/mdeval.nvim" }                -- A neovim plugin that evaluates code blocks inside documents
 
     -- Neorg
     use { "nvim-neorg/neorg",                   -- Modernity meets insane extenisbility. The future of organizing your life in Neovim
@@ -191,12 +198,19 @@ return packer.startup(function(use)
         },
         --after = "nvim-treesitter",
     }
+    use { "KeitaNakamura/tex-conceal.vim" }     -- A vim plugin extends th econceal feature for LateX
+    --}}}
 
-
-
-    
-        --use { "KeitaNakamura/tex-conceal.vim" }     -- A vim plugin extends the Conceal feature for LaTeX
-     --}}}
+    --{{{ DAP 
+    use { "mfussenegger/nvim-dap",              -- Debug Adapter Protocol cliet implementation for Neovim
+        requires = { 
+            "rcarriga/nvim-dap-ui",
+            --"Pocco81/DAPInstall.nvim",
+            "theHamsta/nvim-dap-virtual-text",
+            "jbyuki/one-small-step-for-vimkind",
+        },
+    }
+--}}}
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

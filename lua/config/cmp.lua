@@ -16,6 +16,7 @@ local source_mapping = {
     cmp_tabnine     = "[Tab9]",
     fuzzy_path      = "[FPth]",
     cmp_git         = "[Git ]",
+    dictionary      = "[Dict]",
 }
 
 local kind_icons = {
@@ -69,14 +70,15 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = 'neorg'},
         { name = 'nvim_lsp' },
-        { name = 'nvim_lua' },
         { name = 'luasnip' }, -- For luasnip users.
-        --{ name = 'cmp-git'}
+        { name = 'nvim_lua' },
+        { name = 'cmp-git' },
+        { name = 'path' },
         { name = 'treesitter' },
         { name = 'calc' },
-        { name = 'latex_symbols' },
-        { name = '' },
-        { name = '' },
+        { name = 'buffer' }
+        --{ name = '' },
+        --{ name = '' },
     }, {
         { name = 'buffer' },
     }),
@@ -85,7 +87,7 @@ cmp.setup({
         format = function(entry, vim_item)
             vim_item.kind = string.format('%s', kind_icons[vim_item.kind]) -- This concatonates the icons with the name of the item kind
             vim_item.menu = (source_mapping)[entry.source.name]
-            return vim_item 
+            return vim_item
         end
     },
     sorting = {
@@ -117,7 +119,9 @@ cmp.setup.cmdline(':', {
         { name = 'cmdline' }
     })
 })
-
+vim.cmd[[ 
+autocmd FileType markdown,pandoc,tex,norg lua require('cmp').setup.buffer { sources = { { name = 'neorg'}, { name = 'luasnip' }, { name = 'treesitter' }, { name = 'nvim_lsp' }, { name = 'dictionary', keyword_length = 2 }, { name = 'path' }, { name = 'latex_symbols' } } } 
+]]
 -- Inside lsp.lua
 ---- Setup lspconfig. 
 --local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -126,4 +130,24 @@ cmp.setup.cmdline(':', {
 --    capabilities = capabilities
 --}
 
+require("cmp_dictionary").setup({
+    dic = {
+        ["*"] = { "/usr/share/dict/words/american_english.dic" },
+        ["lua"] = "path/to/lua.dic",
+        ["javascript,typescript"] = { "path/to/js.dic", "path/to/js2.dic" },
+        filename = {
+            ["xmake.lua"] = { "path/to/xmake.dic", "path/to/lua.dic" },
+        },
+        filepath = {
+            ["%.tmux.*%.conf"] = "path/to/tmux.dic"
+        },
+    },
+    -- The following are default values, so you don't need to write them if you don't want to change them
+    exact = 2,
+    first_case_insensitive = false,
+    async = false, 
+    capacity = 5,
+    debug = false, 
+})
 
+require("cmp_git").setup()
