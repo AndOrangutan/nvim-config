@@ -13,16 +13,18 @@ end
 
 -- Set header
 local logo = {
-    "                                                     ",
-    "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
-    "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
-    "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
-    "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
-    "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
-    "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
-    "                                                     ",
+    "                                                   ",
+    " ███    ██ ███████  ██████  ██    ██ ██ ███    ███ ",
+    " ████   ██ ██      ██    ██ ██    ██ ██ ████  ████ ",
+    " ██ ██  ██ █████   ██    ██ ██    ██ ██ ██ ████ ██ ",
+    " ██  ██ ██ ██      ██    ██  ██  ██  ██ ██  ██  ██ ",
+    " ██   ████ ███████  ██████    ████   ██ ██      ██ ",
+    "                                                   ",
 --    "                "..trim_tot_plugins.." Plugins Installed                ",
 }
+
+
+
 
 
 -- Set menu
@@ -34,6 +36,22 @@ dashboard.section.buttons.val = {
     dashboard.button( "n", " ﴬ  > Notebook", ":cd $HOME/Dropbox/Notebook | :e index.md <CR> | :TZMinimalist <CR> | :Mkdnflow <CR>"),
     dashboard.button( "s", "   > Settings" , ":cd $HOME/.config/nvim | Telescope find_files<CR>"),
     dashboard.button( "q", "   > Quit NVIM", ":qa<CR>"),
+}
+
+-- Subheader
+dashboard.section.footer.val = {
+    "                                   ",
+    "          ▀████▀▄▄              ▄█ ",
+    "            █▀    ▀▀▄▄▄▄▄    ▄▄▀▀█ ",
+    "    ▄        █          ▀▀▀▀▄  ▄▀  ",
+    "   ▄▀ ▀▄      ▀▄              ▀▄▀  ",
+    "  ▄▀    █     █▀   ▄█▀▄      ▄█    ",
+    "  ▀▄     ▀▄  █     ▀██▀     ██▄█   ",
+    "   ▀▄    ▄▀ █   ▄██▄   ▄  ▄  ▀▀ █  ",
+    "    █  ▄▀  █    ▀██▀    ▀▀ ▀▀  ▄▀  ",
+    "   █   █  █      ▄▄           ▄▀   ",
+    "                                   ",
+
 }
 
 -- Set footer
@@ -54,6 +72,7 @@ dashboard.section.buttons.val = {
 --
 dashboard.section.header.val = logo
 dashboard.section.header.opts.hl = pick_color()
+dashboard.section.header.opts.hl = "",
 
 -- Send config to alpha
 alpha.setup(dashboard.opts)

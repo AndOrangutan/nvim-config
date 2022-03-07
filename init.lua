@@ -9,7 +9,6 @@ require("defaults.commands")
 require("defaults.abbreviations")
 
 require("colorscheme")
-
 require("config.notify")
 require("config.treesitter")
 require("config.nonicons")
@@ -46,3 +45,5 @@ require("config.hlslens")
 require("config.hop")
 require("config.dap")
 require("config.mdeval")
+require("config.mkdnpreview")
+require("config.clipboardimg")

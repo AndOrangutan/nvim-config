@@ -34,7 +34,7 @@ end
 packer.init {
     display = {
         open_fn = function()
-            return require("packer.util").float { border = "rounded" }
+            return require("packer.util").float { border = "solid" }
         end,
     },
 }
@@ -42,6 +42,15 @@ packer.init {
 -- Install your plugins here
 return packer.startup(function(use)
 -- My plugins here
+--                              • "none": No border (default).
+--                              • "single": A single line box.
+--                              • "double": A double line box.
+--                              • "rounded": Like "single", but with rounded
+--                                corners ("╭" etc.).
+--                              • "solid": Adds padding by a single whitespace
+--                                cell.
+--                              • "shadow": A drop shadow effect by blending
+--                                with the background.
 
 -- {{{ Todo 
 -- Double Check Telescope
@@ -184,11 +193,16 @@ return packer.startup(function(use)
 
     --{{{ Note Taking 
     --Markdown
-    use { "davidgranstrom/nvim-markdown-preview" }  -- Markdown preview for neovim using pandoc and live-server
+    --use { "davidgranstrom/nvim-markdown-preview" }  -- Markdown preview for neovim using pandoc and live-server
     use { "preservim/vim-markdown" }                -- Markdown Vim Mode
     use { "jakewvincent/mkdnflow.nvim" }        -- Tools for markdown notebook nvavigation and management
     use { "jbyuki/nabla.nvim" }                 -- Take your scientific notes in Neovim
     use { "jubnzv/mdeval.nvim" }                -- A neovim plugin that evaluates code blocks inside documents
+    use {'iamcco/markdown-preview.nvim',
+        run = 'cd app && yarn install',
+        ft = 'markdown',
+    }
+    use { "ekickx/clipboard-image.nvim"}
 
     -- Neorg
     use { "nvim-neorg/neorg",                   -- Modernity meets insane extenisbility. The future of organizing your life in Neovim
