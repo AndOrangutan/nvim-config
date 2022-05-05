@@ -1,3 +1,1 @@
-local icons = require "nvim-nonicons"
-
-icons.get("file")
+require("nvim-nonicons").get("file")

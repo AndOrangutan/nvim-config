@@ -1,3 +1,5 @@
+local pequire = require("utils").pequire
+
 
 vim.cmd[[
 fun! TabSpaceDouble() range

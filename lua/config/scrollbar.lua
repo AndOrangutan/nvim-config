@@ -1,28 +1,28 @@
 local colors = require("onedark.colors").setup()
 
-require("scrollbar").setup({
+local pequire = require("utils").pequire
+
+
+pequire("scrollbar").setup({
     show = true,
     handle = {
         text = " ",
-        color = colors.black0,
+        highlight = "CursorColumn",
         hide_if_all_visible = false, -- Hides handle if all lines are visible
     },
     marks = {
-        Search = { color = colors.orange },
-        Error = { color = colors.error },
-        Warn = { color = colors.warning },
-        Info = { color = colors.info },
-        Hint = { color = colors.hint },
-        Misc = { color = colors.purple },
+        Search = { highlight = "Search" },
+        Error = { highlight = "DiagnosticVirtualTextError" },
+        Warn = { highlight = "DiagnosticVirtualTextWarn" },
+        Info = { highlight = "DiagnosticVirtualTextInfo" },
+        Hint = { highlight = "DiagnosticVirtualTextHint" },
+        Misc = { highlight = "Normal" },
     },
     excluded_filetypes = {
-        "prompt",
-        "TelescopePrompt",
-        "dashboard",
-        "packer",
-        "NvimTree",
-        "undotree",
-        "alpha",
+        "startify", "dashboard", "dotooagenda", "log", "fugitive", "gitcommit",
+        "packer", "vimwiki", "markdown", "json", "txt", "vista", "help", "h:",
+        "todoist", "NvimTree", "peekaboo", "git", "TelescopePrompt", "TelescopePreview", "undotree",
+        "flutterToolsOutline", "wilder", "norg", "neorg", "alpha", ""
     },
     excluded_buftypes = {
         "terminal"
@@ -44,4 +44,6 @@ require("scrollbar").setup({
         search = true, -- Requires hlslens to be loaded
     },
 })
-require("scrollbar.handlers.search").setup()
+
+
+pequire("scrollbar.handlers.search").setup()

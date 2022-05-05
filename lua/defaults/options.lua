@@ -6,6 +6,8 @@ local keymap = vim.api.nvim_set_keymap
 keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 let.mapleader = " "
 
+vim.cmd[[filetype indent on]]
+set.cursorline = false
 
 set.listchars       = "eol:¬"
 
@@ -43,7 +45,7 @@ set.expandtab       = true
 set.smarttab        = true
 set.smartindent     = true
 set.autoindent      = true
-set.signcolumn      = "yes"
+set.signcolumn      = "yes:1"
 -- Search
 set.ignorecase      = true
 set.incsearch       = true
@@ -65,3 +67,9 @@ set.history         = 100
 set.background      = "dark"
 set.updatetime      = 300
 
+
+vim.cmd[[
+:set briopt+=list:-1
+]]
+
+vim.g.code_action_menu_window_border = "solid"
