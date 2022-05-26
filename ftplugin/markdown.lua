@@ -20,6 +20,8 @@ nnoremap("$", "g$", "Intuitive Beggining of line")
 
 nnoremap("<leader>s", "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview Toggle")
 
+require("due_nvim").async_update(0)
+
 vim.cmd[[
 set breakindent breakindentopt=sbr,list:-1 linebreak
 " this should be set up per filetype probably

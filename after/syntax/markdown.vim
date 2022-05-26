@@ -13,7 +13,7 @@ hi def link todoCheckbox Todo
 highlight Conceal guibg=NONE guifg=NONE
 "highlight Conceal ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 
-setlocal cole=1
+setlocal cole=2
 
 " Todo
 syntax match VimwikiListTodo '\v(\s+)?(-|\*)\s\[\s\]'hs=e-4 conceal cchar= 

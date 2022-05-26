@@ -4,14 +4,14 @@
 local function onedark()
     require("onedark").setup({
         comment_style = "italic",
-        keyword_style = "italic",
+        keyword_style = "bold",
         function_style = "bold",
-        msg_area_style = "italic",
+        msg_area_style = "NONE",
         variable_style = "NONE",
         dark_float = true,
         dark_sidebar = true,
         hide_end_of_buffer = false,
-        hide_inactive_statusline = true,
+        hide_inactive_statusline = false,
         highlight_linenumber = false,
         lualine_bold = true,
         transparent = false,

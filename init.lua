@@ -75,3 +75,4 @@ require("config.clipboardimg")
 require("config.bullets")
 
 require("config.codi")
+require('config.due')

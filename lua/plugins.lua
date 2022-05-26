@@ -50,10 +50,10 @@ return packer.startup(function(use)
     --                              • "rounded": Like "single", but with rounded
     --                                corners ("╭" etc.).
     --                              • "solid": Adds padding by a single whitespace
-    --                                cell.
+    --                                cell.plugin
     --                              • "shadow": A drop shadow effect by blending
     --                                with the background.
-  
+    
     -- {{{ Todo
     -- Double Check Telescope
     -- Double Check null-ls
@@ -149,6 +149,7 @@ return packer.startup(function(use)
 
     --{{{ Themes
     use({ "ful1e5/onedark.nvim" }) -- Atom's iconic One Dark theme for Neovim, written in Lua
+    use({ "NLKNguyen/papercolor-theme" })
     --}}}
 
     --{{{ UI
@@ -171,7 +172,10 @@ return packer.startup(function(use)
         requires = { "kyazdani42/nvim-web-devicons" },
     })
 
-    use({ "anuvyklack/pretty-fold.nvim" }) -- Foldtext customization and folded region preview in Neovim.
+    use({ "anuvyklack/nvim-keymap-amend" })
+    use({ "anuvyklack/pretty-fold.nvim",
+        require = "anuvyklack/nvim-keymap-amend",
+    }) -- Foldtext customization and folded region preview in Neovim.
     use({ "norcalli/nvim-colorizer.lua" }) -- The fastest Neovim colorizer.
 
     use({ "akinsho/toggleterm.nvim" }) -- A neovim lua plugin to help easily manage multiple terminal windows
@@ -191,6 +195,12 @@ return packer.startup(function(use)
     use({
         "lewis6991/gitsigns.nvim", --  Git integration for buffers
         requires = { "nvim-lua/plenary.nvim" },
+    })
+
+    use({ "akinsho/git-conflict.nvim",
+        config = function ()
+            require('git-conflict').setup()
+        end
     })
 
     use({ "sindrets/diffview.nvim" }) -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
@@ -264,15 +274,30 @@ return packer.startup(function(use)
         end,
     })
     use({ "KeitaNakamura/tex-conceal.vim",
+        ft = {"tex", "markdown"},
+        before = "nvim-treesitter/nvim-treesitter",
         config = function ()
-            vim.cmd[[let g:tex_conceal="abdgm"]]
-        end
+            vim.cmd[[
+                let g:tex_conceal="abdgm"
+                let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
+                let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
+                let g:tex_conceal_frac=1
+            ]]
+        end,
     })
     use({ "jbyuki/nabla.nvim" }) -- Take your scientific notes in Neovim
     use({ "iamcco/markdown-preview.nvim", run = "cd app && yarn install", ft = "markdown" })
     use({ "ekickx/clipboard-image.nvim" })
     use({ "dkarter/bullets.vim" })
     use ({'edluffy/hologram.nvim'})
+
+    use ({ 'NFrid/due.nvim' })
+    use ({ 'lukas-reineke/headlines.nvim',
+        config = function ()
+            require('headlines').setup()
+        end,
+    })
+
     -- Neorg
     use({
         "nvim-neorg/neorg", -- Modernity meets insane extenisbility. The future of organizing your life in Neovim
@@ -281,6 +306,7 @@ return packer.startup(function(use)
             "nvim-lua/plenary.nvim",
         },
         --after = "nvim-treesitter",
+
     })
     --}}}
 

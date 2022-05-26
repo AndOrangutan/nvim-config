@@ -10,7 +10,6 @@ vim.cmd[[filetype indent on]]
 set.cursorline = false
 
 set.listchars       = "eol:¬"
-
 set.fillchars       = "fold:━"
 --let.do_filetype_lua = 1
 
