@@ -1,75 +1,93 @@
 
-local set = vim.opt
-local let = vim.g
-local indent_size = 4
-local keymap = vim.api.nvim_set_keymap
-keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
-let.mapleader = " "
+local o = vim.o     -- For global options
+local w = vim.wo    -- For the window local options
+local b = vim.bo    -- For the buffer local options
 
-vim.cmd[[filetype indent on]]
-set.cursorline = false
+local utils = require('utils')
 
-set.listchars       = "eol:¬"
+local indentSize = 4
 
-set.fillchars       = "fold:━"
---let.do_filetype_lua = 1
+vim.g.mapleader = " "
 
--- Saner defaults
-set.termguicolors   = true
-set.timeoutlen      = 500
-set.clipboard       = "unnamedplus"
-set.mouse           = "a"
-set.errorbells      = false
-set.encoding        = "utf-8"
-set.completeopt     = "menu,menuone,noselect"
+-- Sane(er) defaults
+o.termguicolors     = true
+o.timeoutlen        = 500
+o.clipboard         = "unnamedplus"
+o.mouse             = "a"
+o.errorbells        = false
+o.encoding          = "utf-8"
+o.completeopt       = "menu,menuone,noselect"
+
 -- Visual
-set.list            = true
-set.number          = true
-set.relativenumber  = true
-set.wrap            = false
-set.showmode        = false
-set.conceallevel    = 2
-set.foldmethod      = "marker"
--- Placement
-set.scrolloff       = 16
-set.sidescrolloff   = 16
-set.pumheight       = 16
-set.splitbelow      = true
-set.splitright      = true
--- Formatting
-set.tabstop         = indent_size
-set.softtabstop     = indent_size
-set.shiftwidth      = indent_size
-set.shiftround      = true
-set.expandtab       = true
-set.smarttab        = true
-set.smartindent     = true
-set.autoindent      = true
-set.signcolumn      = "yes:1"
+o.list              = true
+o.number            = true
+o.relativenumber    = true
+o.showmode          = false
+o.conceallevel      = 2
+o.listchars         = "eol:¬"
+--o.fillchars         = "fold:━"
+o.signcolumn        = "yes:1"
+o.background        = "dark"
+
+-- Tabbing, breaking, wraping and indentation
+o.tabstop           = indentSize
+o.softtabstop       = indentSize
+o.shiftwidth        = indentSize
+o.shiftround        = true
+o.expandtab         = true
+o.smarttab          = true
+o.smartindent       = true
+o.autoindent        = true
+o.wrap              = false
+o.breakindent       = true
+o.breakindentopt    = true
+
+-- Cursor
+o.cursorline        = false
+o.scrolloff         = 16
+o.sidescrolloff     = 16
+o.pumheight         = 16
+
+-- Splits
+o.splitbelow        = true
+o.splitright        = true
+
+
 -- Search
-set.ignorecase      = true
-set.incsearch       = true
-set.smartcase       = true
--- Boring stuff
-set.hidden          = true
-set.backup          = false
-set.swapfile        = false
-set.undofile        = true
+o.ignorecase        = true
+o.incsearch         = true
+o.smartcase         = true
+
+-- Folds
+o.foldmethod        = "marker"
+
+-- History
+
+o.hidden            = true
+o.backup            = false
+o.swapfile          = false
+o.undofile          = true
+o.undodir           = "/tmp/.nvim-undodir"
+o.history           = 100
 vim.cmd[[
 if !isdirectory("/tmp/.vim-undo-dir")
-    call mkdir("/tmp/.vim-undo-dir", "", 0700)
+  call mkdir("/tmp/.vim-undo-dir", "", 0700)
 endif
 ]]
-set.undodir         = "/tmp/.nvim-undodir"
---vim.cmd[[set undodir=$HOME/.nvim/undodir]]
-set.undolevels      = 69000
-set.history         = 100
-set.background      = "dark"
-set.updatetime      = 300
 
 
-vim.cmd[[
-:set briopt+=list:-1
-]]
-
-vim.g.code_action_menu_window_border = "solid"
+--vim.cmd[[
+--set formatlistpat=^\\s*                     " Optional leading whitespace
+--set formatlistpat+=[                        " Start character class
+--set formatlistpat+=\\[({]\\?                " |  Optionally match opening punctuation
+--set formatlistpat+=\\(                      " |  Start group
+--set formatlistpat+=[0-9]\\+                 " |  |  Numbers
+--set formatlistpat+=\\\|                     " |  |  or
+--set formatlistpat+=[a-zA-Z]\\+              " |  |  Letters
+--set formatlistpat+=\\)                      " |  End group
+--set formatlistpat+=[\\]:.)}                 " |  Closing punctuation
+--set formatlistpat+=]                        " End character class
+--set formatlistpat+=\\s\\+                   " One or more spaces
+--set formatlistpat+=\\\|                     " or
+--set formatlistpat+=^\\s*[-–+o*•]\\s\\+      " Bullet points
+--]]
