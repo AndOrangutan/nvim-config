@@ -152,6 +152,18 @@ return packer.startup(function(use)
     })
     --}}}
 
+    --{{{
+    use({ "kyazdani42/nvim-tree.lua",
+        requires = { "kyazdani42/nvim-web-devicons" },
+        tag = "nightly",
+        config = function()
+            pequire("configs.tree")
+        end,
+
+
+    })
+    --}}}
+
     -- End of Core Plugins
 
     -- Automatically set up your configuration after cloning packer.nvim

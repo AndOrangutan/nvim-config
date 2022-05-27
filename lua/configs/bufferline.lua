@@ -10,7 +10,7 @@ require("bufferline").setup{
         -- and so changing this is NOT recommended, this is intended
         -- as an escape hatch for people who cannot bear it for whatever reason
         indicator_icon = ' ',
-        buffer_close_icon = '',
+        buffer_close_icon = ' ',
         modified_icon = '●',
         close_icon = ' ',
         left_trunc_marker = ' ',
@@ -53,7 +53,7 @@ require("bufferline").setup{
                 return true
             end
         end,
-        offsets = {{filetype = "NvimTree", text = "File Explorer", highlight = "Directory", text_align = "left" }},
+        offsets = {{filetype = "NvimTree", text = "File Explorer", highlight = "BufferLineFill", text_align = "left" }},
         color_icons = true, -- whether or not to add the filetype icon highlights
         show_buffer_icons = true, -- disable filetype icons for buffers
         show_buffer_close_icons = true,
