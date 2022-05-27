@@ -117,7 +117,6 @@ return packer.startup(function(use)
         requires = {"kyazdani42/nvim-web-devicons"},
     })
     --}}}
-    
 
     --{{{ Notifications
     use({ "rcarriga/nvim-notify",
@@ -142,6 +141,14 @@ return packer.startup(function(use)
             pequire("configs.cinnamon")
         end,
         event = "WinScrolled",
+    })
+    --}}}
+
+    --{{{ Tabline
+    use({ "akinsho/bufferline.nvim",
+        config = function()
+            require("configs.bufferline")
+        end,
     })
     --}}}
 
