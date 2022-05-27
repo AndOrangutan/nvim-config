@@ -118,14 +118,6 @@ return packer.startup(function(use)
     })
     --}}}
     
-    --{{{ Scrolling
-    use({ "karb94/neoscroll.nvim",
-        config = function()
-            require("neoscroll").setup({})
-        end,
-        event = "WinScrolled",
-    })
-    --}}}
 
     --{{{ Notifications
     use({ "rcarriga/nvim-notify",
@@ -141,6 +133,15 @@ return packer.startup(function(use)
         config = function()
             pequire("configs.lualine")
         end,
+    })
+    --}}}
+
+    --{{{ Scrolling
+    use({ "declancm/cinnamon.nvim",
+        config = function()
+            pequire("configs.cinnamon")
+        end,
+        event = "WinScrolled",
     })
     --}}}
 

@@ -83,7 +83,7 @@ TODO:
         - Notifications
             - [x] [rcarriga/nvim-notify](https://github.com/rcarriga/nvim-notify) - A fancy, configurable, notification manager for Neovim.
         - Status Line
-            - [ ] [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - A blazing fast and easy to configure neovim sstatusline plugin written in pure lua.
+            - [x] [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - A blazing fast and easy to configure neovim sstatusline plugin written in pure lua.
         - Tabline
             - [ ] [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim) - A snazzy bufferline for Neovim.
         - File Explorer
