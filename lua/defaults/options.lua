@@ -28,6 +28,7 @@ o.listchars         = "eol:¬"
 --o.fillchars         = "fold:━"
 o.signcolumn        = "yes:1"
 o.background        = "dark"
+o.laststatus        = 3
 
 -- Tabbing, breaking, wraping and indentation
 o.tabstop           = indentSize
@@ -60,6 +61,12 @@ o.smartcase         = true
 
 -- Folds
 o.foldmethod        = "marker"
+--o.foldmethod        = "expr"
+--o.foldexpr          = "nvim_treesitter#foldexpr()"
+--o.foldtext          = [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend))]]
+--o.fillchars         = [[fold: ]]
+--o.foldnestmax       = 3
+--o.foldminlines      = 1
 
 -- History
 
