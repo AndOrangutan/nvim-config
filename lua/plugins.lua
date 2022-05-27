@@ -1,6 +1,7 @@
 
 local fn = vim.fn
 
+
 --local pequire = require("utils").pequire
 
 
@@ -79,7 +80,9 @@ return packer.startup(function(use)
     use({ "antoinemadec/FixCursorHold.nvim" })
 
     use({ "stevearc/dressing.nvim",
-        config = pequire("configs.dressing"),
+        config = function()
+            pequire("configs.dressing")
+        end
     })
 
     -- End of Helpers/Dependencies
@@ -87,15 +90,15 @@ return packer.startup(function(use)
     -- Core Plugins
 
     --{{{ Keybinding 
-    use({ "folke/which-key.nvim",
-        config = pequire("configs.whichkey")
-        --event = "BufWinEnter"
-    })
     use({ "mrjones2014/legendary.nvim", -- TODO: Double Check config
         config = function()
             require("legendary").setup()
         end,
-        event = "BufWinEnter"
+    })
+    use({ "folke/which-key.nvim",
+        config = function()
+            pequire("configs.whichkey")
+        end
     })
     --}}}
     
@@ -108,7 +111,9 @@ return packer.startup(function(use)
 
     --{{{ Picker
     use({ "ibhagwan/fzf-lua",
-        config = pequire("configs.fzflua"),
+        config = function()
+            pequire("configs.fzflua")
+        end,
         requires = {"kyazdani42/nvim-web-devicons"},
     })
     --}}}
@@ -124,7 +129,18 @@ return packer.startup(function(use)
 
     --{{{ Notifications
     use({ "rcarriga/nvim-notify",
-        config = require("configs.notify"),
+        config = function()
+            require("configs.notify")
+        end,
+    })
+    --}}}
+
+    --{{{ Statusline
+    use({ "nvim-lualine/lualine.nvim",
+        requires = { "kyazdani42/nvim-web-devicons", opt = true },
+        config = function()
+            pequire("configs.lualine")
+        end,
     })
     --}}}
 
