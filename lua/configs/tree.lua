@@ -1,3 +1,5 @@
+wk = require("which-key")
+
 require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
     auto_reload_on_write = true,
     disable_netrw = false,
@@ -116,3 +118,8 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
         },
     },
 } -- END_DEFAULT_OPTS
+
+
+wk.register({
+    ["<C-n>"] = { "<cmd>NvimTreeToggle<cr>", "Nvim-Tree Toggle" },
+})

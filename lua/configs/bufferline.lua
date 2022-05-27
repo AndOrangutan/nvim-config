@@ -1,3 +1,5 @@
+local wk = require("which-key")
+
 require("bufferline").setup{
     options = {
         mode = "buffers", -- set to "tabs" to only show tabpages instead
@@ -69,3 +71,8 @@ require("bufferline").setup{
         sort_by = 'id',
     }
 }
+
+wk.register({
+    ["<M-.>"] = { "<cmd>BufferLineCycleNext<cr>", "Bufferline Cycle Next" },
+    ["<M-,>"] = { "<cmd>BufferLineCyclePrev<cr>", "Bufferline Cycle Prev" },
+})

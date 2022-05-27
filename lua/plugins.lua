@@ -152,15 +152,23 @@ return packer.startup(function(use)
     })
     --}}}
 
-    --{{{
+    --{{{ File Explorer
     use({ "kyazdani42/nvim-tree.lua",
         requires = { "kyazdani42/nvim-web-devicons" },
+        cmd = {"NvimTreeClose", "NvimTreeOpen", "NvimTreeToggle"},
         tag = "nightly",
         config = function()
             pequire("configs.tree")
         end,
+    })
+    --}}}
 
-
+    --{{{ Listener
+    use({ "folke/trouble.nvim",
+        cmd = {"TroubleToggle"},
+        config = function()
+            pequire("configs.trouble")
+        end,
     })
     --}}}
 
