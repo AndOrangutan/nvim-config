@@ -57,16 +57,7 @@ end
 
 -- Install your plugins here
 return packer.startup(function(use)
-    -- My plugins here
-    --                              • "none": No border (default).
-    --                              • "single": A single line box.
-    --                              • "double": A double line box.
-    --                              • "rounded": Like "single", but with rounded
-    --                                corners ("╭" etc.).
     --                              • "solid": Adds padding by a single whitespace
-    --                                cell.
-    --                              • "shadow": A drop shadow effect by blending
-    --                                with the background.
 
 
     --{{{ Plugin Management
@@ -77,7 +68,7 @@ return packer.startup(function(use)
 
     use({ "ful1e5/onedark.nvim" })
 
-    --{{{ Helpers/Dependencies
+    -- Helpers/Dependencies
 
     use({ "nvim-lua/popup.nvim" })
     use({ "nvim-lua/plenary.nvim" })
@@ -91,7 +82,7 @@ return packer.startup(function(use)
         config = pequire("configs.dressing"),
     })
 
-    --}}} End of Helpers/Dependencies
+    -- End of Helpers/Dependencies
 
     -- Core Plugins
 
@@ -125,9 +116,15 @@ return packer.startup(function(use)
     --{{{ Scrolling
     use({ "karb94/neoscroll.nvim",
         config = function()
-            pequire("neoscroll").setup()
+            require("neoscroll").setup({})
         end,
         event = "WinScrolled",
+    })
+    --}}}
+
+    --{{{ Notifications
+    use({ "rcarriga/nvim-notify",
+        config = require("configs.notify"),
     })
     --}}}
 

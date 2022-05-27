@@ -1,6 +1,16 @@
 
 vim.cmd[[colorscheme onedark]]
 
+-- Global bindings
+--{{{ notify
+vim.api.nvim_set_hl(0, "NotifyERRORBody", { link = "NormalFloat" })
+vim.api.nvim_set_hl(0, "NotifyWARNBody", { link = "NormalFloat" })
+vim.api.nvim_set_hl(0, "NotifyINFOBody", { link = "NormalFloat" })
+vim.api.nvim_set_hl(0, "NotifyDEBUGBody", { link = "NormalFloat" })
+vim.api.nvim_set_hl(0, "NotifyTRACEBody", { link = "NormalFloat" })
+--}}}
+
+-- Colorschemes
 --{{{ onedark
 vim.api.nvim_create_autocmd("ColorScheme", {
     pattern = "onedark",
