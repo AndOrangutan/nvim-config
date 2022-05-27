@@ -45,10 +45,11 @@ packer.init({
 --}}}
 
 --{{{ functions
+local functions
 function pequire(name)
     local ok, _ = pcall(require, name)
     if not ok then
-        vim.notify("Failed to load `lua."..name..".lua`!", "error")
+        vim.notify("Failed to load `"..name.."`!", "error")
     end
 end
 --}}}
@@ -84,10 +85,15 @@ return packer.startup(function(use)
     use({ "yamatsum/nvim-nonicons",
         requires = { "kyazdani42/nvim-web-devicons" },
     })
+    use({ "antoinemadec/FixCursorHold.nvim" })
+
+    use({ "stevearc/dressing.nvim",
+        config = pequire("configs.dressing"),
+    })
 
     --}}} End of Helpers/Dependencies
 
-    --{{{ Core Plugins
+    -- Core Plugins
 
     --{{{ Keybinding 
     use({ "folke/which-key.nvim",
@@ -114,10 +120,18 @@ return packer.startup(function(use)
         config = pequire("configs.fzflua"),
         requires = {"kyazdani42/nvim-web-devicons"},
     })
-
+    --}}}
+    
+    --{{{ Scrolling
+    use({ "karb94/neoscroll.nvim",
+        config = function()
+            pequire("neoscroll").setup()
+        end,
+        event = "WinScrolled",
+    })
     --}}}
 
-    --}}} End of Core Plugins
+    -- End of Core Plugins
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

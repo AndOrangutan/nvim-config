@@ -2,6 +2,12 @@ local actions = require("fzf-lua.actions")
 local wk = require("which-key")
 
 require'fzf-lua'.setup {
+    -- fzf_bin         = 'sk',            -- use skim instead of fzf?
+                                        -- https://github.com/lotabout/skim
+  global_resume      = true,            -- enable global `resume`?
+                                        -- can also be sent individually:
+                                        -- `<any_function>.({ gl ... })`
+  global_resume_query = true,           -- include typed query in `resume`?
   winopts = {
     -- split         = "belowright new",-- open in a split instead?
                                         -- "belowright new"  : split below
@@ -26,7 +32,7 @@ require'fzf-lua'.setup {
       cursor         = 'Cursor',        -- cursor highlight (grep/LSP matches)
       cursorline     = 'CursorLine',    -- cursor line
       search         = 'Search',        -- search matches (ctags)
-      --title       = 'Normal',        -- preview border title (file/buffer)
+      title       = 'FloatBorder',        -- preview border title (file/buffer)
       -- scrollbar_f = 'PmenuThumb',    -- scrollbar "full" section highlight
       -- scrollbar_e = 'PmenuSbar',     -- scrollbar "empty" section highlight
     },
@@ -42,7 +48,7 @@ require'fzf-lua'.setup {
       layout         = 'flex',          -- horizontal|vertical|flex
       flip_columns   = 120,             -- #cols to switch to horizontal on flex
       -- Only valid with the builtin previewer:
-      title          = true,            -- preview border title (file/buf)?
+      title          = false,           -- preview border title (file/buf)?
       scrollbar      = 'border',         -- `false` or string:'float|border'
                                         -- float:  in-window floating border
                                         -- border: in-border chars (see below)
@@ -58,8 +64,8 @@ require'fzf-lua'.setup {
         cursorline        = false,
         cursorlineopt     = 'both',
         cursorcolumn      = false,
-        signcolumn        = 'yes:1',
-        list              = true,
+        signcolumn        = 'no',
+        list              = false,
         foldenable        = true,
         foldmethod        = 'marker',
       },

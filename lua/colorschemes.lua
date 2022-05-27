@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     callback = function()
         require("onedark").setup({
             comment_style = "italic",
-            keyword_style = "bold",
+            keyword_style = "italic,bold",
             function_style = "bold",
             msg_area_style = "NONE",
             variable_style = "NONE",

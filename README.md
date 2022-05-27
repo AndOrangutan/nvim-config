@@ -59,8 +59,8 @@ TODO:
     - [x] [nvim-lua/popup.nvim](https://github.com/nvim-lua/popup.nvim) - [WIP] An implementation of the Popup API from vim in Neovim. Hope to upstream when complete.
     - [x] [nvim-lua/plenary.nvim](https://github.com/nvim-lua/plenary.nvim) - plenary: full; complete; entire; absolute; unqualified. All the lua functions I don't want to write twice.
     - [ ] [yamatsum/nvim-nonicons](https://github.com/yamatsum/nvim-nonicons) -  Icon set using nonicons for neovim plugins and settings.
-    j- [kyazdani42/nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons) -  lua `fork` of vim-web-devicons for neovim.
-    - [ ] [antoinemadec/FixCursorHold.nvim](https://github.com/antoinemadec/FixCursorHold.nvim) -  Fix CursorHold Performance.
+      - [kyazdani42/nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons) -  lua `fork` of vim-web-devicons for neovim.
+    - [x] [antoinemadec/FixCursorHold.nvim](https://github.com/antoinemadec/FixCursorHold.nvim) -  Fix CursorHold Performance.
 - Core Plugins (3)
     - Keybinding 
         - [x] [folke/which-key.nvim](https://github.com/folke/which-key.nvim) - Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
