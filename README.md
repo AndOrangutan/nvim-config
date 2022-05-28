@@ -7,7 +7,6 @@
 - fd 
 - nonicons
 
-
 -- paru -S angularls gopls tsserver flow bashls dockerls julials pylsp pyright jedi_language_server jdtls sumneko_lua vimls html jsonls solargraph cssls yamlls clangd ccls sqls denols graphql dartls dotls kotlin_lanuage_server nimls intelephense vuels phpactor omnisharp r_language_server rust_analyzer terraformls svelte texlab conjure_lsp elixirls sourcekit fsautocomplete vls hls
 
 ## Todo
@@ -62,12 +61,20 @@ TODO:
       - [kyazdani42/nvim-web-devicons](https://github.com/kyazdani42/nvim-web-devicons) -  lua `fork` of vim-web-devicons for neovim.
     - [x] [antoinemadec/FixCursorHold.nvim](https://github.com/antoinemadec/FixCursorHold.nvim) -  Fix CursorHold Performance.
 - Core Plugins (3)
-    - Keybinding 
+    - Keybinding
         - [x] [folke/which-key.nvim](https://github.com/folke/which-key.nvim) - Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
         - [x] [mrjones2014/legendary.nvim](https://github.com/mrjones2014/legendary.nvim) - A legend for your keymaps, commands, and autocmds, with which-key.nvim integration (requires Neovim nightly) 
     - Treesitter
         - [x] [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Nvim Treesitter configurations and abstraction layer.
             - [ ] [MDeiml/tree-sitter-markdown](https://github.com/MDeiml/tree-sitter-markdown) - A markdown grammar for tree-sitter
+
+    - LSP
+        - Setup
+            - [ ] [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - Quickstart configurations for the Nvim LSP client.
+                - [ ] [ray-x/lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim) - LSP signature hint as you type.
+            - [ ] [jose-elias-alvarez/null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim) -  Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
+        - UI
+            - [weilbith/nvim-code-action-menu](https://github.com/weilbith/nvim-code-action-menu) -  Pop-up menu for code actions to show meta-information and diff preview.
     - Picker
         - [ ] [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) - Find, Filter, Preview, Pick. All lua, all the time.
             - [ ] [nvim-telescope/telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
@@ -98,13 +105,6 @@ TODO:
             - [ ] [simrat39/symbols-outline.nvim](https://github.com/simrat39/symbols-outline.nvim) - A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
     - Window Management
         - [ ] [luukvbaal/stabilize.nvim](https://github.com/luukvbaal/stabilize.nvim) - Neovim plugin to stabilize window open/close events.
-    - LSP
-        - Setup
-            - [ ] [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - Quickstart configurations for the Nvim LSP client.
-                - [ ] [ray-x/lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim) - LSP signature hint as you type.
-            - [ ] [jose-elias-alvarez/null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim) -  Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
-        - UI
-            - [weilbith/nvim-code-action-menu](https://github.com/weilbith/nvim-code-action-menu) -  Pop-up menu for code actions to show meta-information and diff preview.
     - Completion
         - [ ] [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - A completion plugin for neovim coded in Lua.
             - [ ] [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)

@@ -65,7 +65,7 @@ return packer.startup(function(use)
 
     use({ "wbthomason/packer.nvim" }) -- Have packer manage itself
     --}}}
-    
+
 
     use({ "ful1e5/onedark.nvim" })
 
@@ -89,23 +89,33 @@ return packer.startup(function(use)
 
     -- Core Plugins
 
-    --{{{ Keybinding 
+    --{{{ Keybinding
     use({ "mrjones2014/legendary.nvim", -- TODO: Double Check config
         config = function()
             require("legendary").setup()
         end,
     })
     use({ "folke/which-key.nvim",
+        requires = "mrjones2014/legendary.nvim",
         config = function()
             pequire("configs.whichkey")
         end
     })
     --}}}
-    
+
     --{{{ Treesitter and other highlighting
     use({ "nvim-treesitter/nvim-treesitter",
         config = pequire("configs.treesitter"),
         run = ":TSUpdate",
+    })
+    --}}}
+
+    --{{{ LSP
+    use({ "neovim/nvim-lspconfig",
+
+        config = function()
+            pequire("configs.lspconfig")
+        end,
     })
     --}}}
 
@@ -128,9 +138,10 @@ return packer.startup(function(use)
 
     --{{{ Statusline
     use({ "nvim-lualine/lualine.nvim",
-        requires = { "kyazdani42/nvim-web-devicons", opt = true },
+        --requires = { { "kyazdani42/nvim-web-devicons", opt = true }, "arkav/lualine-lsp-progress" },
+        requires = { { "kyazdani42/nvim-web-devicons", opt = true }, "BobbyGerace/lualine-lsp-progress" },
         config = function()
-            pequire("configs.lualine")
+            require("configs.lualine")
         end,
     })
     --}}}
@@ -158,16 +169,16 @@ return packer.startup(function(use)
         cmd = {"NvimTreeClose", "NvimTreeOpen", "NvimTreeToggle"},
         tag = "nightly",
         config = function()
-            pequire("configs.tree")
+            require("configs.tree")
         end,
     })
     --}}}
 
     --{{{ Listener
     use({ "folke/trouble.nvim",
-        cmd = {"TroubleToggle"},
+        --cmd = {"TroubleToggle"},
         config = function()
-            pequire("configs.trouble")
+            require("configs.trouble")
         end,
     })
     --}}}
