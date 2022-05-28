@@ -1,9 +1,7 @@
 
 local fn = vim.fn
 
-
---local pequire = require("utils").pequire
-
+--local pequire = require("utils").
 
 --{{{ Auto install and auto update on write for Packer
 -- Automatically install packer
@@ -124,7 +122,32 @@ return packer.startup(function(use)
     })
     --}}}
 
-    -- {{{ Compleiton
+    -- {{{ Compleiton and Snippets
+    use({ "hrsh7th/nvim-cmp",
+        requires = {
+            "hrsh7th/cmp-nvim-lsp",
+            { "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" },
+            "lukas-reineke/cmp-rg",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/cmp-nvim-lsp-document-symbol",
+            "hrsh7th/cmp-nvim-lsp-signature-help",
+            "ray-x/cmp-treesitter",
+            "andersevenrud/cmp-tmux",
+            "uga-rosa/cmp-dictionary",
+            { "David-Kunz/cmp-npm", requires = "nvim-lua/plenary.nvim" },
+            "kdheepak/cmp-latex-symbols",
+            "hrsh7th/cmp-calc",
+            "aspeddro/cmp-pandoc.nvim",
+            "dmitmel/cmp-cmdline-history",
+            "lukas-reineke/cmp-under-comparator",
+        },
+        config = function()
+            pequire("configs.cmp")
+        end,
+    })
+
     -- }}}
 
     --{{{ Picker
