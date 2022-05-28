@@ -119,7 +119,6 @@ require'nvim-tree'.setup { -- BEGIN_DEFAULT_OPTS
     },
 } -- END_DEFAULT_OPTS
 
-
 wk.register({
     ["<C-n>"] = { "<cmd>NvimTreeToggle<cr>", "Nvim-Tree Toggle" },
-})
+},{})

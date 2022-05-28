@@ -73,6 +73,29 @@ TODO:
             - [ ] [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - Quickstart configurations for the Nvim LSP client.
                 - [ ] [ray-x/lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim) - LSP signature hint as you type.
             - [ ] [jose-elias-alvarez/null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim) -  Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
+
+    - Completion
+        - [ ] [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - A completion plugin for neovim coded in Lua.
+            - [ ] [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
+            - [ ] [petertriho/cmp-git](https://github.com/petertriho/cmp-git)
+            - [ ] [lukas-reineke/cmp-rg](https://github.com/lukas-reineke/cmp-rg)
+            - [ ] [hrsh7th/cmp-path](https://github.com/hrsh7th/cmp-path)
+            - [ ] [hrsh7th/cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
+            - [ ] [hrsh7th/cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline)
+            - [ ] [hrsh7th/cmp-nvim-lua](https://github.com/hrsh7th/cmp-nvim-lua)
+            - [ ] [lukas-reineke/cmp-under-comparator](https://github.com/lukas-reineke/cmp-under-comparator)
+            - [ ] [hrsh7th/cmp-nvim-lsp-document-symbol](https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol)
+            - [ ] [ray-x/cmp-treesitter](https://github.com/ray-x/cmp-treesitter)
+            - [ ] [andersevenrud/cmp-tmux](https://github.com/andersevenrud/cmp-tmux)
+            - [ ] [uga-rosa/cmp-dictionary](https://github.com/uga-rosa/cmp-dictionary)
+            - [ ] [David-Kunz/cmp-npm](https://github.com/David-Kunz/cmp-npm)
+            - [ ] [kdheepak/cmp-latex-symbols](https://github.com/kdheepak/cmp-latex-symbols)
+            - [ ] [hrsh7th/cmp-calc](https://github.com/hrsh7th/cmp-calc)
+            - [ ] [tzachar/cmp-fuzzy-buffer](https://github.com/tzachar/cmp-fuzzy-buffer) 
+            - [ ] [aspeddro/cmp-pandoc.nvim](https://github.com/aspeddro/cmp-pandoc.nvim) 
+            - [ ] [dmitmel/cmp-cmdline-history](https://github.com/aspeddro/dmitmel/cmp-cmdline-history) 
+        - [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip) - A snippet engine for Neovim written in Lua.
+        - [rafamadriz/friendly-snippets](https://github.com/rafamadriz/friendly-snippets) - Set of preconfigured snippets for different languages.
         - UI
             - [weilbith/nvim-code-action-menu](https://github.com/weilbith/nvim-code-action-menu) -  Pop-up menu for code actions to show meta-information and diff preview.
     - Picker
@@ -102,31 +125,9 @@ TODO:
         - Dashboard
             - [ ] [goolord/alpha-nvim](https://github.com/goolord/alpha-nvim) - A fast and highly customizable greeter like vim-startify/dashboard-nvim for Neovim.
         - Symbols Outline
-            - [ ] [simrat39/symbols-outline.nvim](https://github.com/simrat39/symbols-outline.nvim) - A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
+            - [x] [simrat39/symbols-outline.nvim](https://github.com/simrat39/symbols-outline.nvim) - A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
     - Window Management
         - [ ] [luukvbaal/stabilize.nvim](https://github.com/luukvbaal/stabilize.nvim) - Neovim plugin to stabilize window open/close events.
-    - Completion
-        - [ ] [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - A completion plugin for neovim coded in Lua.
-            - [ ] [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
-            - [ ] [petertriho/cmp-git](https://github.com/petertriho/cmp-git)
-            - [ ] [lukas-reineke/cmp-rg](https://github.com/lukas-reineke/cmp-rg)
-            - [ ] [hrsh7th/cmp-path](https://github.com/hrsh7th/cmp-path)
-            - [ ] [hrsh7th/cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
-            - [ ] [hrsh7th/cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline)
-            - [ ] [hrsh7th/cmp-nvim-lua](https://github.com/hrsh7th/cmp-nvim-lua)
-            - [ ] [lukas-reineke/cmp-under-comparator](https://github.com/lukas-reineke/cmp-under-comparator)
-            - [ ] [hrsh7th/cmp-nvim-lsp-document-symbol](https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol)
-            - [ ] [ray-x/cmp-treesitter](https://github.com/ray-x/cmp-treesitter)
-            - [ ] [andersevenrud/cmp-tmux](https://github.com/andersevenrud/cmp-tmux)
-            - [ ] [uga-rosa/cmp-dictionary](https://github.com/uga-rosa/cmp-dictionary)
-            - [ ] [David-Kunz/cmp-npm](https://github.com/David-Kunz/cmp-npm)
-            - [ ] [kdheepak/cmp-latex-symbols](https://github.com/kdheepak/cmp-latex-symbols)
-            - [ ] [hrsh7th/cmp-calc](https://github.com/hrsh7th/cmp-calc)
-            - [ ] [tzachar/cmp-fuzzy-buffer](https://github.com/tzachar/cmp-fuzzy-buffer) 
-            - [ ] [aspeddro/cmp-pandoc.nvim](https://github.com/aspeddro/cmp-pandoc.nvim) 
-            - [ ] [dmitmel/cmp-cmdline-history](https://github.com/aspeddro/dmitmel/cmp-cmdline-history) 
-        - [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip) - A snippet engine for Neovim written in Lua.
-        - [rafamadriz/friendly-snippets](https://github.com/rafamadriz/friendly-snippets) - Set of preconfigured snippets for different languages.
     - DAP
     - Fomatting 
         - Auto Formatting

@@ -69,7 +69,7 @@ return packer.startup(function(use)
 
     use({ "ful1e5/onedark.nvim" })
 
-    -- Helpers/Dependencies
+    --{{{ Helpers/Dependencies
 
     use({ "nvim-lua/popup.nvim" })
     use({ "nvim-lua/plenary.nvim" })
@@ -85,9 +85,9 @@ return packer.startup(function(use)
         end
     })
 
-    -- End of Helpers/Dependencies
+    --}}} End of Helpers/Dependencies
 
-    -- Core Plugins
+    --{{{ Core Plugins
 
     --{{{ Keybinding
     use({ "mrjones2014/legendary.nvim", -- TODO: Double Check config
@@ -123,6 +123,9 @@ return packer.startup(function(use)
         end,
     })
     --}}}
+
+    -- {{{ Compleiton
+    -- }}}
 
     --{{{ Picker
     use({ "ibhagwan/fzf-lua",
@@ -165,6 +168,14 @@ return packer.startup(function(use)
     })
     --}}}
 
+    --{{{ Window Management
+    use({ "luukvbaal/stabilize.nvim",
+        config = function()
+            require("stabilize").setup()
+        end
+    })
+    --}}}
+
     --{{{ Tabline
     use({ "akinsho/bufferline.nvim",
         config = function()
@@ -176,7 +187,7 @@ return packer.startup(function(use)
     --{{{ File Explorer
     use({ "kyazdani42/nvim-tree.lua",
         requires = { "kyazdani42/nvim-web-devicons" },
-        cmd = {"NvimTreeClose", "NvimTreeOpen", "NvimTreeToggle"},
+        --cmd = {"NvimTreeClose", "NvimTreeOpen", "NvimTreeToggle"},
         tag = "nightly",
         config = function()
             require("configs.tree")
@@ -202,7 +213,15 @@ return packer.startup(function(use)
     })
     --}}}
 
-    -- End of Core Plugins
+    --{{{ Symbol Outline
+    use({ "simrat39/symbols-outline.nvim",
+        config = function()
+            pequire("configs.symboloutline")
+        end
+    })
+    --}}}
+
+    --}}} End of Core Plugins
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

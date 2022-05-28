@@ -75,4 +75,4 @@ require("bufferline").setup{
 wk.register({
     ["<M-.>"] = { "<cmd>BufferLineCycleNext<cr>", "Bufferline Cycle Next" },
     ["<M-,>"] = { "<cmd>BufferLineCyclePrev<cr>", "Bufferline Cycle Prev" },
-})
+}, {})
