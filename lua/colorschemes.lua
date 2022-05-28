@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
             variable_style = "NONE",
             dark_float = true,
             dark_sidebar = true,
-            highlight_linenumber = false,
+            highlight_linenumber = true,
             hide_end_of_buffer = true,
             hide_inactive_statusline = true,
             lualine_bold = true,

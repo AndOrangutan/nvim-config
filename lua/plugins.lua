@@ -117,6 +117,11 @@ return packer.startup(function(use)
             pequire("configs.lspconfig")
         end,
     })
+    use({ "j-hui/fidget.nvim",
+        config = function()
+            pequire("configs.fidget")
+        end,
+    })
     --}}}
 
     --{{{ Picker
@@ -137,9 +142,14 @@ return packer.startup(function(use)
     --}}}
 
     --{{{ Statusline
+    use({ "SmiteshP/nvim-gps",
+        config = function()
+            require("nvim-gps").setup()
+        end,
+    })
     use({ "nvim-lualine/lualine.nvim",
         --requires = { { "kyazdani42/nvim-web-devicons", opt = true }, "arkav/lualine-lsp-progress" },
-        requires = { { "kyazdani42/nvim-web-devicons", opt = true }, "BobbyGerace/lualine-lsp-progress" },
+        requires = { { "kyazdani42/nvim-web-devicons", opt = true }, "SmiteshP/nvim-gps" },
         config = function()
             require("configs.lualine")
         end,
@@ -180,6 +190,15 @@ return packer.startup(function(use)
         config = function()
             require("configs.trouble")
         end,
+    })
+    --}}}
+
+    --{{{ Dashboard
+    use({ "goolord/alpha-nvim",
+        requires = { "kyazdani42/nvim-web-devicons" },
+        config = function()
+            pequire("configs.alpha")
+        end
     })
     --}}}
 

@@ -24,7 +24,7 @@
 -- paru -S angularls gopls tsserver flow bashls dockerls julials pylsp pyright jedi_language_server jdtls sumneko_lua vimls html jsonls solargraph cssls yamlls clangd ccls sqls denols graphql dartls dotls kotlin_lanuage_server nimls intelephense vuels phpactor omnisharp r_language_server rust_analyzer terraformls svelte texlab conjure_lsp elixirls sourcekit fsautocomplete vls hls
 
 ```bash
-paru -S arduino-cli clang cmake-language-server deno godot gopls jdtls kotlin ltex-ls-bin omnisharp-roslyn phpactor python-lsp-server rust-analyzer sqls lua-language-server
+lskjdflsdjflkjparu -S arduino-cli clang cmake-language-server deno godot gopls jdtls kotlin ltex-ls-bin omnisharp-roslyn phpactor python-lsp-server rust-analyzer sqls lua-language-server
 cargo install asm-lsp
 npm install -g "awk-language-server@>=0.5.2" @angular/language-server vscode-langservers-extracted awk-language-server bash-language-server dockerfile-language-server-nodejs graphql-language-service-cli intelephense vls typescript typescript-language-server vim-language-server
 ```
@@ -96,7 +96,7 @@ TODO:
         - File Explorer
             - [x] [kyazdani42/nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua) - A file explorer tree for neovim written in lua.
         - Lister
-            - [ ] [folke/trouble.nvim](https://github.com/folke/trouble.nvim) - A pretty list for showing diagnostics, references, telescope results, quickfix and location lists to help you solve all the trouble your code is causing.
+            - [x] [folke/trouble.nvim](https://github.com/folke/trouble.nvim) - A pretty list for showing diagnostics, references, telescope results, quickfix and location lists to help you solve all the trouble your code is causing.
         - Terminal
             - [ ] [akinsho/toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim) - A neovim lua plugin to help easily manage multiple terminal windows.
         - Dashboard

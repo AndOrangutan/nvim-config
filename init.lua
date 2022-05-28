@@ -1,6 +1,6 @@
 require("defaults.options")
 
-require("lua.colorschemes")
+require("colorschemes")
 
 vim.cmd[[colorscheme onedark]]
 
