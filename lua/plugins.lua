@@ -58,7 +58,6 @@ end
 return packer.startup(function(use)
     --                              • "solid": Adds padding by a single whitespace
 
-
     --{{{ Plugin Management
 
     use({ "wbthomason/packer.nvim" }) -- Have packer manage itself
@@ -149,6 +148,14 @@ return packer.startup(function(use)
     })
 
     -- }}}
+
+    --{{{ Editing
+    use({ "windwp/nvim-autopairs",
+        config = function()
+            pequire("configs.autopairs")
+        end
+    })
+    --}}}
 
     --{{{ Picker
     use({ "ibhagwan/fzf-lua",
