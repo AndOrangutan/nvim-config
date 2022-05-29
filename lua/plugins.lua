@@ -63,11 +63,6 @@ return packer.startup(function(use)
     use({ "wbthomason/packer.nvim" }) -- Have packer manage itself
     --}}}
 
-
-    use({ "ful1e5/onedark.nvim" })
-    use({ "NLKNguyen/papercolor-theme" })
-    use({ "sainnhe/everforest" })
-
     --{{{ Helpers/Dependencies
 
     use({ "nvim-lua/popup.nvim" })
@@ -101,7 +96,7 @@ return packer.startup(function(use)
         end
     })
     --}}}
-
+--    
     --{{{ Treesitter and other highlighting
     use({ "nvim-treesitter/nvim-treesitter",
         config = pequire("configs.treesitter"),
@@ -163,6 +158,11 @@ return packer.startup(function(use)
     use({ "windwp/nvim-autopairs",
         config = function()
             pequire("configs.autopairs")
+        end
+    })
+    use({ "lukas-reineke/indent-blankline.nvim",
+        config = function ()
+            pequire("configs.indentblankline")
         end
     })
     --}}}
@@ -304,6 +304,42 @@ return packer.startup(function(use)
     --}}}
 
     --}}} End of Core Plugins
+
+    --{{{ Other Plugins
+
+    --{{{ Colorschemes
+    use({ "ful1e5/onedark.nvim" })
+    use({ "NLKNguyen/papercolor-theme" })
+    use({ "sainnhe/everforest" })
+    --}}}
+
+    --{{{ Folds
+    use({ "anuvyklack/pretty-fold.nvim",
+    requires = 'anuvyklack/nvim-keymap-amend', -- only for preview
+        config = function ()
+            pequire("configs.prettyfold")
+        end
+    })
+    --}}}
+
+    --{{{ Note Taking
+    -- General
+    -- Markdown
+    use({ "mickael-menu/zk-nvim",
+        ft = "markdown",
+        config = function ()
+            pequire("configs.zk")
+        end
+    })
+    use({ "dkarter/bullets.vim",
+        ft = { "markdown", "text", "gitcommit", "scratch" },
+        setup = function ()
+            pequire("configs.bullets")
+        end
+    })
+    --}}}
+
+    --}}}
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

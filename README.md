@@ -11,6 +11,9 @@
 
 ## Todo
 
+
+- [ ] fold mode switcher function with pretty notification
+
 - [ ] Refactor
     - [ ] Build it from the README.md first.
     - [ ] Make code actions purple

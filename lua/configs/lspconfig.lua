@@ -175,7 +175,6 @@ local servers = {
     "tsserver",
     "vuels",
     "yamlls",
-    "zk"
 }
 
 for _, lsp in pairs(servers) do

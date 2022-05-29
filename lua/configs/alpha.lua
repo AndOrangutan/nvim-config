@@ -43,7 +43,7 @@ dashboard.section.buttons.val = {
     dashboard.button( "e", "   > New file" , ":ene <BAR> startinsert <CR>"),
     dashboard.button( "f", "   > Find file", ":cd $HOME/Workspace | Telescope find_files<CR>"),
     dashboard.button( "r", "   > Recent"   , ":Telescope oldfiles<CR>"),
-    dashboard.button( "n", "   > Notebook", ":cd $HOME/Dropbox/Notebook | :e index.md <CR> | :TZMinimalist <CR> | :Mkdnflow <CR>"),
+    dashboard.button( "n", "   > Notebook", ":cd $HOME/Dropbox/Notebook | :e index.md <CR> | :TZMinimalist <CR>"),
     dashboard.button( "s", "   > Settings" , ":cd $HOME/.config/nvim | FzfLua files<CR>"),
     dashboard.button( "q", "   > Quit NVIM", ":qa<CR>"),
 }
