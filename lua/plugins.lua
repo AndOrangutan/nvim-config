@@ -189,12 +189,34 @@ return packer.startup(function(use)
     })
     --}}}
 
+    --{{{ Search
+    use({ "kevinhwang91/nvim-hlslens",
+        config = function ()
+            pequire("configs.hlslens")
+        end
+    })
+
+    --}}}
+
     --{{{ Scrolling
-    use({ "declancm/cinnamon.nvim",
+    --use({ "declancm/cinnamon.nvim",
+    --    config = function()
+    --        pequire("configs.cinnamon")
+    --    end,
+    --    event = "WinScrolled",
+    --})
+    use({ "karb94/neoscroll.nvim",
         config = function()
-            pequire("configs.cinnamon")
+            require("neoscroll").setup()
         end,
         event = "WinScrolled",
+    })
+    use({ "petertriho/nvim-scrollbar",
+        requires = "kevinhwang91/nvim-hlslens",
+        config = function()
+            pequire("configs.scrollbar")
+        end,
+
     })
     --}}}
 
