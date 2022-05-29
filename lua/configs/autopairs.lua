@@ -11,6 +11,7 @@ cmp_autopairs.lisp[#cmp_autopairs.lisp+1] = "racket"
 
 require("nvim-autopairs").setup({
     disable_filetype = { "fzf" },
+    enable_check_bracket_line = true,
     check_ts = true,
     fast_wrap = {},
 })

@@ -283,6 +283,15 @@ return packer.startup(function(use)
     })
     --}}}
 
+    --{{{ Git
+    use({ "lewis6991/gitsigns.nvim",
+        config = function ()
+            pequire('configs.gitsigns')
+        end
+    })
+
+    --}}}
+
     --}}} End of Core Plugins
 
     -- Automatically set up your configuration after cloning packer.nvim
