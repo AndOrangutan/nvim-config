@@ -1,3 +1,5 @@
+require("scrollbar.handlers.search").setup()
+
 require("scrollbar").setup({
     show = true,
     show_in_active_only = false,
@@ -17,7 +19,7 @@ require("scrollbar").setup({
             priority = 0,
             color = nil,
             cterm = nil,
-            highlight = "Search",
+            highlight = "DiagnosticVirtualTextWarn",
         },
         Error = {
             text = { "-", "=" },

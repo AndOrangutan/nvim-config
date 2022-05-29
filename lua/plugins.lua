@@ -65,6 +65,8 @@ return packer.startup(function(use)
 
 
     use({ "ful1e5/onedark.nvim" })
+    use({ "NLKNguyen/papercolor-theme" })
+    use({ "sainnhe/everforest" })
 
     --{{{ Helpers/Dependencies
 
@@ -146,7 +148,15 @@ return packer.startup(function(use)
             pequire("configs.cmp")
         end,
     })
-
+    use({ "L3MON4D3/LuaSnip",
+        requires = {
+            "rafamadriz/friendly-snippets",
+            { "dsznajder/vscode-es7-javascript-react-snippets", run = "yarn install --frozen-lockfile && yarn compile" },
+        },
+        config = function ()
+            pequire("configs.luasnip")
+        end,
+    })
     -- }}}
 
     --{{{ Editing
@@ -192,7 +202,7 @@ return packer.startup(function(use)
     --{{{ Search
     use({ "kevinhwang91/nvim-hlslens",
         config = function ()
-            pequire("configs.hlslens")
+            require("configs.hlslens")
         end
     })
 

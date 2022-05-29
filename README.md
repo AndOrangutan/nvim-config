@@ -176,8 +176,3 @@ TODO:
             - [ ] [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) - markdown preview plugin for (neo)vim.
             - [ ] [ekickx/clipboard-image.nvim](https://github.com/ekickx/clipboard-image.nvim) - Neovim Lua plugin to paste image from clipboard
             - [ ] [lukas-reineke/headlines.nvim](https://github.com/lukas-reineke/headlines.nvim) -  This plugin adds 3 kind of horizontal highlights for text filetypes, like `markdown`, `vimwiki` and `orgmode` 
-
-
-
-
-
