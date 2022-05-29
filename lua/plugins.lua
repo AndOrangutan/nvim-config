@@ -289,7 +289,18 @@ return packer.startup(function(use)
             pequire('configs.gitsigns')
         end
     })
-
+    use({ "TimUntersberger/neogit",
+        requires = "nvim-lua/plenary.nvim",
+        config = function ()
+            pequire("configs.neogit")
+        end
+    })
+    use({ "sindrets/diffview.nvim",
+        requires = "nvim-lua/plenary.nvim",
+        config = function ()
+            pequire("configs.diffview")
+        end,
+    })
     --}}}
 
     --}}} End of Core Plugins
