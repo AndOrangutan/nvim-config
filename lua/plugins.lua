@@ -103,6 +103,11 @@ return packer.startup(function(use)
         config = pequire("configs.treesitter"),
         run = ":TSUpdate",
     })
+    use({ "nvim-treesitter/nvim-treesitter-context",
+        config = function ()
+            pequire("configs.treesittercontext")
+        end
+    })
     --}}}
 
     --{{{ LSP
@@ -122,6 +127,7 @@ return packer.startup(function(use)
     -- {{{ Compleiton and Snippets
     use({ "hrsh7th/nvim-cmp",
         requires = {
+            "saadparwaiz1/cmp_luasnip",
             "hrsh7th/cmp-nvim-lsp",
             { "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" },
             "lukas-reineke/cmp-rg",
@@ -164,6 +170,11 @@ return packer.startup(function(use)
     use({ "lukas-reineke/indent-blankline.nvim",
         config = function ()
             pequire("configs.indentblankline")
+        end
+    })
+    use({ "folke/todo-comments.nvim",
+        config = function ()
+            pequire("configs.todocomments")
         end
     })
     --}}}
@@ -301,6 +312,14 @@ return packer.startup(function(use)
         config = function ()
             pequire("configs.diffview")
         end,
+    })
+    --}}}
+
+    --{{{ ZenMode
+    use({ "Pocco81/TrueZen.nvim",
+        config = function ()
+            pequire("configs.truezen")
+        end
     })
     --}}}
 

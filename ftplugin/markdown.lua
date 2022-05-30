@@ -17,6 +17,7 @@ let &formatlistpat = '^line\s\+\d\+:\s*'
 ]]
 
 
+
 wk.register({
     ["<c-p>"] = { "<cmd>PasteImg<cr>", ".md Paste Image" },
     ["j"] = { "gj", ".md Wrap [J]ump" },

@@ -36,9 +36,10 @@ local footer = {
 
 }
 _G.my_open = function(selected, opts)
-  -- 'selected[]' array contains the selected items
-  require'fzf-lua'.actions.file_edit(selected, opts)
-  vim.cmd('ZkCd')
+    -- 'selected[]' array contains the selected items
+    require'fzf-lua'.actions.file_edit(selected, opts)
+    vim.cmd('ZkCd')
+    vim.cmd("TZMinimalist")
 end
 
 

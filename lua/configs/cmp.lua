@@ -184,7 +184,7 @@ cmp.setup.cmdline(':', {
     sources = cmp.config.sources({
         { name = 'cmdline' },
         { name = 'path' },
-        { name = 'cmdline_history' },
+        --{ name = 'cmdline_history' },
     }, {
         { name = 'cmdline' }
     })
@@ -192,14 +192,14 @@ cmp.setup.cmdline(':', {
 
 cmp.setup.cmdline('?', {
     sources = {
-        { name = 'cmdline_history' },
+        --{ name = 'cmdline_history' },
     },
 })
 
 
 cmp.setup.cmdline('@', {
     sources = {
-        { name = 'cmdline_history' },
+        --{ name = 'cmdline_history' },
     },
 })
 
