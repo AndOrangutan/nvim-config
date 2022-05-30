@@ -1,5 +1,6 @@
 local actions = require("fzf-lua.actions")
 local wk = require("which-key")
+--:lua require'fzf-lua'.files({ cmd = 'fd --type f --exclude node_modules' })
 
 require'fzf-lua'.setup {
     -- fzf_bin         = 'sk',            -- use skim instead of fzf?

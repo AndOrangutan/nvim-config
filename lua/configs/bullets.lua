@@ -3,7 +3,7 @@ local wk = require("which-key")
 vim.cmd[[
 
 let g:bullets_set_mappings = 1 " default = 1
-
+let g:bullets_checkbox_markers = ' .oOX'
 ]]
 
 
@@ -17,10 +17,10 @@ wk.register({
 
 wk.register({
     ["o"] = { "Bullets Insert Bullet" },
-    ["gN"] = { "Bullets Renumber List"}
-    ["<leader>x"] = { "Bullets Toggle Checkbox"}
-    [">>"] = { "Bullets Promote Unindent"}
-    ["<<"] = { "Bullets Demote Indent"}
+    ["gN"] = { "Bullets Renumber List"},
+    ["<leader>x"] = { "Bullets Toggle Checkbox"},
+    [">>"] = { "Bullets Promote Unindent"},
+    ["<<"] = { "Bullets Demote Indent"},
 }, { mode = "n" })
 
 

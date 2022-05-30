@@ -99,6 +99,7 @@ return packer.startup(function(use)
 --    
     --{{{ Treesitter and other highlighting
     use({ "nvim-treesitter/nvim-treesitter",
+        requires = { "MDeiml/tree-sitter-markdown" },
         config = pequire("configs.treesitter"),
         run = ":TSUpdate",
     })
@@ -326,16 +327,46 @@ return packer.startup(function(use)
     -- General
     -- Markdown
     use({ "mickael-menu/zk-nvim",
-        ft = "markdown",
+        --ft = "markdown",
         config = function ()
             pequire("configs.zk")
-        end
+        end,
     })
     use({ "dkarter/bullets.vim",
         ft = { "markdown", "text", "gitcommit", "scratch" },
         setup = function ()
             pequire("configs.bullets")
+        end,
+    })
+    use({ "davidgranstrom/nvim-markdown-preview",
+        --cmd = "MarkdownPreview",
+        setup = function ()
+            pequire("configs.markdownpreview")
+        end,
+    })
+    use({ "ekickx/clipboard-image.nvim",
+        ft = "markdown",
+        config = function ()
+            pequire("configs.clipboardimage")
+        end,
+    })
+    use({ "jbyuki/nabla.nvim",
+        ft = "markdown",
+        config = function ()
+            pequire("configs.nabla")
+        end,
+    })
+    use({ "lukas-reineke/headlines.nvim",
+        config = function ()
+            require("headlines").setup()
         end
+    })
+    use({ "KeitaNakamura/tex-conceal.vim",
+        --before = "nvim-treesitter/nvim-treesitter",
+        --ft = "markdown",
+        config = function ()
+            require("configs.texconceal")
+        end,
     })
     --}}}
 
