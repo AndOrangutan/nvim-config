@@ -38,7 +38,8 @@ local function get_notif_data(client_id, token)
 end
 
 
-local spinner_frames = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" }
+local spinner_frames = {"⢀⠀","⡀⠀","⠄⠀","⢂⠀","⡂⠀","⠅⠀","⢃⠀","⡃⠀","⠍⠀","⢋⠀","⡋⠀","⠍⠁","⢋⠁","⡋⠁","⠍⠉","⠋⠉","⠋⠉","⠉⠙","⠉⠙","⠉⠩","⠈⢙","⠈⡙","⢈⠩","⡀⢙","⠄⡙","⢂⠩","⡂⢘","⠅⡘","⢃⠨","⡃⢐","⠍⡐","⢋⠠","⡋⢀","⠍⡁","⢋⠁","⡋⠁","⠍⠉","⠋⠉","⠋⠉","⠉⠙","⠉⠙","⠉⠩","⠈⢙","⠈⡙","⠈⠩","⠀⢙","⠀⡙","⠀⠩","⠀⢘","⠀⡘","⠀⠨","⠀⢐","⠀⡐","⠀⠠","⠀⢀", "⠀⡀"}
+
 
 local function update_spinner(client_id, token)
  local notif_data = get_notif_data(client_id, token)
@@ -68,9 +69,9 @@ local function format_message(message, percentage)
 end
 --}}}
 
-----{{{ LSP integration
----- Make sure to also have the snippet with the common helper functions in your config!
---
+--{{{ LSP integration
+-- Make sure to also have the snippet with the common helper functions in your config!
+
 --vim.lsp.handlers["$/progress"] = function(_, result, ctx)
 -- local client_id = ctx.client_id
 --
@@ -102,15 +103,15 @@ end
 -- elseif val.kind == "end" and notif_data then
 --   notif_data.notification =
 --     vim.notify(val.message and format_message(val.message) or "Complete", "info", {
---       icon = "",
+--       icon = " ",
 --       replace = notif_data.notification,
---       timeout = 3000,
+--       timeout = 1000,
 --     })
 --
 --   notif_data.spinner = nil
 -- end
 --end
-----}}}
+--}}}
 
 --{{{ table from lsp severity to vim severity.
 local severity = {

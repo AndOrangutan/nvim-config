@@ -3,6 +3,7 @@ local M = {}
 local wk = require("which-key")
 
 
+
 -- Add additional capabilities supported by nvim-cmp
 --local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -29,30 +30,30 @@ end
 
 --{{{ Completion Icons
 M.icons = {
-    Text        = " ",
-    Method      = " ",
+    Text        = " ",
+    Method      = " ", --   
     Function    = " ",
-    Constructor = " ",
-    Field       = "ﰠ ",
+    Constructor = " ",
+    Field       = " ",
     Variable    = " ",
-    Class       = "ﴯ ",
-    Interface   = " ",
+    Class       = " ",
+    Interface   = " ",
     Module      = " ",
-    Property    = "ﰠ ",
-    Unit        = "塞",
+    Property    = " ",
+    Unit        = " ",
     Value       = " ",
     Enum        = " ",
-    Keyword     = " ",
+    Keyword     = " ",
     Snippet     = " ",
-    Color       = " ",
-    File        = " ",
-    Reference   = " ",
-    Folder      = " ",
+    Color       = " ",
+    File        = " ",
+    Reference   = " ",
+    Folder      = " ",
     EnumMember  = " ",
-    Constant    = " ",
-    Struct      = "פּ ",
+    Constant    = " ",
+    Struct      = " ",
     Event       = " ",
-    Operator    = " ",
+    Operator    = "",
 }
 
 function M.setup()
@@ -85,7 +86,6 @@ for type, icon in pairs(signs) do
 end
 --}}}
 
-
 --{{{ Set cmp capabilities
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -108,6 +108,7 @@ wk.register({
 local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
 
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -133,6 +134,15 @@ local on_attach = function(client, bufnr)
     }, { buffer = bufnr })
 
 end
+
+
+local orig_set_signs = vim.lsp.diagnostic.set_signs
+local set_signs_limited = function(diagnostics, bufnr, client_id, sign_ns, opts)
+  opts = opts or {}
+  opts.severity_limit = {"Error", "Warn",}
+  orig_set_signs(diagnostics, bufnr, client_id, sign_ns, opts)
+end
+vim.lsp.diagnostic.set_signs = set_signs_limited
 
 
 require('lspconfig').emmet_ls.setup({
@@ -164,6 +174,7 @@ local servers = {
     "jsonls",
     "kotlin_language_server",
     "ltex",
+    "marksman",
     "omnisharp",
     "phpactor",
     "pylsp",

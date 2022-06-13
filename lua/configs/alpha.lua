@@ -2,6 +2,9 @@
 local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
 
+
+
+
 math.randomseed(os.time())
 
 local function pick_color()
@@ -10,31 +13,52 @@ local function pick_color()
 end
 
 
+local function header()
+    local bannerLength = 51
+    local banner = {
+        "                                                   ",
+        " ███    ██ ███████  ██████  ██    ██ ██ ███    ███ ",
+        " ████   ██ ██      ██    ██ ██    ██ ██ ████  ████ ",
+        " ██ ██  ██ █████   ██    ██ ██    ██ ██ ██ ████ ██ ",
+        " ██  ██ ██ ██      ██    ██  ██  ██  ██ ██  ██  ██ ",
+        " ██   ████ ███████  ██████    ████   ██ ██      ██ ",
+        "                                                   ",
+    }
+
+    
+    return banner
+end
+
 -- Set header
-local header = {
-    "                                                   ",
-    " ███    ██ ███████  ██████  ██    ██ ██ ███    ███ ",
-    " ████   ██ ██      ██    ██ ██    ██ ██ ████  ████ ",
-    " ██ ██  ██ █████   ██    ██ ██    ██ ██ ██ ████ ██ ",
-    " ██  ██ ██ ██      ██    ██  ██  ██  ██ ██  ██  ██ ",
-    " ██   ████ ███████  ██████    ████   ██ ██      ██ ",
-    "                                                   ",
-}
+local function footer()
+    local bannerLength = 34
 
-local footer = {
-    "                                   ",
-    "          ▀████▀▄▄              ▄█ ",
-    "            █▀    ▀▀▄▄▄▄▄    ▄▄▀▀█ ",
-    "    ▄        █          ▀▀▀▀▄  ▄▀  ",
-    "   ▄▀ ▀▄      ▀▄              ▀▄▀  ",
-    "  ▄▀    █     █▀   ▄█▀▄      ▄█    ",
-    "  ▀▄     ▀▄  █     ▀██▀     ██▄█   ",
-    "   ▀▄    ▄▀ █   ▄██▄   ▄  ▄  ▀▀ █  ",
-    "    █  ▄▀  █    ▀██▀    ▀▀ ▀▀  ▄▀  ",
-    "   █   █  █      ▄▄           ▄▀   ",
-    "                                   ",
+    
+    local pluginsSub = string.format("  %d", #vim.tbl_keys(packer_plugins))
+    local dateSub = os.date("  %A %d %b %Y")
 
-}
+    local tempSubBanner = pluginsSub.." "..dateSub
+    local padding = math.floor((bannerLength - #tempSubBanner) / 2)
+    local subBanner = string.format("%"..padding.."s%s%"..padding.."s", "", " "..tempSubBanner, "")
+
+    local banner = {
+        "                                  ",
+        "         ▀████▀▄▄              ▄█ ",
+        "           █▀    ▀▀▄▄▄▄▄    ▄▄▀▀█ ",
+        "   ▄        █          ▀▀▀▀▄  ▄▀  ",
+        "  ▄▀ ▀▄      ▀▄              ▀▄▀  ",
+        " ▄▀    █     █▀   ▄█▀▄      ▄█    ",
+        " ▀▄     ▀▄  █     ▀██▀     ██▄█   ",
+        "  ▀▄    ▄▀ █   ▄██▄   ▄  ▄  ▀▀ █  ",
+        "   █  ▄▀  █    ▀██▀    ▀▀ ▀▀  ▄▀  ",
+        "  █   █  █      ▄▄           ▄▀   ",
+        "                                  ",
+        subBanner,
+    }
+
+    return banner
+end
+
 _G.my_open = function(selected, opts)
     -- 'selected[]' array contains the selected items
     require'fzf-lua'.actions.file_edit(selected, opts)
@@ -59,8 +83,8 @@ dashboard.section.buttons.val = {
 
 
 -- Subheader
-dashboard.section.header.val = header
-dashboard.section.footer.val = footer
+dashboard.section.header.val = header()
+dashboard.section.footer.val = footer()
 dashboard.section.header.opts.hl = pick_color()
 dashboard.section.footer.opts.hl = pick_color()
 

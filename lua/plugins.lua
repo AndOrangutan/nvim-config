@@ -112,7 +112,7 @@ return packer.startup(function(use)
 
     --{{{ LSP
     use({ "neovim/nvim-lspconfig",
-
+      --config
         config = function()
             pequire("configs.lspconfig")
         end,
@@ -199,9 +199,16 @@ return packer.startup(function(use)
     --{{{ Statusline
     use({ "SmiteshP/nvim-gps",
         config = function()
-            require("nvim-gps").setup()
+            pequire('configs.gps')
         end,
     })
+
+    use({ "arkav/lualine-lsp-progress",
+        config = function ()
+            
+        end
+    })
+
     use({ "nvim-lualine/lualine.nvim",
         --requires = { { "kyazdani42/nvim-web-devicons", opt = true }, "arkav/lualine-lsp-progress" },
         requires = { { "kyazdani42/nvim-web-devicons", opt = true }, "SmiteshP/nvim-gps" },
@@ -282,7 +289,7 @@ return packer.startup(function(use)
     use({ "goolord/alpha-nvim",
         requires = { "kyazdani42/nvim-web-devicons" },
         config = function()
-            pequire("configs.alpha")
+            require("configs.alpha")
         end
     })
     --}}}
@@ -331,6 +338,9 @@ return packer.startup(function(use)
     use({ "ful1e5/onedark.nvim" })
     use({ "NLKNguyen/papercolor-theme" })
     use({ "sainnhe/everforest" })
+    use({ "shaunsingh/nord.nvim" })
+    use({ "folke/tokyonight.nvim" })
+    use({ "rebelot/kanagawa.nvim"})
     --}}}
 
     --{{{ Folds
@@ -345,6 +355,11 @@ return packer.startup(function(use)
     --{{{ Note Taking
     -- General
     -- Markdown
+    use({ "preservim/vim-markdown",
+        setup = function ()
+            pequire("configs.vimmarkdown")
+        end
+    })
     use({ "mickael-menu/zk-nvim",
         --ft = "markdown",
         config = function ()
@@ -377,15 +392,8 @@ return packer.startup(function(use)
     })
     use({ "lukas-reineke/headlines.nvim",
         config = function ()
-            require("headlines").setup()
+            require("headlines").setup({})
         end
-    })
-    use({ "KeitaNakamura/tex-conceal.vim",
-        --before = "nvim-treesitter/nvim-treesitter",
-        --ft = "markdown",
-        config = function ()
-            require("configs.texconceal")
-        end,
     })
     --}}}
 

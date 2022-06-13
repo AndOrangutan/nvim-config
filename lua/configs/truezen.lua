@@ -15,7 +15,7 @@ true_zen.setup({
         left = {
             number = false,
             relativenumber = false,
-            signcolumn = "yes:1",
+            signcolumn = "no",
         },
     },
     modes = {
