@@ -2,7 +2,7 @@ local gps = require("nvim-gps")
 
 _G.gps_location = function()
     local gps = require "nvim-gps"
-    return gps.is_available() and "%t > "..gps.get_location() or ""
+    return gps.is_available() and "%t > "..gps.get_location() or "%t"
 end
 
 vim.opt.winbar = "%t%{%v:lua.gps_location()%}"

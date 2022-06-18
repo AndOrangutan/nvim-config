@@ -6,3 +6,5 @@ vim.cmd[[colorscheme onedark]]
 
 require("plugins")
 
+require("defaults.autocmds")
+

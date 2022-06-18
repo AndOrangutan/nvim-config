@@ -1,6 +1,4 @@
-
 local fn = vim.fn
-
 --local pequire = require("utils").
 
 --{{{ Auto install and auto update on write for Packer
@@ -117,11 +115,18 @@ return packer.startup(function(use)
             pequire("configs.lspconfig")
         end,
     })
-    use({ "j-hui/fidget.nvim",
-        config = function()
-            pequire("configs.fidget")
-        end,
+    use({ "ray-x/lsp_signature.nvim",
+        config = function ()
+            pequire("configs.lspsignature")
+        end
     })
+    use({ "weilbith/nvim-code-action-menu",
+        cmd = "CodeActionMenu",
+        config = function ()
+            vim.g.code_action_menu_window_border = 'solid'
+        end
+    })
+    use({ "folke/lua-dev.nvim" })
     --}}}
 
     -- {{{ Compleiton and Snippets
@@ -135,7 +140,6 @@ return packer.startup(function(use)
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-cmdline",
             "hrsh7th/cmp-nvim-lsp-document-symbol",
-            "hrsh7th/cmp-nvim-lsp-signature-help",
             "ray-x/cmp-treesitter",
             "andersevenrud/cmp-tmux",
             "uga-rosa/cmp-dictionary",
@@ -204,9 +208,6 @@ return packer.startup(function(use)
     })
 
     use({ "arkav/lualine-lsp-progress",
-        config = function ()
-            
-        end
     })
 
     use({ "nvim-lualine/lualine.nvim",
@@ -234,12 +235,6 @@ return packer.startup(function(use)
     --    end,
     --    event = "WinScrolled",
     --})
-    use({ "karb94/neoscroll.nvim",
-        config = function()
-            require("neoscroll").setup()
-        end,
-        event = "WinScrolled",
-    })
     use({ "petertriho/nvim-scrollbar",
         requires = "kevinhwang91/nvim-hlslens",
         config = function()
@@ -255,6 +250,11 @@ return packer.startup(function(use)
             require("stabilize").setup()
         end
     })
+    --}}}
+
+    --{{{ Formatting
+    use({ "tpope/vim-sleuth" })
+    
     --}}}
 
     --{{{ Tabline
@@ -372,8 +372,9 @@ return packer.startup(function(use)
             pequire("configs.bullets")
         end,
     })
-    use({ "davidgranstrom/nvim-markdown-preview",
-        --cmd = "MarkdownPreview",
+    use({ "iamcco/markdown-preview.nvim",
+        run = "cd app && npm install",
+        --ft = { "markdown" },
         setup = function ()
             pequire("configs.markdownpreview")
         end,

@@ -1,4 +1,5 @@
 local true_zen = require("true-zen")
+local wk = require("which-key")
 
 true_zen.setup({
     ui = {
@@ -51,7 +52,7 @@ true_zen.setup({
         galaxyline = false,
         tmux = false,
         gitsigns = true,
-        nvim_bufferline = false,
+        nvim_bufferline = true,
         limelight = false,
         twilight = false,
         vim_airline = false,
@@ -67,4 +68,8 @@ true_zen.setup({
         ui_elements_commands = false,
         cursor_by_mode = false,
     }
+})
+
+wk.register({
+    ["<F12>"] = { "<cmd>TZMinimalist<cr>", "TrueZen Toggle"}
 })

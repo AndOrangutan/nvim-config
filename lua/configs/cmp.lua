@@ -52,7 +52,6 @@ local source_mapping = {
     dictionary              = "Dicitonary",
     tmux                    = "Tmux",
     rg                      = "Ripgrep",
-    nvim_lsp_signature_help = "Signature",
     pandoc_references       = "Pandoc",
     npm                     = "NPM",
 }
@@ -138,7 +137,6 @@ cmp.setup({
             },
         },
         { name = 'rg' },
-        { name = 'nvim_lsp_signature_help' },
         { name = 'buffer' },
         { name = "latex_symbols" },
         { name = 'calc' },
@@ -173,7 +171,6 @@ cmp.setup.cmdline('/', {
 cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
-        { name = 'cmdline' },
         { name = 'path' },
         --{ name = 'cmdline_history' },
     }, {

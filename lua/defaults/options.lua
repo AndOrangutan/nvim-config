@@ -29,6 +29,7 @@ o.listchars         = "eol:¬"
 o.signcolumn        = "yes:1"
 o.background        = "dark"
 o.laststatus        = 3
+o.cmdheight         = 0
 
 -- Tabbing, breaking, wraping and indentation
 o.tabstop           = indentSize

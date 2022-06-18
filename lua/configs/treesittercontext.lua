@@ -1,3 +1,5 @@
+vim.api.nvim_set_hl(0, "TreesitterContext", { link = "Normal" })
+
 require'treesitter-context'.setup{
     enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
     max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
@@ -10,11 +12,11 @@ require'treesitter-context'.setup{
             'class',
             'function',
             'method',
-            -- 'for', -- These won't appear in the context
-            -- 'while',
-            -- 'if',
-            -- 'switch',
-            -- 'case',
+            'for', -- These won't appear in the context
+            'while',
+            'if',
+            'switch',
+            'case',
         },
         -- Example for a specific filetype.
         -- If a pattern is missing, *open a PR* so everyone can benefit.

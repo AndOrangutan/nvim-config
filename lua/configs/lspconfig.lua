@@ -109,6 +109,7 @@ local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+    require "lsp_signature".on_attach()  -- Note: add in lsp client on-attach
 
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -127,7 +128,7 @@ local on_attach = function(client, bufnr)
         },
         ["<space>D"] = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "LSP Goto Symb Type Def" },
         ["<space>rn"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "LSP Rename" },
-        ["<space>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "LSP Code Action" },
+        ["<space>ca"] = { "<cmd>CodeActionMenu<CR>", "LSP Code Action" },
         --["<space>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "LSP Code Action" },
         ["gr"] = { "<cmd>lua vim.lsp.buf.references()<CR>", "LSP List Symb Refr" },
         ["<space>f"] = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "LSP Format Buffer" },
