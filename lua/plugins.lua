@@ -250,6 +250,13 @@ return packer.startup(function(use)
             require("stabilize").setup()
         end
     })
+
+    use({ "aserowy/tmux.nvim",
+        config = function ()
+            pequire("configs.tmux")
+        end
+
+    })
     --}}}
 
     --{{{ Formatting
@@ -333,6 +340,14 @@ return packer.startup(function(use)
     --}}} End of Core Plugins
 
     --{{{ Other Plugins
+
+    --{{{ Highlighting
+    use({ "norcalli/nvim-colorizer.lua",
+        config = function ()
+            pequire("configs/colorizer")
+        end,
+    })
+    --}}}
 
     --{{{ Colorschemes
     use({ "ful1e5/onedark.nvim" })

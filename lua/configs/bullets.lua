@@ -9,9 +9,9 @@ let g:bullets_checkbox_markers = ' .oOX'
 
 wk.register({
     ["<CR>"] = { "Bullets Insert Bullet" },
-    ["C-CR"] = { "Bullets Insert Bullet" },
-    ["C-D"] = { "Bullets Promote Bullet" },
-    ["C-T"] = { "Bullets Demote Bullet" },
+    ["<C-CR>"] = { "Bullets Insert Bullet" },
+    ["<C-D>"] = { "Bullets Promote Bullet" },
+    ["<C-T>"] = { "Bullets Demote Bullet" },
 }, { mode = "i" })
 
 
