@@ -1,6 +1,8 @@
 require('dressing').setup({
   input = {
+    enabled = true,
     border = "solid",
+
   },
   select = {
     enabled = true,
