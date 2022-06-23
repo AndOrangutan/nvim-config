@@ -29,7 +29,7 @@ local config = {
         lualine_b = {
             'branch', 
             'diff', 
-            { 'diagnostics', symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '} } 
+            { 'diagnostics', symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '} } 
         },
         lualine_c = {''},
         lualine_x = {''},

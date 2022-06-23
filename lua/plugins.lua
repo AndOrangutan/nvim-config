@@ -66,9 +66,6 @@ return packer.startup(function(use)
     use({ "nvim-lua/popup.nvim" })
     use({ "nvim-lua/plenary.nvim" })
     use({ "kyazdani42/nvim-web-devicons" })
-    use({ "yamatsum/nvim-nonicons",
-        requires = { "kyazdani42/nvim-web-devicons" },
-    })
     use({ "antoinemadec/FixCursorHold.nvim" })
 
     use({ "stevearc/dressing.nvim",
