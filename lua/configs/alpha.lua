@@ -61,9 +61,28 @@ end
 
 _G.my_open = function(selected, opts)
     -- 'selected[]' array contains the selected items
-    require'fzf-lua'.actions.file_edit(selected, opts)
+    local slctd = selected
+    require'fzf-lua'.actions.file_edit(slctd, opts)
+
+    vim.notify(slctd, "warn")
+    local dirname = vim.fn.system({
+        "dirname " .. slctd
+    })
+
+    vim.notify(dirname, "error")
+    
+
+    --vim.cmd('lua vim.notify(selected, "warn")')
+
+    --vim.notify('!echo $(dirname '.. selected .. ')', "error")
+
+
+
+    --vim.cmd('!cd $(dirname '.. selected .. ')')
+    --vim.notify('!echo $(dirname '.. selected .. ')', "error")
     vim.cmd('ZkCd')
     vim.cmd("TZMinimalist")
+
 end
 
 
@@ -77,6 +96,7 @@ dashboard.section.buttons.val = {
     --dashboard.button( "n", "   > Notebooks", [[:lua require("fzf-lua").files({ cwd = "~/Dropbox/Notebooks"})<cr> | :ZkCd<cr> | :TZMinimalist <CR>]]),
     --dashboard.button( "n", "   > Notebooks", [[:lua require'fzf-lua'.files({ cwd = "~/Dropbox/Notebooks", cmd = "fd -e md -g 'index.md'"})<cr>]]),
     dashboard.button( "n", "   > Notebooks", [[:lua require'fzf-lua'.files({ cwd = "~/Dropbox/Notebooks", cmd = "fd -e md -g 'index.md'", actions = { ['default'] = _G.my_open }})<cr>]]),
+    --dashboard.button( "n", "   > Notebooks", [[:cd $HOME/Dropbox/Notebooks/Compendium | :e index.md <CR> | :ZkCd | :TZMinimalist <CR>]]),
     dashboard.button( "s", "   > Settings" , ":cd $HOME/.config/nvim | FzfLua files<CR>"),
     dashboard.button( "q", "   > Quit NVIM", ":qa<CR>"),
 }

@@ -1,39 +1,11 @@
--- Lua
---File          = " ",
---Module        = " ",
---Namespace     = " ",
---Package       = " ",
---Class         = " ",
---Method        = " ",
---Property      = " ",
---Field         = " ",
---Constructor   = " ",
---Enum          = "練",
---Interface     = "練",
---Function      = " ",
---Variable      = " ",
---Constant      = " ",
---String        = " ",
---Number        = " ",
---Boolean       = "◩ ",
---Array         = " ",
---Object        = " ",
---Key           = " ",
---Null          = "ﳠ ",
---EnumMember    = " ",
---Struct        = " ",
---Event         = " ",
---Operator      = " ",
---TypeParameter = " ",
--- Customized config
 require("nvim-gps").setup({
 
     disable_icons = false,           -- Setting it to true will disable all icons
 
     icons = {
         ["class-name"]      = ' ',      -- Classes and class-like objects    
-        ["function-name"]   = ' ',   -- Functions  
-        ["method-name"]     = ' ',     -- Methods (functions inside class-like objects)
+        ["function-name"]   = 'x',   -- Functions  
+        ["method-name"]     = ' ',     -- Methods (functions inside class-like objects)
         ["container-name"]  = '⛶ ',  -- Containers (example: lua tables)
         ["tag-name"]        = ' '         -- Tags (example: html tags)   
     },
@@ -45,8 +17,8 @@ require("nvim-gps").setup({
         -- Some languages have custom icons
         ["json"] = {
             icons = {
-                ["array-name"]      = ' ',
-                ["object-name"]     = ' ',
+                ["array-name"]      = ' ',
+                ["object-name"]     = ' ',
                 ["null-name"]       = ' ',
                 ["boolean-name"]    = '01',
                 ["number-name"]     = ' ',
@@ -66,13 +38,13 @@ require("nvim-gps").setup({
         },
         ["toml"] = {
             icons = {
-                ["table-name"]          = ' ',
-                ["array-name"]          = ' ',
+                ["table-name"]          = ' ',
+                ["array-name"]          = ' ',
                 ["boolean-name"]        = '01',
                 ["date-name"]           = ' ',
-                ["date-time-name"]      = ' ',
+                ["date-time-name"]      = ' ',
                 ["float-name"]          = ' ',
-                ["inline-table-name"]   = ' ',
+                ["inline-table-name"]   = '{}',
                 ["integer-name"]        = ' ',
                 ["string-name"]         = ' ',
                 ["time-name"]           = ' '
@@ -80,13 +52,13 @@ require("nvim-gps").setup({
         },
         ["verilog"] = {
             icons = {
-                ["module-name"] = ' '
+                ["module-name"] = ' '
             }
         },
         ["yaml"] = {
             icons = {
-                ["mapping-name"]    = ' ',
-                ["sequence-name"]   = ' ',
+                ["mapping-name"]    = ' ',
+                ["sequence-name"]   = ' ',
                 ["null-name"]       = ' ',
                 ["boolean-name"]    = '01 ',
                 ["integer-name"]    = ' ',
@@ -96,14 +68,14 @@ require("nvim-gps").setup({
         },
         ["yang"] = {
             icons = {
-                ["module-name"]     = " ",
+                ["module-name"]     = " ",
                 ["augment-path"]    = " ",
                 ["container-name"]  = " ",
-                ["grouping-name"]   = " ",
+                ["grouping-name"]   = " ",
                 ["typedef-name"]    = " ",
                 ["identity-name"]   = " ",
                 ["list-name"]       = " ",
-                ["leaf-list-name"]  = " ",
+                ["leaf-list-name"]  = " ",
                 ["leaf-name"]       = " ",
                 ["action-name"]     = " ",
             }

@@ -89,6 +89,10 @@ end
 --{{{ Set cmp capabilities
 -- Setup lspconfig.
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true,
+}
 -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 --}}}
 
@@ -117,9 +121,9 @@ local on_attach = function(client, bufnr)
     wk.register({
         ["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "LSP Goto Declaration" },
         ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<CR>", "LSP Goto Def" },
-        ["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "LSP Hover (2x Goto)" },
+        --["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "LSP Hover (2x Goto)" }, -- Go to ufo
         ["gi"] = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "LSP List Impl For Symb" },
-        ["<C-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "LSP Show Sign For Symb" },
+        -- TODO: Resetup  signature ["<C-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "LSP Show Sign For Symb" },
         ["<space>wa"] = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "LSP Add Wksp Folder" },
         ["<space>wr"] = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "LSP Rem Wksp Folder" },
         ["<space>wl"] = {

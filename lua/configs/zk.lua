@@ -22,7 +22,4 @@ require("zk").setup({
     },
 })
 
--- Moved to 
---wk.register({
---    ["<leader>zn"] = {"<Cmd>ZkNew { dir = vim.fn.input('Subdirectory: '), title = vim.fn.input('Title: '),  }<CR>", "[z]k [n]ew"},
---})
+-- Keybinds moved to ftplugin/markdown.lua

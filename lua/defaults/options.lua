@@ -25,7 +25,7 @@ o.relativenumber    = true
 o.showmode          = false
 o.conceallevel      = 2
 o.listchars         = "eol:¬"
---o.fillchars         = "fold:━"
+o.fillchars         = "foldsep: ,foldopen:,foldclose:"
 o.signcolumn        = "yes:1"
 o.background        = "dark"
 o.laststatus        = 3
@@ -54,14 +54,13 @@ o.pumheight         = 16
 o.splitbelow        = true
 o.splitright        = true
 
-
 -- Search
 o.ignorecase        = true
 o.incsearch         = true
 o.smartcase         = true
 
 -- Folds
-o.foldmethod        = "marker"
+--o.foldmethod        = "marker"
 --o.foldmethod        = "expr"
 --o.foldexpr          = "nvim_treesitter#foldexpr()"
 --o.foldtext          = [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend))]]

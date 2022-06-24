@@ -29,5 +29,9 @@ wk.register({
 
     -- Zk
     ["<CR>"] = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "ZK Follow Link"},
+
     ["<leader>zn"] = {"<Cmd>ZkNew { dir = vim.fn.input('Subdir: ', '', 'file'), title = vim.fn.input('Title: '),  }<CR>", "[z]K [n]ew"},
+    ["<leader>zi"] = { "[z]K [i]nit" },
+    ["<leader>zid"] = {"<Cmd>ZkNew { dir = 'career/dailycodingproblem' } <CR>", "[z]K [i]nit dailycodingproblem.com"},
+
 })

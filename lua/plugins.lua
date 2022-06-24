@@ -42,7 +42,6 @@ packer.init({
 --}}}
 
 --{{{ functions
-local functions
 function pequire(name)
     local ok, _ = pcall(require, name)
     if not ok then
@@ -63,7 +62,7 @@ return packer.startup(function(use)
 
     --{{{ Helpers/Dependencies
 
-    use({ "nvim-lua/popup.nvim" })
+   -- use({ "nvim-lua/popup.nvim" }`)
     use({ "nvim-lua/plenary.nvim" })
     use({ "kyazdani42/nvim-web-devicons" })
     use({ "antoinemadec/FixCursorHold.nvim" })
@@ -91,7 +90,7 @@ return packer.startup(function(use)
         end
     })
     --}}}
---    
+
     --{{{ Treesitter and other highlighting
     use({ "nvim-treesitter/nvim-treesitter",
         requires = { "MDeiml/tree-sitter-markdown" },
@@ -123,6 +122,12 @@ return packer.startup(function(use)
             vim.g.code_action_menu_window_border = 'solid'
         end
     })
+
+    use({ "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        config = function ()
+            require("lsp_lines").setup()
+        end
+    })
     use({ "folke/lua-dev.nvim" })
     --}}}
 
@@ -130,25 +135,22 @@ return packer.startup(function(use)
     use({ "hrsh7th/nvim-cmp",
         requires = {
             "saadparwaiz1/cmp_luasnip",
-            "hrsh7th/cmp-nvim-lsp",
-            { "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" },
-            "lukas-reineke/cmp-rg",
-            "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
+            "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-cmdline",
-            "hrsh7th/cmp-nvim-lsp-document-symbol",
-            "ray-x/cmp-treesitter",
-            "andersevenrud/cmp-tmux",
-            "uga-rosa/cmp-dictionary",
+            "hrsh7th/cmp-nvim-lua",
+            "hrsh7th/cmp-nvim-lsp",
             { "David-Kunz/cmp-npm", requires = "nvim-lua/plenary.nvim" },
             "kdheepak/cmp-latex-symbols",
+            "ray-x/cmp-treesitter",
+            { "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" },
+            "andersevenrud/cmp-tmux",
+            "lukas-reineke/cmp-rg",
             "hrsh7th/cmp-calc",
-            "aspeddro/cmp-pandoc.nvim",
-            "dmitmel/cmp-cmdline-history",
-            "lukas-reineke/cmp-under-comparator",
+            "uga-rosa/cmp-dictionary",
         },
         config = function()
-            pequire("configs.cmp")
+            require("configs.cmp")
         end,
     })
     use({ "L3MON4D3/LuaSnip",
@@ -157,7 +159,7 @@ return packer.startup(function(use)
             { "dsznajder/vscode-es7-javascript-react-snippets", run = "yarn install --frozen-lockfile && yarn compile" },
         },
         config = function ()
-            pequire("configs.luasnip")
+            require("configs.luasnip")
         end,
     })
     -- }}}
@@ -226,12 +228,12 @@ return packer.startup(function(use)
     --}}}
 
     --{{{ Scrolling
-    --use({ "declancm/cinnamon.nvim",
-    --    config = function()
-    --        pequire("configs.cinnamon")
-    --    end,
-    --    event = "WinScrolled",
-    --})
+    use({ "declancm/cinnamon.nvim",
+        config = function()
+            pequire("configs.cinnamon")
+        end,
+        event = "WinScrolled",
+    })
     use({ "petertriho/nvim-scrollbar",
         requires = "kevinhwang91/nvim-hlslens",
         config = function()
@@ -258,7 +260,7 @@ return packer.startup(function(use)
 
     --{{{ Formatting
     use({ "tpope/vim-sleuth" })
-    
+    use({ "godlygeek/tabular" })
     --}}}
 
     --{{{ Tabline
@@ -280,14 +282,14 @@ return packer.startup(function(use)
     })
     --}}}
 
-    --{{{ Listener
+    --{{{ Listener/Quickfix
     use({ "folke/trouble.nvim",
         --cmd = {"TroubleToggle"},
         config = function()
             require("configs.trouble")
         end,
     })
-    --}}}
+    --}}}  
 
     --{{{ Dashboard
     use({ "goolord/alpha-nvim",
@@ -347,7 +349,7 @@ return packer.startup(function(use)
     --}}}
 
     --{{{ Colorschemes
-    use({ "ful1e5/onedark.nvim" })
+    use({ "navarasu/onedark.nvim" })
     use({ "NLKNguyen/papercolor-theme" })
     use({ "sainnhe/everforest" })
     use({ "shaunsingh/nord.nvim" })
@@ -356,12 +358,21 @@ return packer.startup(function(use)
     --}}}
 
     --{{{ Folds
-    use({ "anuvyklack/pretty-fold.nvim",
-    requires = 'anuvyklack/nvim-keymap-amend', -- only for preview
+    use {'kevinhwang91/nvim-ufo',
+        requires = 'kevinhwang91/promise-async',
         config = function ()
-            pequire("configs.prettyfold")
+            require("configs.ufo")
+        end,
+    }
+    use ({ "anuvyklack/fold-preview.nvim",
+        requires = "anuvyklack/keymap-amend.nvim",
+        config = function ()
+            require("fold-preview").setup({
+                border = "solid"
+            })
         end
     })
+
     --}}}
 
     --{{{ Note Taking
@@ -406,6 +417,13 @@ return packer.startup(function(use)
     use({ "lukas-reineke/headlines.nvim",
         config = function ()
             require("headlines").setup({})
+        end
+    })
+    use({ "AckslD/nvim-FeMaco.lua",
+        config = function ()
+            require('femaco').setup({
+                border = "solid",
+            })
         end
     })
     --}}}
