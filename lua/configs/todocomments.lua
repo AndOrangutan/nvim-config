@@ -13,7 +13,7 @@ require("todo-comments").setup({
     PERF = { icon = " ", color = "default", alt = { "perf", "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
     NOTE = { icon = " ", color = "hint", alt = { "note", "INFO" } },
     -- FIX:
-    -- PERF:
+    -- PERF: Need to rewrite algo
     -- WARN:
     -- TODO:
     -- HACK:

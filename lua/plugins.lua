@@ -91,7 +91,7 @@ return packer.startup(function(use)
         end
     })
     --}}}
---    
+
     --{{{ Treesitter and other highlighting
     use({ "nvim-treesitter/nvim-treesitter",
         requires = { "MDeiml/tree-sitter-markdown" },
@@ -130,25 +130,22 @@ return packer.startup(function(use)
     use({ "hrsh7th/nvim-cmp",
         requires = {
             "saadparwaiz1/cmp_luasnip",
-            "hrsh7th/cmp-nvim-lsp",
-            { "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" },
-            "lukas-reineke/cmp-rg",
-            "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
+            "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-cmdline",
-            "hrsh7th/cmp-nvim-lsp-document-symbol",
-            "ray-x/cmp-treesitter",
-            "andersevenrud/cmp-tmux",
-            "uga-rosa/cmp-dictionary",
+            "hrsh7th/cmp-nvim-lua",
+            "hrsh7th/cmp-nvim-lsp",
             { "David-Kunz/cmp-npm", requires = "nvim-lua/plenary.nvim" },
             "kdheepak/cmp-latex-symbols",
+            "ray-x/cmp-treesitter",
+            { "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" },
+            "andersevenrud/cmp-tmux",
+            "lukas-reineke/cmp-rg",
             "hrsh7th/cmp-calc",
-            "aspeddro/cmp-pandoc.nvim",
-            "dmitmel/cmp-cmdline-history",
-            "lukas-reineke/cmp-under-comparator",
+            "uga-rosa/cmp-dictionary",
         },
         config = function()
-            pequire("configs.cmp")
+            require("configs.cmp")
         end,
     })
     use({ "L3MON4D3/LuaSnip",
@@ -157,7 +154,7 @@ return packer.startup(function(use)
             { "dsznajder/vscode-es7-javascript-react-snippets", run = "yarn install --frozen-lockfile && yarn compile" },
         },
         config = function ()
-            pequire("configs.luasnip")
+            require("configs.luasnip")
         end,
     })
     -- }}}
@@ -258,7 +255,7 @@ return packer.startup(function(use)
 
     --{{{ Formatting
     use({ "tpope/vim-sleuth" })
-    
+    use({ "godlygeek/tabular" })
     --}}}
 
     --{{{ Tabline
