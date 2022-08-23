@@ -116,7 +116,7 @@ cmp.setup({
     },
     formatting = {
         fields = { "kind", "abbr", "menu"},
-        
+
         --with_text = true,
         format = function (entry, vim_item)
             vim_item.menu = menu_names[entry.source.name]
