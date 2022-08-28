@@ -103,20 +103,31 @@ return packer.startup(function(use)
         requires = "nvim-lua/plenary.nvim",
         config = function () require("configs.neogit") end,
     }
-    use { "sindrets/diffview.nvim",
+    use { "sindrets/diffview.nvim", -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev. 
         config = function() require("configs.diffview") end,
     }
-    use { "akinsho/git-conflict.nvim",
+    use { "akinsho/git-conflict.nvim", -- A plugin to visualise and resolve merge conflicts in neovim.
         tag = "*",
         config = function() require("git-conflict").setup() end,
     }
     --}}}
 
+    --{{{ External Package Manager
+    use { "williamboman/mason.nvim", -- Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters. 
+        config = function () require("configs.mason")end,
+    }
+    --}}}
 
     -- {{{ LSP 
-    use { "neovim/nvim-lspconfig", -- Quickstart configurations for the Neovim LSP client.
-        config = function () require("configs.lspconfig") end,
+    use { "williamboman/mason-lspconfig.nvim", -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim 
+        requires = "williamboman/mason.nvim",
+        config = function () require("configs.masonlspconfig") end,
     }
+    use { "neovim/nvim-lspconfig", -- Quickstart configurations for the Neovim LSP client.
+        requires = "williamboman/mason-lspconfig",
+        --config = function () require("configs.lspconfig") end,
+    }
+
     -- TODO: config properly
     use { "ray-x/lsp_signature.nvim", -- Lsp signature hint when you type.
         config = function () require("configs.lspconfig") end,
