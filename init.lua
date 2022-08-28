@@ -1,5 +1,7 @@
 require("defaults.options")
 
+-- TODO: move this lol
+--
 vim.cmd[[
 function s:MkNonExDir(file, buf)
     if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'

@@ -82,11 +82,16 @@ return packer.startup(function(use)
         run = ":TSUpdate",
         config = function () require("configs.treesitter") end,
     }
+    use { "nvim-treesitter/nvim-treesitter-textobjects" } -- TODO: Setup textobjects
     use { "nvim-treesitter/nvim-treesitter-context", -- Shows floating hover with the current function/block context.
         config = function () require("configs.treesittercontext") end,
     }
+    use { "kylechui/nvim-surround",
+        tag = "*",
+        config = function () require("nvim-surround").setup() end,
+    }
     use { "windwp/nvim-ts-autotag", -- Use treesitter to auto close and auto rename html tags.
-        -- TODO: Setup
+        config = function () require("configs.autotag") end,
     }
 
     use { "norcalli/nvim-colorizer.lua", -- A high-performance color highlighter for Neovim which has no external dependencies!
@@ -130,7 +135,7 @@ return packer.startup(function(use)
 
     -- TODO: config properly
     use { "ray-x/lsp_signature.nvim", -- Lsp signature hint when you type.
-        config = function () require("configs.lspconfig") end,
+        config = function () require("configs.lspsignature") end,
     }
     use { "weilbith/nvim-code-action-menu", -- A floating pop-up menu for code actions to show code action information and a diff preview.
         cmd = "CodeActionMenu",
@@ -139,7 +144,9 @@ return packer.startup(function(use)
     use { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", -- Show nvim diagnostics using virtual lines
         config = function () require("configs.lsplines") end,
     }
-    -- TODO: Add RRethy/vim-illuminate.
+    use { "RRethy/vim-illuminate",
+        config = function () require("configs.illuminate") end,
+    }
     -- }}}
 
     -- {{{ Completion and snippets
@@ -197,9 +204,9 @@ return packer.startup(function(use)
     --}}}
 
     -- {{{ UI
-    use { "stevearc/dressing.nvim", -- Improve the built-in vim.ui interfaces with telescope, fzf, etc.
-        config = function () require("configs.dressing") end,
-    }
+    --use { "stevearc/dressing.nvim", -- Improve the built-in vim.ui interfaces with telescope, fzf, etc.
+    --    config = function () require("configs.dressing") end,
+    --}
     -- }}}
 
     -- {{{Picker 
@@ -307,8 +314,11 @@ return packer.startup(function(use)
     -- }}}
 
     -- {{{ Code Evaluation
-    -- TODO: Add michaelb/sniprun
-    -- TODO: Add metakirby5/codi.vim
+    use { "michaelb/sniprun",
+        run = "bash ./install.sh",
+        config = function () require("configs.sniprun")end,
+    }
+    use { "metakirby5/codi.vim" }
     -- }}}
 
 
@@ -334,18 +344,29 @@ return packer.startup(function(use)
     }
     use { "ekickx/clipboard-image.nvim", -- Neovim Lua plugin to paste image from clipboard.
         ft = "markdown",
-        config = function () require("configs.nabla") end,
+        config = function () require("configs.pasteimg") end,
     }
     use { "jbyuki/nabla.nvim", -- Take your scientific notes in Neovim.
         ft = "markdown",
-        config = function () require("headlines").setup({}) end,
+        config = function () require("configs.nabla") end,
     }
     use { "lukas-reineke/headlines.nvim", -- This plugin adds horizontal highlights for text filetypes, like markdown, orgmode, and neorg. 
-        config = function () require("headlines").setup({}) end,
+        config = function () require("headlines").setup({ markdown = { fat_headlines = false } }) end,
     }
     use { "AckslD/nvim-FeMaco.lua", -- Catalyze your Fenced Markdown Code-block editing.
         config = function () require("femaco").setup({ border = "solid" }) end,
     }
+    use { "dhruvasagar/vim-table-mode",
+        ft = "markdown",
+        setup = function () require("configs.tablemode") end,
+    }
+    use { "jbyuki/venn.nvim",
+        ft = "markdown",
+        setup = function () require("configs.venn") end,
+    }
+    --use { "edluffy/hologram.nvim",
+    --    config = function () require('hologram').setup{ auto_display = true } end,
+    --}
     -- }}}
 
     --}}}

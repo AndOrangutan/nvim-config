@@ -1,18 +1,3 @@
-local gps = require("nvim-gps")
-
-_G.gps_location = function()
-    local gps = require "nvim-gps"
-    return gps.is_available() and "%t > "..gps.get_location() or "%t"
-end
-
-vim.opt.winbar = "%t%{%v:lua.gps_location()%}"
-
-vim.api.nvim_create_autocmd ("CursorMoved", {
-  pattern = '*',
-  command = "set winbar=%{%v:lua.gps_location()%}",
-})
-
-
 
 local config = {
     options = {

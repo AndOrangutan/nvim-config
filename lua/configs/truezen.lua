@@ -2,73 +2,63 @@ local true_zen = require("true-zen")
 local wk = require("which-key")
 
 true_zen.setup({
-    ui = {
-        bottom = {
-            laststatus = 0,
-            ruler = false,
-            showmode = false,
-            showcmd = false,
-            cmdheight = 1,
+    modes = { -- configurations per mode
+        minimalist = {
+            ignored_buf_types = { "nofile" }, -- save current options from any window except ones displaying these kinds of buffers
+            options = { -- options to be disabled when entering Minimalist mode
+                number = false,
+                relativenumber = false,
+                showtabline = 2,
+                signcolumn = "no",
+                statusline = "",
+                cmdheight = 0,
+                laststatus = 3,
+                showcmd = false,
+                showmode = false,
+                ruler = false,
+                numberwidth = 1
+            },
+            callbacks = { -- run functions when opening/closing Minimalist mode
+                open_pre = nil,
+                open_pos = nil,
+                close_pre = nil,
+                close_pos = nil
+            },
         },
-        top = {
-            showtabline = 0,
-        },
-        left = {
-            number = false,
-            relativenumber = false,
-            signcolumn = "no",
-        },
-    },
-    modes = {
-        ataraxis = {
-            left_padding = 32,
-            right_padding = 32,
-            top_padding = 1,
-            bottom_padding = 1,
-            ideal_writing_area_width = {0},
-            auto_padding = true,
-            keep_default_fold_fillchars = true,
-            custom_bg = {"none", ""},
-            bg_configuration = true,
-            quit = "untoggle",
-            ignore_floating_windows = true,
-            affected_higroups = {
-                NonText = true,
-                FoldColumn = true,
-                ColorColumn = true,
-                VertSplit = true,
-                StatusLine = true,
-                StatusLineNC = true,
-                SignColumn = true,
+        narrow = {
+            --- change the style of the fold lines. Set it to:
+            --- `informative`: to get nice pre-baked folds
+            --- `invisible`: hide them
+            --- function() end: pass a custom func with your fold lines. See :h foldtext
+            folds_style = "informative",
+            run_ataraxis = true, -- display narrowed text in a Ataraxis session
+            callbacks = { -- run functions when opening/closing Narrow mode
+                open_pre = nil,
+                open_pos = nil,
+                close_pre = nil,
+                close_pos = nil
             },
         },
         focus = {
-            margin_of_error = 5,
-            focus_method = "experimental"
-        },
+            callbacks = { -- run functions when opening/closing Focus mode
+                open_pre = nil,
+                open_pos = nil,
+                close_pre = nil,
+                close_pos = nil
+            },
+        }
     },
     integrations = {
-        vim_gitgutter = false,
-        galaxyline = false,
-        tmux = false,
-        gitsigns = true,
-        nvim_bufferline = true,
-        limelight = false,
-        twilight = false,
-        vim_airline = false,
-        vim_powerline = false,
-        vim_signify = false,
-        express_line = false,
-        lualine = true,
-        lightline = false,
-        feline = false
+        tmux = false, -- hide tmux status bar in (minimalist, ataraxis)
+        --kitty = { -- increment font size in Kitty. Note: you must set `allow_remote_control socket-only` and `listen_on unix:/tmp/kitty` in your personal config (ataraxis)
+        --    enabled = false,
+        --    font = "+3"
+        --},
+        twilight = false, -- enable twilight (ataraxis)
+        lualine = false -- hide nvim-lualine (ataraxis)
     },
-    misc = {
-        on_off_commands = false,
-        ui_elements_commands = false,
-        cursor_by_mode = false,
-    }
 })
+
 
 wk.register({
     ["<F12>"] = { "<cmd>TZMinimalist<cr>", "TrueZen Toggle"}

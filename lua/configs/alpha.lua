@@ -2,7 +2,7 @@
 local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
 
-
+local zkpath = "~/Dropbox/Notebooks"
 
 
 math.randomseed(os.time())
@@ -25,7 +25,7 @@ local function header()
         "                                                   ",
     }
 
-    
+
     return banner
 end
 
@@ -33,7 +33,6 @@ end
 local function footer()
     local bannerLength = 34
 
-    
     local pluginsSub = string.format("  %d", #vim.tbl_keys(packer_plugins))
     local dateSub = os.date("  %A %d %b %Y")
 
@@ -61,27 +60,22 @@ end
 
 _G.my_open = function(selected, opts)
     -- 'selected[]' array contains the selected items
+    
     local slctd = selected
+
     require'fzf-lua'.actions.file_edit(slctd, opts)
 
-    vim.notify(slctd, "warn")
-    local dirname = vim.fn.system({
-        "dirname " .. slctd
-    })
 
-    vim.notify(dirname, "error")
-    
-
-    --vim.cmd('lua vim.notify(selected, "warn")')
-
-    --vim.notify('!echo $(dirname '.. selected .. ')', "error")
-
+   local dirname = vim.fn.fnamemodify(slctd[1], ":h")
 
 
     --vim.cmd('!cd $(dirname '.. selected .. ')')
     --vim.notify('!echo $(dirname '.. selected .. ')', "error")
-    vim.cmd('ZkCd')
     vim.cmd("TZMinimalist")
+
+    -- Let zk lsp load
+    vim.wait(100)
+    vim.cmd[[ZkCd]]
 
 end
 
@@ -89,15 +83,14 @@ end
 
 -- Set menu
 dashboard.section.buttons.val = {
-    dashboard.button( "e", "   > New file" , ":ene <BAR> startinsert <CR>"),
-    dashboard.button( "f", "   > Find file", ":cd $HOME/Workspace | Telescope find_files<CR>"),
-    dashboard.button( "r", "   > Recent"   , ":Telescope oldfiles<CR>"),
+    --dashboard.button( "e", "   > New file" , ":ene <BAR> startinsert <CR>"),
+    dashboard.button( "r", "   > Recent"   , ":FzfLua oldfiles<CR>"),
     --dashboard.button( "n", "   > Notebooks", ":cd $HOME/Dropbox/Notebook | :e index.md <CR> | :TZMinimalist <CR>"),
     --dashboard.button( "n", "   > Notebooks", [[:lua require("fzf-lua").files({ cwd = "~/Dropbox/Notebooks"})<cr> | :ZkCd<cr> | :TZMinimalist <CR>]]),
     --dashboard.button( "n", "   > Notebooks", [[:lua require'fzf-lua'.files({ cwd = "~/Dropbox/Notebooks", cmd = "fd -e md -g 'index.md'"})<cr>]]),
-    dashboard.button( "n", "   > Notebooks", [[:lua require'fzf-lua'.files({ cwd = "~/Dropbox/Notebooks", cmd = "fd -e md -g 'index.md'", actions = { ['default'] = _G.my_open }})<cr>]]),
+    dashboard.button( "n", "   > Notebooks", [[:cd $HOME/Dropbox/Notebooks/Compendium | :lua require'fzf-lua'.files({ cwd = "~/Dropbox/Notebooks", cmd = "fd -e md -g 'index.md'", actions = { ['default'] = _G.my_open }})<cr>]]),
     --dashboard.button( "n", "   > Notebooks", [[:cd $HOME/Dropbox/Notebooks/Compendium | :e index.md <CR> | :ZkCd | :TZMinimalist <CR>]]),
-    dashboard.button( "s", "   > Settings" , ":cd $HOME/.config/nvim | FzfLua files<CR>"),
+    dashboard.button( "s", "   > Settings" , ":cd $HOME/.config/nvim | lua require'fzf-lua'.git_files()<cr>"),
     dashboard.button( "q", "   > Quit NVIM", ":qa<CR>"),
 }
 

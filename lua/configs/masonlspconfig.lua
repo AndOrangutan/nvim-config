@@ -68,7 +68,6 @@ require("mason-lspconfig").setup({
         "cmake",                    -- CMake
         "cssls",                    -- CSS
         "clojure_lsp",              -- Clojure
-        "diagnosticls",             -- General purpose diagnostics
         "dockerls",                 -- Docker
         "emmet_ls",                 -- Emmet: The essential toolkit for web-developers 
         "fortls",                   -- Fortran
@@ -108,7 +107,7 @@ require("mason-lspconfig").setup({
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
 wk.register({
-    ["J"] = { "<cmd>lua vim.diagnostic.open_float(nil, {focus=false})<CR>", "LSP Float Diag" },
+    ["<leader>J"] = { "<cmd>lua vim.diagnostic.open_float(nil, {focus=false})<CR>", "LSP Float Diag" },
     ["[d"] = { "<cmd>lua vim.diagnostic.vim.diagnostic.goto_prev()<CR>", "LSP Goto Prev Diag" },
     ["]d"] = { "<cmd>lua vim.diagnostic.vim.diagnostic.goto_next()<CR>", "LSP Goto Next Diag" },
     ["<space>q"] = { "<cmd>lua vim.diagnostic.vim.diagnostic.setloclist()<CR>", "LSP Add Diag to Loclist" },
@@ -120,7 +119,7 @@ local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-    --require "lsp_signature".on_attach()  -- Note: add in lsp client on-attach
+    require "lsp_signature".on_attach()  -- Note: add in lsp client on-attach
 
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -143,6 +142,42 @@ local on_attach = function(client, bufnr)
         --["<space>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "LSP Code Action" },
         ["gr"] = { "<cmd>lua vim.lsp.buf.references()<CR>", "LSP List Symb Refr" },
         ["<space>f"] = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "LSP Format Buffer" },
+        ["<leader>K"] = { function() if not require('ufo').peekFoldedLinesUnderCursor() then vim.lsp.buf.hover() end end,
+            "UFO/LSP Preview/Hover" },
+    }, { buffer = bufnr })
+end
+
+
+local on_attach_navic = function(client, bufnr)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+    require "lsp_signature".on_attach()  -- Note: add in lsp client on-attach
+    require "nvim-navic".attach(client, bufnr)
+
+    -- Mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+
+    wk.register({
+        ["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "LSP Goto Declaration" },
+        ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<CR>", "LSP Goto Def" },
+        --["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "LSP Hover (2x Goto)" }, -- Go to ufo
+        ["gi"] = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "LSP List Impl For Symb" },
+        -- TODO: Resetup  signature ["<C-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "LSP Show Sign For Symb" },
+        ["<space>wa"] = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "LSP Add Wksp Folder" },
+        ["<space>wr"] = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "LSP Rem Wksp Folder" },
+        ["<space>wl"] = {
+            "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
+            "LSP Show Wksp Folders",
+        },
+        ["<space>D"] = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "LSP Goto Symb Type Def" },
+        ["<space>rn"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "LSP Rename" },
+        ["<space>ca"] = { "<cmd>CodeActionMenu<CR>", "LSP Code Action" },
+        --["<space>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "LSP Code Action" },
+        ["gr"] = { "<cmd>lua vim.lsp.buf.references()<CR>", "LSP List Symb Refr" },
+        ["<space>f"] = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "LSP Format Buffer" },
+        ["<leader>K"] = { function() if not require('ufo').peekFoldedLinesUnderCursor() then vim.lsp.buf.hover() end end,
+            "UFO/LSP Preview/Hover" },
     }, { buffer = bufnr })
 end
 
@@ -159,12 +194,27 @@ require("mason-lspconfig").setup_handlers {
     --default handler for languages
     function (server_name)
         require("lspconfig")[server_name].setup {
+            on_attach = on_attach_navic,
+            capabilities = capabilities,
+        }
+    end,
+    ["tailwindcss"] = function ()
+        lspconfig.tailwindcss.setup {
+            filetypes = { "aspnetcorerazor", "astro", "astro-markdown", "blade", "django-html", "htmldjango", "edge", "eelixir", "elixir", "ejs", "erb", "eruby", "gohtml", "haml", "handlebars", "hbs", "html", "html-eex", "heex", "jade", "leaf", "liquid", "mdx", "mustache", "njk", "nunjucks", "php", "razor", "slim", "twig", "css", "less", "postcss", "sass", "scss", "stylus", "sugarss", "javascript", "javascriptreact", "reason", "rescript", "typescript", "typescriptreact", "vue", "svelte" },
             on_attach = on_attach,
             capabilities = capabilities,
         }
     end,
+    ["prosemd_lsp"] = function ()
+        lspconfig.prosemd_lsp.setup {
+
+        }
+    end,
     ["sumneko_lua"] = function ()
         lspconfig.sumneko_lua.setup {
+            on_attach = on_attach_navic,
+            capabilities = capabilities,
+
             settings = {
                 Lua = {
                     runtime = {
@@ -175,10 +225,10 @@ require("mason-lspconfig").setup_handlers {
                         -- Get the language server to recognize the `vim` global
                         globals = {'vim'},
                     },
-                    workspace = {
-                        -- Make the server aware of Neovim runtime files
-                        library = vim.api.nvim_get_runtime_file("", true),
-                    },
+                    --workspace = {
+                    --    -- Make the server aware of Neovim runtime files
+                    --    library = vim.api.nvim_get_runtime_file("", true),
+                    --},
                     -- Do not send telemetry data containing a randomized but unique identifier
                     telemetry = {
                         enable = false,

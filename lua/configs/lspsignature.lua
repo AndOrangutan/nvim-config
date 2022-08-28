@@ -4,6 +4,5 @@ require("lsp_signature").setup({
         border = "solid",
     },
     hint_prefix = " ",  -- Panda for parameter
-    floating_window_off_x = 1, -- adjust float windows x position.
-    floating_window_off_y = 2, -- adjust float windows y position.
+    floating_window_above_cur_line = true,
 })

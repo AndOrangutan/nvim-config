@@ -47,8 +47,6 @@ wk.register({
     ["zr"] = { "<CMD>lua require('ufo').openFoldsExceptKinds()<CR>", "UFO|Unfold All" },
     ["zm"] = { "<CMD>lua require('ufo').closeFoldsWith()<CR>", "UFO|fold All" },
     --Remove K binding from lsp
-    ["K"] = { function() if not require('ufo').peekFoldedLinesUnderCursor() then vim.lsp.buf.hover() end end,
-        "UFO/LSP Preview/Hover" },
 })
 
 

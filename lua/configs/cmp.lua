@@ -60,9 +60,9 @@ cmp.setup({
             require('luasnip').lsp_expand(args.body)
         end,
     },
-    view  = {
-        entries = { name = 'custom', selection_order = 'nearest_cursor' },
-    },
+    --view  = {
+    --    entries = { name = 'custom', selection_order = 'nearest_cursor' },
+    --},
     window = {
         documentation = {
             border = "solid",
@@ -136,8 +136,9 @@ cmp.setup({
         { name = "npm", keyword_length = 4 },
         { name = "treesitter" },
         { name = "git" },
+        {name = "latex_symbols"},
         { name = "tmux", option = { all_panes = true } },
-        { name = "rg" },
+        --{ name = "rg" },
         { name = "calc" },
         { name = "dictionary", keyword_length = 4 },
     }, {
