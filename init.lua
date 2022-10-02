@@ -1,42 +1,32 @@
-
 require("defaults.options")
-require("utils")
 
-local pequire = require("utils").pequire
+-- TODO: move this lol
+--
+vim.cmd[[
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
+]]
 
+require("colorschemes")
+
+vim.cmd[[colorscheme onedark]]
 
 require("plugins")
 
-
-
-require("config.which-key")
-require("config.legendary")
-require("config.mapx")
-
-require("config.treesitter")
-
--- Core Util
-require("config.notify")
-require("config.nonicons")
-
--- Picker
-require("config.telescope")
-require("config.dressing")
-
-
--- LSP
-require("config.lspconfig")
-require("config.lspsignature")
-require("config.null-ls")
-
-
---require("defaults.options")
-require("defaults.keybindings")
-require("defaults.commands")
-require("defaults.abbreviations")
 require("defaults.autocmds")
 
 
+<<<<<<< HEAD
 
 require("colorscheme")
 
@@ -76,3 +66,5 @@ require("config.bullets")
 
 require("config.codi")
 require('config.due')
+=======
+>>>>>>> config-rewrite

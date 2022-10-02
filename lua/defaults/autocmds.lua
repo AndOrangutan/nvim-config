@@ -1,14 +1,13 @@
-vim.cmd[[
-function s:MkNonExDir(file, buf)
-    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-        let dir=fnamemodify(a:file, ':h')
-        if !isdirectory(dir)
-            call mkdir(dir, 'p')
-        endif
-    endif
-endfunction
-augroup BWCCreateDir
-    autocmd!
-    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
-augroup END
-]]
+
+local group = vim.api.nvim_create_augroup("jump_last_position", { clear = true })
+vim.api.nvim_create_autocmd(
+    "BufReadPost",
+    {callback = function()
+            local row, col = unpack(vim.api.nvim_buf_get_mark(0, "\""))
+            if {row, col} ~= {0, 0} then
+                vim.api.nvim_win_set_cursor(0, {row, 0})
+            end
+        end,
+    group = group
+    }
+)
