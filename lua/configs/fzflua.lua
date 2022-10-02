@@ -3,16 +3,12 @@ local wk = require("which-key")
 --:lua require'fzf-lua'.files({ cmd = 'fd --type f --exclude node_modules' })
 
 -- Redraw with resize :o
-vim.api.nvim_create_autocmd("VimResized", {
-  pattern = '*',
-  command = 'lua require("fzf-lua").redraw()'
-})
+--vim.api.nvim_create_autocmd("VimResized", {
+--  pattern = '*',
+--  command = 'lua require("fzf-lua").redraw()'
+--})
 
 require'fzf-lua'.setup {
-    winopts_fn = function()
-    -- smaller width if neovim win has over 80 columns
-    return { width = vim.o.columns>80 and 0.65 or 0.85 }
-  end,
   file_icon_padding = ' ',
   winopts = {
     border           = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
@@ -28,8 +24,6 @@ require'fzf-lua'.setup {
       -- scrollbar_e = 'PmenuSbar',     -- scrollbar "empty" section highlight
     },
     preview = {
-      --default     = 'bat',           -- override the default previewer?
-                                        -- default uses the 'builtin' previewer
       border         = 'border',        -- border|noborder, applies only to
                                         -- native fzf previewers (bat/cat/git/etc)
       wrap           = 'nowrap',        -- wrap|nowrap
@@ -39,7 +33,7 @@ require'fzf-lua'.setup {
       layout         = 'flex',          -- horizontal|vertical|flex
       flip_columns   = 120,             -- #cols to switch to horizontal on flex
       -- Only valid with the builtin previewer:
-      title          = false,           -- preview border title (file/buf)?
+      title          = true,           -- preview border title (file/buf)?
       scrollbar      = 'border',         -- `false` or string:'float|border'
                                         -- float:  in-window floating border
                                         -- border: in-border chars (see below)

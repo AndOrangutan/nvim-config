@@ -53,11 +53,15 @@ packer.init({
 return packer.startup(function(use)
 
     -- {{{ Have packer manage itself
-    use { "wbthomason/packer.nvim" } -- A use-package inspired plugin manager for Neovim. Uses native packages, supports Luarocks dependencies, written in Lua, allows for expressive config 
+    use { "wbthomason/packer.nvim" } -- A use-package inspired plugin manager for Neovim. Uses native packages, supports Luarocks dependencies, written in Lua, allows for expressive config
     -- }}}
 
+    use { "lewis6991/impatient.nvim", -- Improve startup time for Neovim
+        config = function() require("impatient") end,
+    }
+
     -- {{{ Helpers and Dependencies
-    use { "nvim-lua/plenary.nvim" } -- plenary: full; complete; entire; absolute; unqualified. All the lua functions I don't want to write twice. 
+    use { "nvim-lua/plenary.nvim" } -- plenary: full; complete; entire; absolute; unqualified. All the lua functions I don't want to write twice.
     use { "kyazdani42/nvim-web-devicons" } -- A Lua fork of vim-devicons.
     use { "antoinemadec/FixCursorHold.nvim" } -- Fix CursorHold Performance.
     -- }}}
@@ -66,49 +70,55 @@ return packer.startup(function(use)
     -- Core Plugins --
     ------------------- {{{
 
-    -- {{{ Keymapping 
+    -- {{{ Keymapping
     use { "mrjones2014/legendary.nvim", -- Define your keymaps, commands, and autocommands as simple Lua tables, and create a legend for them at the same time, integrates with which-key.nvim.
-        config = function () require("legendary").setup() end,
+        config = function() require("legendary").setup() end,
     }
     use { "folke/which-key.nvim", -- Neovim plugin that shows a popup with possible keybindings of the command you started typing.
         requires = "mrjones2014/legendary.nvim",
-        config = function () require("configs.whichkey") end,
+        config = function() require("configs.whichkey") end,
     }
     -- }}}
 
     -- {{{ Syntax and highlighting
     use { "nvim-treesitter/nvim-treesitter", -- Neovim Treesitter configurations and abstraction layer.
-        requires = "MDeiml/tree-sitter-markdown", -- A markdown grammar for tree-sitter 
+        requires = {
+            "MDeiml/tree-sitter-markdown", -- A markdown grammar for tree-sitter
+            "David-Kunz/markid", -- A Neovim extension to highlight same-name identifiers with the same color.
+            "nvim-treesitter/nvim-treesitter-textobjects", -- TODO: Setup textobjects
+            "RRethy/nvim-treesitter-endwise", -- Wisely add "end" in Ruby, Vimscript, Lua, etc. Tree-sitter aware alternative to tpope's vim-endwise.
+            "nvim-treesitter/playground", --Treesitter playground integrated into Neovim 
+            "JoosepAlviste/nvim-ts-context-commentstring", -- Neovim treesitter plugin for setting the commentstring based on the cursor location in a file. 
+        },
         run = ":TSUpdate",
-        config = function () require("configs.treesitter") end,
+        config = function() require("configs.treesitter") end,
     }
-    use { "nvim-treesitter/nvim-treesitter-textobjects" } -- TODO: Setup textobjects
     use { "nvim-treesitter/nvim-treesitter-context", -- Shows floating hover with the current function/block context.
-        config = function () require("configs.treesittercontext") end,
+        config = function() require("configs.treesittercontext") end,
     }
     use { "kylechui/nvim-surround",
         tag = "*",
-        config = function () require("nvim-surround").setup() end,
+        config = function() require("nvim-surround").setup() end,
     }
     use { "windwp/nvim-ts-autotag", -- Use treesitter to auto close and auto rename html tags.
-        config = function () require("configs.autotag") end,
+        config = function() require("configs.autotag") end,
     }
 
     use { "norcalli/nvim-colorizer.lua", -- A high-performance color highlighter for Neovim which has no external dependencies!
-        config = function () require("configs/colorizer") end,
+        config = function() require("configs/colorizer") end,
     }
 
     -- }}}
 
     --{{{ Git
     use { "lewis6991/gitsigns.nvim", -- Git integration: signs, hunk actions, blame, etc.
-    config = function () require("configs.gitsigns") end,
+        config = function() require("configs.gitsigns") end,
     }
     use { "TimUntersberger/neogit", -- A Magit clone for Neovim that may change some things to fit the Vim philosophy.
         requires = "nvim-lua/plenary.nvim",
-        config = function () require("configs.neogit") end,
+        config = function() require("configs.neogit") end,
     }
-    use { "sindrets/diffview.nvim", -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev. 
+    use { "sindrets/diffview.nvim", -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
         config = function() require("configs.diffview") end,
     }
     use { "akinsho/git-conflict.nvim", -- A plugin to visualise and resolve merge conflicts in neovim.
@@ -118,39 +128,42 @@ return packer.startup(function(use)
     --}}}
 
     --{{{ External Package Manager
-    use { "williamboman/mason.nvim", -- Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters. 
-        config = function () require("configs.mason")end,
+    use { "williamboman/mason.nvim", -- Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters.
+        config = function() require("configs.mason") end,
     }
     --}}}
 
-    -- {{{ LSP 
-    use { "williamboman/mason-lspconfig.nvim", -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim 
+    -- {{{ LSP
+    use { "williamboman/mason-lspconfig.nvim", -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim
         requires = "williamboman/mason.nvim",
-        config = function () require("configs.masonlspconfig") end,
+        config = function() require("configs.masonlspconfig") end,
     }
     use { "neovim/nvim-lspconfig", -- Quickstart configurations for the Neovim LSP client.
         requires = "williamboman/mason-lspconfig",
         --config = function () require("configs.lspconfig") end,
     }
-
     -- TODO: config properly
     use { "ray-x/lsp_signature.nvim", -- Lsp signature hint when you type.
-        config = function () require("configs.lspsignature") end,
+        config = function() require("configs.lspsignature") end,
     }
     use { "weilbith/nvim-code-action-menu", -- A floating pop-up menu for code actions to show code action information and a diff preview.
         cmd = "CodeActionMenu",
-        config = function () vim.g.code_action_menu_window_border = "solid" end,
+        config = function() vim.g.code_action_menu_window_border = "solid" end,
+    }
+    use { "kosayoda/nvim-lightbulb",
+        requires = "antoinemadec/FixCursorHold.nvim",
+        config = function() require("configs.lightbulb") end,
     }
     use { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", -- Show nvim diagnostics using virtual lines
-        config = function () require("configs.lsplines") end,
+        config = function() require("configs.lsplines") end,
     }
     use { "RRethy/vim-illuminate",
-        config = function () require("configs.illuminate") end,
+        config = function() require("configs.illuminate") end,
     }
     -- }}}
 
     -- {{{ Completion and snippets
-    use { "hrsh7th/nvim-cmp", -- A completion plugin for Neovim written in Lua. New version of nvim-compe. 
+    use { "hrsh7th/nvim-cmp", -- A completion plugin for Neovim written in Lua. New version of nvim-compe.
         requires = {
             "saadparwaiz1/cmp_luasnip",
             "hrsh7th/cmp-path",
@@ -167,39 +180,39 @@ return packer.startup(function(use)
             "hrsh7th/cmp-calc",
             "uga-rosa/cmp-dictionary",
         },
-        config = function () require("configs.cmp") end,
+        config = function() require("configs.cmp") end,
     }
     use { "L3MON4D3/LuaSnip", -- A snippet engine for Neovim written in Lua.
         requires = {
-            "rafamadriz/friendly-snippets", -- Set of preconfigured snippets for different languages. 
+            "rafamadriz/friendly-snippets", -- Set of preconfigured snippets for different languages.
             { "dsznajder/vscode-es7-javascript-react-snippets", run = "yarn install --frozen-lockfile && yarn compile" },
         },
-        config = function () require("configs.luasnip") end,
+        config = function() require("configs.luasnip") end,
 
     }
     -- }}}
 
     -- {{{ Editing Support
     use { "windwp/nvim-autopairs", -- A minimalist autopairs for Neovim written in Lua.
-        config = function () require("configs.autopairs") end,
+        config = function() require("configs.autopairs") end,
     }
     -- }}}
 
-    -- {{{ Indentation 
+    -- {{{ Indentation
     use { "lukas-reineke/indent-blankline.nvim", -- IndentLine replacement in Lua with more features and treesitter support.
-        config = function () require("configs.indentblankline") end,
+        config = function() require("configs.indentblankline") end,
     }
-    use { "nmac427/guess-indent.nvim", -- Automatic indentation style detection for Neovim 
-        config = function () require('guess-indent').setup {} end
+    use { "nmac427/guess-indent.nvim", -- Automatic indentation style detection for Neovim
+        config = function() require('guess-indent').setup {} end
     }
     -- }}}
 
     --{{{ Listener/Quickfix
     use { "folke/trouble.nvim", -- A pretty diagnostics list to help you solve all the trouble your code is causing.
-        config = function () require("configs.trouble") end,
+        config = function() require("configs.trouble") end,
     }
     use { "folke/todo-comments.nvim", -- Highlight, list and search todo comments in your projects.
-        config = function () require("configs.todocomments") end,
+        config = function() require("configs.todocomments") end,
     }
     --}}}
 
@@ -209,81 +222,96 @@ return packer.startup(function(use)
     --}
     -- }}}
 
-    -- {{{Picker 
-    use { "ibhagwan/fzf-lua", -- Improved fzf.vim written in lua 
-        config = function () require("configs.fzflua") end,
+    -- {{{Picker
+    use { "ibhagwan/fzf-lua", -- Improved fzf.vim written in lua
+        config = function() require("configs.fzflua") end,
         requires = "kyazdani42/nvim-web-devicons",
     }
     -- }}}
 
     -- {{{ Notifications
     use { "rcarriga/nvim-notify", -- A fancy, configurable, notification manager for Neovim.
-        config = function () require("configs.notify") end,
+        config = function() require("configs.notify") end,
     }
     -- }}}
 
-    -- {{{ Statusline 
+    -- {{{ Statusline
     use { "nvim-lualine/lualine.nvim", -- A blazing fast and easy to configure Neovim statusline.
         requires = { "kyazdani42/nvim-web-devicons", "SmiteshP/nvim-gps", "arkav/lualine-lsp-progress" },
-        config = function () require("configs.lualine") end
+        config = function() require("configs.lualine") end
     }
-    use { "SmiteshP/nvim-gps",
-        config = function () require('configs.gps') end,
-    }
+    --use { "SmiteshP/nvim-gps",
+    --    config = function () require('configs.gps') end,
+    --}
     use { "SmiteshP/nvim-navic", -- TODO: Setup with lspconfig and rewrite lspconfig setup. https://github.com/SmiteshP/nvim-navic
-        config = function () require("configs.navic") end,
+        config = function() require("configs.navic") end,
     }
     -- }}}
 
     --{{{ Symbols
-    use{ "simrat39/symbols-outline.nvim", -- A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
-        config = function () require("configs.symboloutline") end,
+    use { "simrat39/symbols-outline.nvim", -- A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
+        config = function() require("configs.symboloutline") end,
     }
     --}}}
 
     --{{{ Tabline
     use { "akinsho/bufferline.nvim", -- A snazzy buffer line for Neovim built using Lua.
-        config = function () require("configs.bufferline") end,
+        config = function() require("configs.bufferline") end,
     }
     --}}}
 
     --{{{ File Explorer
     use { "kyazdani42/nvim-tree.lua",
         requires = "kyazdani42/nvim-web-devicons",
-        config = function () require("configs.tree") end,
+        config = function() require("configs.tree") end,
     }
     --}}}
 
     -- {{{ scrollbar
     use { "petertriho/nvim-scrollbar", -- Extensible scrollbar that shows diagnostics and search results.
         requires = "kevinhwang91/nvim-hlslens",
-        config = function () require("configs.scrollbar") end,
+        config = function() require("configs.scrollbar") end,
     }
     use { "kevinhwang91/nvim-hlslens", -- Helps you better glance searched information, seamlessly jump matched instances.
-        config = function () require("configs.hlslens") end,
+        config = function() require("configs.hlslens") end,
     }
-    use { "declancm/cinnamon.nvim", --  Smooth scrolling for ANY movement command exploding_head. A Neovim plugin written in Lua! 
+    use { "declancm/cinnamon.nvim", --  Smooth scrolling for ANY movement command exploding_head. A Neovim plugin written in Lua!
         event = "WinScrolled",
-        config = function () require("configs.cinnamon") end,
+        config = function() require("configs.cinnamon") end,
     }
     -- }}}
 
     --{{{ Symbols
     use { "goolord/alpha-nvim", -- A lua powered greeter like vim-startify / dashboard-nvim.
-        config = function () require("configs.alpha") end,
+        config = function() require("configs.alpha") end,
     }
     --}}}
 
     -- {{{ Window Management
     -- TODO: Reconfig TrueZen
     use { "Pocco81/true-zen.nvim", -- Clean and elegant distraction-free writing for NeoVim.
-        config = function () require("configs.truezen") end,
+        config = function() require("configs.truezen") end,
     }
     use { "luukvbaal/stabilize.nvim", -- Stabilized window content on window open/close events.
-        config = function () require("stabilize").setup() end,
+        config = function() require("stabilize").setup() end,
     }
     use { "aserowy/tmux.nvim", -- Tmux integration for Neovim features pane movement and resizing from within Neovim.
-        config = function ()  require("configs.tmux") end,
+        config = function() require("configs.tmux") end,
+    }
+    use { "anuvyklack/windows.nvim",
+        requires = {
+            "anuvyklack/middleclass",
+            "anuvyklack/animation.nvim"
+        },
+        config = function()
+            vim.o.winwidth = 10
+            vim.o.winminwidth = 10
+            vim.o.equalalways = false
+            require('windows').setup()
+        end
+    }
+    use { "levouh/tint.nvim",
+        config = function () require("tint") end,
     }
     -- }}}
 
@@ -294,7 +322,7 @@ return packer.startup(function(use)
     -- {{{ FOlds
     use { "kevinhwang91/nvim-ufo",
         requires = "kevinhwang91/promise-async",
-        config = function () require("configs.ufo") end,
+        config = function() require("configs.ufo") end,
     }
     -- }}}
 
@@ -316,7 +344,7 @@ return packer.startup(function(use)
     -- {{{ Code Evaluation
     use { "michaelb/sniprun",
         run = "bash ./install.sh",
-        config = function () require("configs.sniprun")end,
+        config = function() require("configs.sniprun") end,
     }
     use { "metakirby5/codi.vim" }
     -- }}}
@@ -330,39 +358,39 @@ return packer.startup(function(use)
 
     -- {{{ Markdown
     use { "preservim/vim-markdown", -- Markdown Vim Mode
-        setup = function () require("configs.vimmarkdown") end,
+        setup = function() require("configs.vimmarkdown") end,
     }
     use { "mickael-menu/zk-nvim", -- Neovim extension for zk, a plain text note-taking assistant.
-        config = function () require("configs.zk") end,
+        config = function() require("configs.zk") end,
     }
-    use { "dkarter/bullets.vim", -- Bullets.vim is a Vim/NeoVim plugin for automated bullet lists.
-        ft = { "markdown", "text", "gitcommit", "scratch" },
-        setup = function () require("configs.vimmarkdown") end,
+    use { "gaoDean/autolist.nvim", -- Automatic list continuation and formatting for neovim, powered by lua
+        --ft = { "markdown", "text", "gitcommit", "scratch" },
+        config = function() require("configs.autolist") end,
     }
     use { "frabjous/knap", -- Neovim plugin for creating live-updating-as-you-type previews of LaTeX, markdown, and other files in the viewer of your choice.
-        setup = function () require("configs.knap") end,
+        setup = function() require("configs.knap") end,
     }
     use { "ekickx/clipboard-image.nvim", -- Neovim Lua plugin to paste image from clipboard.
         ft = "markdown",
-        config = function () require("configs.pasteimg") end,
+        config = function() require("configs.pasteimg") end,
     }
     use { "jbyuki/nabla.nvim", -- Take your scientific notes in Neovim.
         ft = "markdown",
-        config = function () require("configs.nabla") end,
+        config = function() require("configs.nabla") end,
     }
-    use { "lukas-reineke/headlines.nvim", -- This plugin adds horizontal highlights for text filetypes, like markdown, orgmode, and neorg. 
-        config = function () require("headlines").setup({ markdown = { fat_headlines = false } }) end,
+    use { "lukas-reineke/headlines.nvim", -- This plugin adds horizontal highlights for text filetypes, like markdown, orgmode, and neorg.
+        config = function() require("headlines").setup({ markdown = { fat_headlines = false } }) end,
     }
     use { "AckslD/nvim-FeMaco.lua", -- Catalyze your Fenced Markdown Code-block editing.
-        config = function () require("femaco").setup({ border = "solid" }) end,
+        config = function() require("configs.femaco") end,
     }
     use { "dhruvasagar/vim-table-mode",
         ft = "markdown",
-        setup = function () require("configs.tablemode") end,
+        setup = function() require("configs.tablemode") end,
     }
     use { "jbyuki/venn.nvim",
         ft = "markdown",
-        setup = function () require("configs.venn") end,
+        setup = function() require("configs.venn") end,
     }
     --use { "edluffy/hologram.nvim",
     --    config = function () require('hologram').setup{ auto_display = true } end,
@@ -375,5 +403,3 @@ end)
 
 
 --}}}
-
-

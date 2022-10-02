@@ -7,6 +7,8 @@ vim.api.nvim_set_hl(0, "FocusedSymbol", { link = "Search" })
 --}}}
 --{{{ treesitter-context
 vim.api.nvim_set_hl(0, "TreesitterContext", { link = "Normal" })
+vim.api.nvim_set_hl(0, "SniprunVirtualTextOk", { link = "Comment" })
+vim.api.nvim_set_hl(0, "SniprunVirtualTextOk", { link = "Error" })
 --}}}
 
 -- Colorschemes

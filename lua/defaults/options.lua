@@ -9,6 +9,7 @@ local indentSize = 4
 
 vim.g.mapleader = " "
 
+
 -- Sane(er) defaults
 o.termguicolors     = true
 o.timeoutlen        = 500

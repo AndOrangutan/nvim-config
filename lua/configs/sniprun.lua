@@ -1,10 +1,14 @@
+
+
+
 require'sniprun'.setup({
   borders = 'solid',              --# display borders around floating windows
   display = {
-    "Terminal",
+    --"Terminal",
     "VirtualTextOk",
     "VirtualTextErr",
   }
 })
 
-vim.cmd[[autocmd TermOpen * setlocal nonu]]
+--vim.cmd[[autocmd TermOpen * setlocal nonu]]
+

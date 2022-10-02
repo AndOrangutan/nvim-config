@@ -5,5 +5,5 @@ require("cinnamon").setup({
     override_keymaps    = false,
 
     centered = false,
-    default_delay = 5,
+    default_delay = 4,
 })

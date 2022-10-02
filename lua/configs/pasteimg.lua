@@ -12,6 +12,12 @@ require'clipboard-image'.setup {
         img_name = function() return vim.fn.expand("%:t:r").."-"..os.date('%H-%M-%S') end, -- Example result: "2021-04-13-10-04-18"
         img_dir = {"%:p:h", ".img"}, -- Use table for nested dir (New feature form PR #20)
         img_dir_txt = ".img",
+        affix = function ()
+            vim.fn.inputsave()
+            local alttext = vim.fn.input('Alt-text: ')
+            vim.fn.inputrestore()
+            return "!["..alttext.."](%s)"
+        end
         --img_handler = function(img) -- New feature from PR #22
         --    local script = string.format('./image_compressor.sh "%s"', img.path)
         --    os.execute(script)

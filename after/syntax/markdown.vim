@@ -8,6 +8,8 @@ call matchadd('MyStrikethrough', '\~\~\zs.\+\ze\~\~')
 call matchadd('Conceal',  '\~\~\ze.\+\~\~', 10, -1, {'conceal':''})
 call matchadd('Conceal',  '\~\~.\+\zs\~\~\ze', 10, -1, {'conceal':''})
 
+
+
 "syn region markdownLink matchgroup=markdownLinkDelimiter start="(" end=")" contains=markdownUrl keepend contained conceal
 "syn region markdownLinkText matchgroup=markdownLinkTextDelimiter start="!\=\[\%(\%(\_[^][]\|\[\_[^][]*\]\)*]\%( \=[[(]\)\)\@=" end="\]\%( \=[[(]\)\@=" nextgroup=markdownLink,markdownId skipwhite contains=@markdownInline,markdownLineStart concealends
 

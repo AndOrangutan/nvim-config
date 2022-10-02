@@ -3,18 +3,21 @@ local wk = require("which-key")
 
 
 
-vim.wo.wrap = true
-vim.wo.linebreak = true
-vim.wo.spell = true
+vim.opt_local.wrap = true
+vim.opt_local.linebreak = true
+vim.opt_local.spell = true
+
+vim.g.markdown_fenced_langueges = {'html', 'python', 'lua', 'vim', 'typescript', 'bash=sh', 'javascript', 'js=javascript', 'json=javascript', 'typescript', 'ts=typescript', 'php', 'css', 'rust', 'sql'}
+
 
 
 --nnoremap("<leader>s", "<cmd>MarkdownPreviewToggle<cr>", "Markdown Preview Toggle")
 
-vim.cmd[[
-set breakindent breakindentopt=sbr,list:-1 linebreak
-" this should be set up per filetype probably
-let &formatlistpat = '^line\s\+\d\+:\s*'
-]]
+--vim.cmd[[
+--set breakindent breakindentopt=sbr,list:-1 linebreak
+--" this should be set up per filetype probably
+--let &formatlistpat = '^line\s\+\d\+:\s*'
+--]]
 
 
 vim.api.nvim_create_user_command(
