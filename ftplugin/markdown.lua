@@ -5,7 +5,7 @@ local wk = require("which-key")
 
 vim.opt_local.wrap = true
 vim.opt_local.linebreak = true
-vim.opt_local.spell = true
+--vim.opt_local.spell = true
 
 vim.g.markdown_fenced_langueges = {'html', 'python', 'lua', 'vim', 'typescript', 'bash=sh', 'javascript', 'js=javascript', 'json=javascript', 'typescript', 'ts=typescript', 'php', 'css', 'rust', 'sql'}
 
@@ -65,6 +65,7 @@ wk.register({
             vim.notify("ZK: Please include title", "Float")
             return
         else
+            vim.cmd('vsplit')
             require("zk").new({ dir = 'classes/'..code, title = ucode.." "..title })
         end
     end, "[z]K [n]ew [c]lass Note"},
@@ -72,8 +73,8 @@ wk.register({
 })
 
 
-vim.cmd[[
-set breakindent breakindentopt=sbr,list:-1 linebreak
-" this should be set up per filetype probably
-let &formatlistpat = '^line\s\+\d\+:\s*'
-]]
+--vim.cmd[[
+--set breakindent breakindentopt=sbr,list:-1 linebreak
+--" this should be set up per filetype probably
+--let &formatlistpat = '^line\s\+\d\+:\s*'
+--]]

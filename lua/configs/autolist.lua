@@ -6,7 +6,7 @@ require('autolist').setup({
     colon = {
         indent_raw = true,
         indent = true,
-        preferred = "-"
+        --preferred = "-"
     },
     invert = {
         mapping = "<c-r>",

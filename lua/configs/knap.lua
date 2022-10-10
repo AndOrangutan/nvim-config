@@ -4,11 +4,11 @@ vim.cmd[[autocmd BufUnload * lua if (vim.b.knap_viewerpid) then os.execute("pkil
 
 local gknapsettings = {
 
-    mdoutputext = "pdf",
+    mdoutputext = "html",
 
     mdtohtml = "pandoc %docroot% -o %outputfile% --standalone --template=easy_template.html --toc",
-    mdtohtmlviewerlaunch = "live-server --quiet --browser=electron --open=%outputfile% --watch=%outputfile% --wait=1000",
-    htmltohtmlviewerlaunch = "live-server --quiet --browser=electron --open=%outputfile% --watch=%outputfile% --wait=800",
+    mdtohtmlviewerlaunch = "live-server --quiet --browser=qutebrowser --open=%outputfile% --watch=%outputfile% --wait=1000",
+    htmltohtmlviewerlaunch = "live-server --quiet --browser=qutebrowser --open=%outputfile% --watch=%outputfile% --wait=800",
 
     htmltohtmlviewerrefresh = "none",
     mdtohtmlbufferasstdin = true,

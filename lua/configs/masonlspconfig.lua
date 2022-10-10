@@ -54,6 +54,7 @@ local set_signs_limited = function(diagnostics, bufnr, client_id, sign_ns, opts)
 end
 vim.lsp.diagnostic.set_signs = set_signs_limited
 
+--  ssdlfjkslkdjldjkflskdjfl lids
 
 
 require("mason-lspconfig").setup({
@@ -80,9 +81,9 @@ require("mason-lspconfig").setup({
         "jdtls",                    -- JAVA
         "tsserver",                 -- Javascript, Typescript
         "kotlin_language_server",   -- Kotlin
+        "ltex",
         --"texlab",                   -- LaTeX
         "sumneko_lua",              -- Lua
-        "prosemd_lsp",              -- Markdown
         "rnix",                     -- Nix
         "intelephense",             -- PHP
         "pyright",                  -- Python
@@ -100,7 +101,6 @@ require("mason-lspconfig").setup({
 
     }
 })
-
 
 
 -- Mappings.
@@ -203,11 +203,6 @@ require("mason-lspconfig").setup_handlers {
             filetypes = { "aspnetcorerazor", "astro", "astro-markdown", "blade", "django-html", "htmldjango", "edge", "eelixir", "elixir", "ejs", "erb", "eruby", "gohtml", "haml", "handlebars", "hbs", "html", "html-eex", "heex", "jade", "leaf", "liquid", "mdx", "mustache", "njk", "nunjucks", "php", "razor", "slim", "twig", "css", "less", "postcss", "sass", "scss", "stylus", "sugarss", "javascript", "javascriptreact", "reason", "rescript", "typescript", "typescriptreact", "vue", "svelte" },
             on_attach = on_attach,
             capabilities = capabilities,
-        }
-    end,
-    ["prosemd_lsp"] = function ()
-        lspconfig.prosemd_lsp.setup {
-
         }
     end,
     ["sumneko_lua"] = function ()

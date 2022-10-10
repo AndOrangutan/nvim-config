@@ -19,10 +19,10 @@ call matchadd('Conceal',  '\~\~.\+\zs\~\~\ze', 10, -1, {'conceal':''})
 "syn match todoCheckbox "\[x] .\+" contains=itemCompleteMark
 "syn match todoCheckbox "\[x]" conceal cchar= 
 
-hi def link todoCheckbox Todo
+"hi def link todoCheckbox Todo
 
-highlight Conceal guibg=NONE guifg=NONE
-"highlight Conceal ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+"highlight Conceal guibg=NONE guifg=NONE
+highlight Conceal ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
 
 " Todo
 syntax match VimwikiListTodo '\v(\s+)?(-|\*)\s\[\s\]'hs=e-4 conceal cchar= 

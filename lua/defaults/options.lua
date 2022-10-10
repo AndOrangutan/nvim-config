@@ -5,11 +5,6 @@ local b = vim.bo    -- For the buffer local options
 
 local utils = require('utils')
 
-<<<<<<< HEAD
-set.listchars       = "eol:¬"
-set.fillchars       = "fold:━"
---let.do_filetype_lua = 1
-=======
 local indentSize = 4
 
 vim.g.mapleader = " "
@@ -23,7 +18,6 @@ o.mouse             = "a"
 o.errorbells        = false
 o.encoding          = "utf-8"
 o.completeopt       = "menu,menuone,noselect"
->>>>>>> config-rewrite
 
 -- Visual
 o.list              = true
@@ -36,8 +30,7 @@ o.fillchars         = "foldsep: ,foldopen:,foldclose:"
 o.signcolumn        = "yes:1"
 o.background        = "dark"
 o.laststatus        = 3
---o.cmdheight         = 0
-o.cmdheight         = 1
+o.cmdheight         = 0
 
 -- Tabbing, breaking, wraping and indentation
 o.tabstop           = indentSize

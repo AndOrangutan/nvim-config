@@ -31,29 +31,37 @@ end
 
 -- Set header
 local function footer()
-    local bannerLength = 34
+    local version = vim.version()
+
+    local bannerLength = 51
 
     local pluginsSub = string.format("  %d", #vim.tbl_keys(packer_plugins))
     local dateSub = os.date("  %A %d %b %Y")
+    local versionSub = string.format("  v%d.%d.%d", version.major, version.minor, version.patch)
 
-    local tempSubBanner = pluginsSub.." "..dateSub
-    local padding = math.floor((bannerLength - #tempSubBanner) / 2)
-    local subBanner = string.format("%"..padding.."s%s%"..padding.."s", "", " "..tempSubBanner, "")
+    local infoSize = math.ceil((bannerLength - (#pluginsSub + #dateSub + #versionSub +2)) / 2)
+
+    local padding = ""
+
+    for i=1,infoSize do padding = padding.." " end
+
+    local subBanner = string.format("%s%s %s %s%s", padding, pluginsSub, dateSub, versionSub, padding)
 
     local banner = {
-        "                                  ",
-        "         ▀████▀▄▄              ▄█ ",
-        "           █▀    ▀▀▄▄▄▄▄    ▄▄▀▀█ ",
-        "   ▄        █          ▀▀▀▀▄  ▄▀  ",
-        "  ▄▀ ▀▄      ▀▄              ▀▄▀  ",
-        " ▄▀    █     █▀   ▄█▀▄      ▄█    ",
-        " ▀▄     ▀▄  █     ▀██▀     ██▄█   ",
-        "  ▀▄    ▄▀ █   ▄██▄   ▄  ▄  ▀▀ █  ",
-        "   █  ▄▀  █    ▀██▀    ▀▀ ▀▀  ▄▀  ",
-        "  █   █  █      ▄▄           ▄▀   ",
-        "                                  ",
+        "                                                   ",
+        "                ▀████▀▄▄              ▄█           ",
+        "                  █▀    ▀▀▄▄▄▄▄    ▄▄▀▀█           ",
+        "          ▄        █          ▀▀▀▀▄  ▄▀            ",
+        "         ▄▀ ▀▄      ▀▄              ▀▄▀            ",
+        "        ▄▀    █     █▀   ▄█▀▄      ▄█              ",
+        "        ▀▄     ▀▄  █     ▀██▀     ██▄█             ",
+        "         ▀▄    ▄▀ █   ▄██▄   ▄  ▄  ▀▀ █            ",
+        "          █  ▄▀  █    ▀██▀    ▀▀ ▀▀  ▄▀            ",
+        "         █   █  █      ▄▄           ▄▀             ",
+        "                                                   ",
         subBanner,
     }
+    --      |
 
     return banner
 end
@@ -79,15 +87,15 @@ end
 -- Set menu
 dashboard.section.buttons.val = {
     --dashboard.button( "e", "   > New file" , ":ene <BAR> startinsert <CR>"),
-    dashboard.button( "r", "   > Recent"   , ":FzfLua oldfiles<CR>"),
+    dashboard.button( "r", "  > Recent"   , ":FzfLua oldfiles<CR>"),
     --dashboard.button( "n", "   > Notebooks", ":cd $HOME/Dropbox/Notebook | :e index.md <CR> | :TZMinimalist <CR>"),
     --dashboard.button( "n", "   > Notebooks", [[:lua require("fzf-lua").files({ cwd = "~/Dropbox/Notebooks"})<cr> | :ZkCd<cr> | :TZMinimalist <CR>]]),
     --dashboard.button( "n", "   > Notebooks", [[:lua require'fzf-lua'.files({ cwd = "~/Dropbox/Notebooks", cmd = "fd -e md -g 'index.md'"})<cr>]]),
     --dashboard.button( "n", "   > Notebooks", [[:cd $HOME/Dropbox/Notebooks/ | :lua require'fzf-lua'.files({ cwd = "~/Dropbox/Notebooks", cmd = "fd -e md -g 'index.md'", actions = { ['default'] = _G.my_open }})<cr>]]),
-    dashboard.button( "n", "   > Notebooks", [[:cd $HOME/Dropbox/Notebooks/Compendium | :e index.md | :ZkCd <cr>]]),
+    dashboard.button( "n", "  > Notebooks", [[:cd $HOME/Dropbox/Notebooks/Compendium | :e index.md | :ZkCd <cr>]]),
     --dashboard.button( "n", "   > Notebooks", [[:cd $HOME/Dropbox/Notebooks/Compendium | :e index.md <CR> | :ZkCd | :TZMinimalist <CR>]]),
-    dashboard.button( "s", "   > Settings" , ":cd $HOME/.config/nvim | lua require'fzf-lua'.git_files()<cr>"),
-    dashboard.button( "q", "   > Quit NVIM", ":qa<CR>"),
+    dashboard.button( "s", "  > Settings" , ":cd $HOME/.config/nvim | lua require'fzf-lua'.git_files()<cr>"),
+    dashboard.button( "q", "  > Quit NVIM", ":qa<CR>"),
 }
 
 
